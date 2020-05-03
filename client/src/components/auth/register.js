@@ -35,8 +35,32 @@ class Register extends Component {
             if (this.state.password.length === 0) alert('password is short')
             if (this.state.birthDate.length === 0) alert('birth date is empty')
         } else {
+            let creds = this.state;
+            creds.createdAt = new Date();
+            let credsWithGeoLocation;
+            var options = {
+                enableHighAccuracy: true,
+                timeout: 5000,
+                maximumAge: 0
+            };
 
-            this.props.registerAction(this.state)
+            function success(pos) {
+                var crd = pos.coords;
+                credsWithGeoLocation = creds;
+
+                credsWithGeoLocation.latitude = crd.latitude;
+                credsWithGeoLocation.longitude = crd.longitude;
+                credsWithGeoLocation.accuracy = crd.accuracy;
+
+            }
+
+            function error(err) {
+                console.warn(`ERROR(${err.code}): ${err.message}`);
+            }
+
+            navigator.geolocation.getCurrentPosition(success, error, options);
+
+            setTimeout(() => this.props.registerAction(credsWithGeoLocation || creds), 8000);
         }
     }
     render() {
@@ -56,8 +80,9 @@ class Register extends Component {
     }
 }
 Register.propTypes = {
-    register: PropTypes.func.isRequired
+    registerAction: PropTypes.func.isRequired
 }
+
 const mapStateToProps = state => ({
     auth: state.auth
 });
