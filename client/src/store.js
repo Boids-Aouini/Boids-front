@@ -1,7 +1,10 @@
-import { thunk } from 'redux-thunk';
+import thunk from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
+import combinedReducers from './reducers/index';
+let initState = {}
 
 export const store = createStore(
-    (state = {}) => state,
+    combinedReducers,
+    initState,
     applyMiddleware(thunk)
 )

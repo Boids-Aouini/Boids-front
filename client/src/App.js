@@ -8,12 +8,14 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { store } from './store';
 
 class App extends Component {
+
   render() {
     return (
       <Router>
-        <div>
+        <div store={store}>
           <Switch>
             <Route exact path="/">
               <div></div>
@@ -22,6 +24,7 @@ class App extends Component {
 
               <SignUp />
             </Route>
+
 
           </Switch>
         </div>
