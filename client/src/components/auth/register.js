@@ -46,5 +46,5 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-// export default connect(mapStateToProps, { registerAction })(Register);
-export default Register;
+export default connect(mapStateToProps, registerAction)(Register);
+// export default Register;
