@@ -8,7 +8,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import { store } from './store';
+import store from './store';
 
 class App extends Component {
 

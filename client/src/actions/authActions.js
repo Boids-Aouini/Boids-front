@@ -1,7 +1,7 @@
 import { REGISTER, OPEN_ACC } from './type';
-import { register } from '../services/authServices';
-export const registerAcc = (creds) => dispatch => {
-    console.log(creds);
+
+export const register = (creds) => dispatch => {
+    console.log("=>", creds);
     axios.post('http://localhost:4404/register', creds)
         .then(res => {
             let { token } = res.data;

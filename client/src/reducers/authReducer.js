@@ -1,15 +1,18 @@
 import { OPEN_ACC, REGISTER } from '../actions/type';
 
-let initState = {
+let initialState = {
     openedAcc: false
 }
 
-export default function (state = initState, action) {
+export default function (state = initialState, action) {
     switch (action.type) {
-        case REGISTER: {
+        case REGISTER:
             return {
+                ...state,
                 openedAcc: action.openedAcc
             }
-        }
+        default:
+            return state;
+
     }
 }
