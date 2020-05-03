@@ -3,14 +3,20 @@ import React, { Component } from 'react'
 export default class SignUp extends Component {
     constructor(props) {
         super(props)
-
+        this.state = {
+            firstname: "",
+            lastname: "",
+            email: "",
+            password: "",
+            birthDate: ""
+        }
     }
     onchange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
     onSubmit(e) {
         e.preventDefault();
-        console.log(e.target)
+        console.log(e.target.firstname.value)
     }
     render() {
         return (
