@@ -1,7 +1,7 @@
 import { OPEN_ACC, REGISTER } from '../actions/type';
 
 let initialState = {
-    openedAcc: false
+    openedAcc: localStorage.getItem('_____auth_______________token')
 }
 
 export default function (state = initialState, action) {
