@@ -9,7 +9,7 @@ export const registerAction = (creds) => dispatch => { // makes post http reques
             dispatch({
                 type: REGISTER,
                 openedAcc: localStorage.getItem('_____auth_______________token')
-            }) // excute dispatch set openedAcc state to true and add type REGISTER
+            }) // excute dispatch set openedAcc state to token that we set in local storage and add type REGISTER to action
         })
         .catch(err => console.log(err)); // console error in case there is one
 }
@@ -22,7 +22,7 @@ export const loginAction = creds => dispatch => { // makes post http request to 
             dispatch({
                 type: OPEN_ACC,
                 openedAcc: localStorage.getItem('_____auth_______________token')
-            }) // excute dispatch set openedAcc state to true and add type OPEN_ACC
+            }) // excute dispatch set openedAcc state to token that we set in local storage and add type OPEN_ACC to acion
         })
         .catch(err => console.log(err)); // console error in case there is one
 
