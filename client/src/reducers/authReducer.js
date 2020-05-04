@@ -8,7 +8,10 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case REGISTER:
             return {
-                ...state,
+                openedAcc: action.openedAcc
+            }
+        case OPEN_ACC:
+            return {
                 openedAcc: action.openedAcc
             }
         default:
