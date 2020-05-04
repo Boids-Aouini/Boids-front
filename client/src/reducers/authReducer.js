@@ -8,11 +8,11 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case REGISTER:
             return {
-                openedAcc: action.openedAcc
+                openedAcc: action.openedAcc // set openedAcc to true once dispatch excuted in register action
             }
         case OPEN_ACC:
             return {
-                openedAcc: action.openedAcc
+                openedAcc: action.openedAcc // set openedAcc to true once dispatch excuted in login action
             }
         default:
             return state;
