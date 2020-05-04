@@ -9,6 +9,7 @@ import {
   Link
 } from "react-router-dom";
 import store from './store';
+import Login from './components/auth/login';
 
 class App extends Component {
 
@@ -25,7 +26,9 @@ class App extends Component {
 
                 <Register />
               </Route>
-
+              <Route exact path="/login">
+                <Login></Login>
+              </Route>
 
             </Switch>
           </div>

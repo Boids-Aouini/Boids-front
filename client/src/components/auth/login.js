@@ -10,6 +10,7 @@ class Login extends Component {
             email: "",
             password: ""
         }
+        this.onSubmit = this.onSubmit.bind(this);
     }
     onchange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -17,18 +18,19 @@ class Login extends Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.loginAction(this.state);
+        console.log(this.props.auth.openedAcc)
     }
     render() {
-        return this.props.auth.openedAcc ? (
+        return !this.props.auth.openedAcc ? (
             <div>
                 <form>
                     <input maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"></input><br></br>
                     <input maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="email"></input><br></br>
-                    <button>Log In</button>
+                    <button onClick={e => this.onSubmit(e)}>Log In</button>
                 </form>
                 <Link to="/register">Register</Link>
             </div>
-        ) : <Redirect to="/"></Redirect>
+        ) : (<Redirect to="/"></Redirect>)
     }
 }
 
