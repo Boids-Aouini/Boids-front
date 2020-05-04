@@ -20,7 +20,7 @@ export const loginAcion = creds => dispatch => {
             let { token } = res.data.results;
             localStorage.setItem('_____auth_______________token', token);
             dispatch({
-                type: REGISTER,
+                type: OPEN_ACC,
                 openedAcc: true
             })
         })
