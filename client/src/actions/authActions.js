@@ -6,11 +6,24 @@ export const registerAction = (creds) => dispatch => {
         .then(res => {
             let { token } = res.data.results;
             localStorage.setItem('_____auth_______________token', token);
-            console.log(localStorage.getItem('_____auth_______________token'))
             dispatch({
                 type: REGISTER,
                 openedAcc: true
             })
         })
         .catch(err => console.log(err));
+}
+
+export const loginAcion = creds => dispatch => {
+    axios.post('http://localhost:4404/login', creds)
+        .then(res => {
+            let { token } = res.data.results;
+            localStorage.setItem('_____auth_______________token', token);
+            dispatch({
+                type: REGISTER,
+                openedAcc: true
+            })
+        })
+        .catch(err => console.log(err));
+
 }
