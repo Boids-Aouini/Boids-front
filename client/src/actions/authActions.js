@@ -8,7 +8,7 @@ export const registerAction = (creds) => dispatch => { // makes post http reques
             localStorage.setItem('_____auth_______________token', token); // set token in local storage
             dispatch({
                 type: REGISTER,
-                openedAcc: true
+                openedAcc: localStorage.getItem('_____auth_______________token')
             }) // excute dispatch set openedAcc state to true and add type REGISTER
         })
         .catch(err => console.log(err)); // console error in case there is one
