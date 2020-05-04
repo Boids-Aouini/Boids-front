@@ -21,7 +21,7 @@ export const loginAction = creds => dispatch => { // makes post http request to 
             localStorage.setItem('_____auth_______________token', token); // set token in local storage
             dispatch({
                 type: OPEN_ACC,
-                openedAcc: true
+                openedAcc: localStorage.getItem('_____auth_______________token')
             }) // excute dispatch set openedAcc state to true and add type OPEN_ACC
         })
         .catch(err => console.log(err)); // console error in case there is one
