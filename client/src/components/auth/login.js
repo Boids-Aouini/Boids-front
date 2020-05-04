@@ -18,14 +18,13 @@ class Login extends Component {
     onSubmit(e) {
         e.preventDefault();
         this.props.loginAction(this.state);
-        console.log(this.props.auth.openedAcc)
     }
     render() {
         return !this.props.auth.openedAcc ? (
             <div>
                 <form>
                     <input maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"></input><br></br>
-                    <input maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="email"></input><br></br>
+                    <input maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="password"></input><br></br>
                     <button onClick={e => this.onSubmit(e)}>Log In</button>
                 </form>
                 <Link to="/register">Register</Link>
