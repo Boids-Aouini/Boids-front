@@ -36,7 +36,8 @@ class Register extends Component {
             if (this.state.birthDate.length === 0) alert('birth date is empty')
         } else {
             let creds = this.state;
-            creds.createdAt = new Date();
+            let newDate = new Date();
+            creds.createdAt = newDate.getFullYear() + "-" + newDate.getDay() + "-" + newDate.getMonth();
             let credsWithGeoLocation;
             var options = {
                 enableHighAccuracy: true,
@@ -50,7 +51,7 @@ class Register extends Component {
 
                 credsWithGeoLocation.latitude = crd.latitude;
                 credsWithGeoLocation.longitude = crd.longitude;
-                credsWithGeoLocation.accuracy = crd.accuracy;
+                credsWithGeoLocation.heighAccuracy = crd.accuracy;
 
             }
 
