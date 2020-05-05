@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerAction } from '../../actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 class Register extends Component {
     constructor(props) {
@@ -65,7 +66,7 @@ class Register extends Component {
         }
     }
     render() {
-        return (
+        return !this.props.auth.openedAcc ? (
             <div>
                 <form onSubmit={this.onSubmit.bind(this)}>
                     <input type="text" name="firstname" placeholder="First Name" maxLength={30} onChange={this.onchange.bind(this)} required ></input><br></br>
@@ -77,7 +78,7 @@ class Register extends Component {
 
                 </form>
             </div>
-        )
+        ) : <Redirect to="/"></Redirect>
     }
 }
 Register.propTypes = {
