@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import store from './store';
 import Login from './components/auth/login';
+import LogedInNav from './components/navbar/logedInNav';
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div >
+            <LogedInNav></LogedInNav>
             <Switch>
               <Route exact path="/">
                 <div></div>
