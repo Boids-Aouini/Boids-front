@@ -12,6 +12,7 @@ import store from './store';
 import Login from './components/auth/login';
 import LogedInNav from './components/navbar/logedInNav';
 import NotLogedNav from './components/navbar/notLogedNav';
+import NavBar from './components/navbar/navBar';
 
 class App extends Component {
 
@@ -20,7 +21,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div >
-            <NotLogedNav></NotLogedNav>
+            <NavBar></NavBar>
             <Switch>
               <Route exact path="/">
                 <div></div>
