@@ -11,6 +11,7 @@ import {
 import store from './store';
 import Login from './components/auth/login';
 import LogedInNav from './components/navbar/logedInNav';
+import NotLogedNav from './components/navbar/notLogedNav';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div >
-            <LogedInNav></LogedInNav>
+            <NotLogedNav></NotLogedNav>
             <Switch>
               <Route exact path="/">
                 <div></div>
