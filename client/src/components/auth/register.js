@@ -62,9 +62,8 @@ Register.propTypes = {
     registerAction: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = state => ({ // reteive redux's state(s)
+    auth: state.auth // set this.props.auth to redux's auth state
 });
 
-export default connect(mapStateToProps, { registerAction })(Register);
-// export default Register;
+export default connect(mapStateToProps, { registerAction })(Register); // add to props auth state and registerAction
