@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 
 class WhyBoids extends Component {
     render() {
-        return (
+        return !this.props.auth.openedAcc ? (
             <div>
                 <h2>So you can stay organized</h2>
                 <h4>Keep in touch, be productive, Meet up</h4>
@@ -14,7 +14,7 @@ class WhyBoids extends Component {
                 <br></br>
                 <Link to="/Register">Register</Link>
             </div>
-        )
+        ) : (<Redirect to="/" />)
     }
 }
 
