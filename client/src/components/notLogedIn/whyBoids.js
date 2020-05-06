@@ -18,8 +18,8 @@ class WhyBoids extends Component {
     }
 }
 
-const mapPropsToState = state => ({
-    auth: state.auth
+const mapPropsToState = state => ({ // set redux's state in components props
+    auth: state.auth // set this.props.auth to redux's auth state
 })
 
-export default connect(mapPropsToState)(WhyBoids);
+export default connect(mapPropsToState)(WhyBoids); // add state to props in component
