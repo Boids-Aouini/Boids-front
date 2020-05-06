@@ -1,0 +1,11 @@
+nav{
+    display: flex;
+}
+
+form{
+    margin-left: 41%;
+}
+
+#logout{
+    margin-left: 30%;
+}

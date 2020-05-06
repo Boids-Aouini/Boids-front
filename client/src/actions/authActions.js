@@ -1,4 +1,4 @@
-import { REGISTER, OPEN_ACC } from './type';
+import { REGISTER, OPEN_ACC, LOG_OUT } from './type';
 import axios from 'axios';
 
 export const registerAction = (creds) => dispatch => { // makes post http request to register new account
@@ -27,3 +27,12 @@ export const loginAction = creds => dispatch => { // makes post http request to 
         .catch(err => console.log(err)); // console error in case there is one
 
 }
+
+export const logoutAction = () => dispatch => {
+    localStorage.removeItem('_____auth_______________token');
+    dispatch({
+        type: LOG_OUT,
+        openedAcc: null
+    })
+}
+

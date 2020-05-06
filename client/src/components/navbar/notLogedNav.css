@@ -1,0 +1,11 @@
+nav {
+    display: flex;
+}
+
+.links{
+    margin-left: 20px;
+}
+
+#login{
+    margin-left: 82%;
+}

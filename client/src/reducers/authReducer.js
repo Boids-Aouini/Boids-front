@@ -1,4 +1,4 @@
-import { OPEN_ACC, REGISTER } from '../actions/type';
+import { OPEN_ACC, REGISTER, LOG_OUT } from '../actions/type';
 
 let initialState = {
     openedAcc: localStorage.getItem('_____auth_______________token')
@@ -13,6 +13,10 @@ export default function (state = initialState, action) {
         case OPEN_ACC:
             return {
                 openedAcc: action.openedAcc // set openedAcc to true that is set in dispatch in login action
+            }
+        case LOG_OUT:
+            return {
+                openedAcc: action.openedAcc
             }
         default:
             return state;
