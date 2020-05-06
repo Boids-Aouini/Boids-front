@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-export default class WhyBoids extends Component {
+class WhyBoids extends Component {
     render() {
         return (
             <div>
@@ -16,3 +17,9 @@ export default class WhyBoids extends Component {
         )
     }
 }
+
+const mapPropsToState = state => ({
+    auth: state.auth
+})
+
+export default connect(mapPropsToState)(WhyBoids);
