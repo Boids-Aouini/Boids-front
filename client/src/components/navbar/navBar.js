@@ -9,8 +9,8 @@ class NavBar extends Component {
     }
 }
 
-let mapPropstoState = state => ({
-    auth: state.auth
+let mapPropstoState = state => ({ // retreive redux's auth state
+    auth: state.auth // set this.props.auth to redux's auth state
 })
 
-export default connect(mapPropstoState)(NavBar);
+export default connect(mapPropstoState)(NavBar); // add state to props component
