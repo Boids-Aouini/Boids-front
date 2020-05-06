@@ -5,13 +5,10 @@ import Register from './components/auth/register';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import store from './store';
 import Login from './components/auth/login';
-import LogedInNav from './components/navbar/logedInNav';
-import NotLogedNav from './components/navbar/notLogedNav';
 import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';

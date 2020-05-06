@@ -39,29 +39,6 @@ class Register extends Component {
             let creds = this.state;
             let newDate = new Date();
             creds.createdAt = newDate.getFullYear() + "-" + newDate.getDay() + "-" + newDate.getMonth();
-            // let credsWithGeoLocation;
-            // var options = {
-            //     enableHighAccuracy: true,
-            //     timeout: 5000,
-            //     maximumAge: 0
-            // };
-
-            // function success(pos) {
-            //     var crd = pos.coords;
-            //     credsWithGeoLocation = creds;
-
-            //     credsWithGeoLocation.latitude = crd.latitude;
-            //     credsWithGeoLocation.longitude = crd.longitude;
-            //     credsWithGeoLocation.heighAccuracy = crd.accuracy;
-
-            // }
-
-            // function error(err) {
-            //     console.warn(`ERROR(${err.code}): ${err.message}`);
-            // }
-
-            // navigator.geolocation.getCurrentPosition(success, error, options);
-
             this.props.registerAction(creds);
         }
     }
