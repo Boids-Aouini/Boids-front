@@ -1,7 +1,7 @@
 import { OPEN_ACC, REGISTER, LOG_OUT } from '../actions/type';
 
 let initialState = {
-    openedAcc: localStorage.getItem('_____auth_______________token')
+    openedAcc: localStorage.getItem('_____auth_______________token') // initialise openedAcc redux's state to user token
 }
 
 export default function (state = initialState, action) {
