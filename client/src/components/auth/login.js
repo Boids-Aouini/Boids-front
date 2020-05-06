@@ -20,7 +20,7 @@ class Login extends Component {
         this.props.loginAction(this.state);
     }
     render() {
-        return !this.props.auth.openedAcc ? (
+        return !this.props.auth.openedAcc ? ( // if openedAcc is found redirect to landing page if it's not found display login component
             <div>
                 <form>
                     <input maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"></input><br></br>
@@ -33,8 +33,8 @@ class Login extends Component {
     }
 }
 
-let mapPropstoState = state => ({
-    auth: state.auth
+let mapPropsToState = state => ({ // retreive redux's state(s)
+    auth: state.auth // set this.props.auth to redux's auth state
 })
 
-export default connect(mapPropstoState, { loginAction })(Login);
+export default connect(mapPropsToState, { loginAction })(Login); // run mapPropsToState functionality to Login page and give it loginAction
