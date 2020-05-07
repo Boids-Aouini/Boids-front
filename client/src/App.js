@@ -11,6 +11,7 @@ import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
 import { connect } from 'react-redux';
+import Servers from './components/servers/servers';
 
 class App extends Component {
 
@@ -20,6 +21,7 @@ class App extends Component {
       <Router>
         <div >
           <NavBar></NavBar>
+          {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
           <Switch>
             <Route exact path="/">
               <LandingPage></LandingPage>
