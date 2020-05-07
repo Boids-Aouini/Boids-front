@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import './servers.css';
-export default class Servers extends Component {
+import { connect } from 'react-redux';
+import { createServer } from '../../actions/serverActions';
+class Servers extends Component {
+
     render() {
         return (
             <div id="servers">
@@ -9,3 +12,9 @@ export default class Servers extends Component {
         )
     }
 }
+
+const mapPropsToState = state => ({
+    servers: state.servers
+})
+
+export default connect(mapPropsToState, { createServer })(Servers);
