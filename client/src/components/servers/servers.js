@@ -23,14 +23,17 @@ class Servers extends Component {
             this.props.createServer(newServer)
 
         }
-
+        console.log('ss')
 
 
     }
     render() {
         return (
             <div id="servers">
-                <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
+                <span onClick={this.onNewServer.bind(this)}>
+
+                    <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
+                </span>
             </div>
         )
     }
