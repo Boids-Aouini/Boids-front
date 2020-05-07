@@ -9,11 +9,11 @@ export const createServer = (newServer) => dispatch => {
             }
         })
         .then(res => {
-            let { id } = res.data.results;
+            let { server } = res.data.results;
             console.log('server created')
             dispatch({
                 type: CREATE_SERVER,
-                id
+                server
             })
         })
         .catch(err => console.log(err));
