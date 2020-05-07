@@ -17,29 +17,28 @@ class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <div >
-            <NavBar></NavBar>
-            <Switch>
-              <Route exact path="/">
-                <LandingPage></LandingPage>
-              </Route>
-              <Route exact path="/whyBoids">
-                <WhyBoids></WhyBoids>
-              </Route>
-              <Route exact path="/register">
 
-                <Register />
-              </Route>
-              <Route exact path="/login">
-                <Login></Login>
-              </Route>
+      <Router>
+        <div >
+          <NavBar></NavBar>
+          <Switch>
+            <Route exact path="/">
+              <LandingPage></LandingPage>
+            </Route>
+            <Route exact path="/whyBoids">
+              <WhyBoids></WhyBoids>
+            </Route>
+            <Route exact path="/register">
 
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
+              <Register />
+            </Route>
+            <Route exact path="/login">
+              <Login></Login>
+            </Route>
+
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
