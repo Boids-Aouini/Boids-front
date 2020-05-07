@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import './App.css';
 import Register from './components/auth/register';
 import {
@@ -7,7 +6,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import store from './store';
 import Login from './components/auth/login';
 import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
@@ -35,6 +33,9 @@ class App extends Component {
             <Route exact path="/login">
               <Login></Login>
             </Route>
+            {/* <Route exact path="/help">
+                <div></div>
+            </Route> */}
 
           </Switch>
         </div>
