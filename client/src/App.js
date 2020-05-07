@@ -10,6 +10,7 @@ import Login from './components/auth/login';
 import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
+import { connect } from 'react-redux';
 
 class App extends Component {
 
@@ -43,5 +44,7 @@ class App extends Component {
     )
   }
 }
-
-export default App;
+const mapPropsToState = state => ({
+  auth: state.auth
+})
+export default connect(mapPropsToState)(App);
