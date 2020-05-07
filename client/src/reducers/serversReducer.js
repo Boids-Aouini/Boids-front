@@ -10,8 +10,11 @@ export default function (state = initState, action) {
         case CREATE_SERVER:
             return {
                 ...state,
-                serversAsLeader: [...serversAsLeader, action.newServerName]
+                serversAsLeader: [...serversAsLeader, action.id]
+
             }
+
+
         default: return state;
     }
 }
