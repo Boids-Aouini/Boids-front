@@ -2,7 +2,7 @@ import { REGISTER, OPEN_ACC, LOG_OUT } from './type';
 import axios from 'axios';
 
 export const registerAction = (creds) => dispatch => { // makes post http request to register new account
-    axios.post('http://localhost:4404/register', creds)
+    axios.post('http://localhost:4404/api/auth/register', creds)
         .then(res => {
             let { token } = res.data.results; // retrive token 
             localStorage.setItem('_____auth_______________token', token); // set token in local storage
@@ -15,7 +15,7 @@ export const registerAction = (creds) => dispatch => { // makes post http reques
 }
 
 export const loginAction = creds => dispatch => { // makes post http request to login
-    axios.post('http://localhost:4404/login', creds)
+    axios.post('http://localhost:4404/api/auth/login', creds)
         .then(res => {
             let { token } = res.data.results; // retreive token
             localStorage.setItem('_____auth_______________token', token); // set token in local storage
