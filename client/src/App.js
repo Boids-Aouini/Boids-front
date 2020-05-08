@@ -1,50 +1,52 @@
 import React, { Component } from 'react';
-import { Provider } from 'react-redux';
 import './App.css';
 import Register from './components/auth/register';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
-import store from './store';
 import Login from './components/auth/login';
-import LogedInNav from './components/navbar/logedInNav';
-import NotLogedNav from './components/navbar/notLogedNav';
 import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
+import { connect } from 'react-redux';
+import Servers from './components/servers/servers';
 
 class App extends Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <div >
-            <NavBar></NavBar>
-            <Switch>
-              <Route exact path="/">
-                <LandingPage></LandingPage>
-              </Route>
-              <Route exact path="/whyBoids">
-                <WhyBoids></WhyBoids>
-              </Route>
-              <Route exact path="/register">
 
-                <Register />
-              </Route>
-              <Route exact path="/login">
-                <Login></Login>
-              </Route>
+      <Router>
+        <div >
+          <NavBar></NavBar>
+          {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
+          <Switch>
+            <Route exact path="/">
+              <LandingPage></LandingPage>
+            </Route>
+            <Route exact path="/whyBoids">
+              <WhyBoids></WhyBoids>
+            </Route>
+            <Route exact path="/register">
 
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
+              <Register />
+            </Route>
+            <Route exact path="/login">
+              <Login></Login>
+            </Route>
+            {/* <Route exact path="/help">
+                <div></div>
+            </Route> */}
+
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
-
-export default App;
+const mapPropsToState = state => ({
+  auth: state.auth
+})
+export default connect(mapPropsToState)(App);

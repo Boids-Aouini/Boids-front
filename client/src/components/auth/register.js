@@ -39,29 +39,6 @@ class Register extends Component {
             let creds = this.state;
             let newDate = new Date();
             creds.createdAt = newDate.getFullYear() + "-" + newDate.getDay() + "-" + newDate.getMonth();
-            // let credsWithGeoLocation;
-            // var options = {
-            //     enableHighAccuracy: true,
-            //     timeout: 5000,
-            //     maximumAge: 0
-            // };
-
-            // function success(pos) {
-            //     var crd = pos.coords;
-            //     credsWithGeoLocation = creds;
-
-            //     credsWithGeoLocation.latitude = crd.latitude;
-            //     credsWithGeoLocation.longitude = crd.longitude;
-            //     credsWithGeoLocation.heighAccuracy = crd.accuracy;
-
-            // }
-
-            // function error(err) {
-            //     console.warn(`ERROR(${err.code}): ${err.message}`);
-            // }
-
-            // navigator.geolocation.getCurrentPosition(success, error, options);
-
             this.props.registerAction(creds);
         }
     }
@@ -85,9 +62,8 @@ Register.propTypes = {
     registerAction: PropTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-    auth: state.auth
+const mapStateToProps = state => ({ // reteive redux's state(s)
+    auth: state.auth // set this.props.auth to redux's auth state
 });
 
-export default connect(mapStateToProps, { registerAction })(Register);
-// export default Register;
+export default connect(mapStateToProps, { registerAction })(Register); // add to props auth state and registerAction

@@ -25,7 +25,7 @@ class LogedInNav extends Component {
                     <input type="text" name="search" placeholder="Search" onChange={this.onchange.bind(this)}></input>
                     <button onClick={this.onSearch.bind(this)}>Search</button>
                 </form>
-                <Link id="logout" onClick={(e) => this.props.logoutAction()}>Log out</Link>
+                <Link id="logout" onClick={(e) => this.props.logoutAction()}><span class="iconify" data-icon="ri:logout-box-r-line" data-inline="false"></span></Link>
 
             </nav>
         )

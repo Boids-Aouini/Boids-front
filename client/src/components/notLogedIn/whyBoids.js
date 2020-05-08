@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-export default class WhyBoids extends Component {
+class WhyBoids extends Component {
     render() {
-        return (
+        return !this.props.auth.openedAcc ? (
             <div>
                 <h2>So you can stay organized</h2>
                 <h4>Keep in touch, be productive, Meet up</h4>
@@ -13,6 +14,12 @@ export default class WhyBoids extends Component {
                 <br></br>
                 <Link to="/Register">Register</Link>
             </div>
-        )
+        ) : (<Redirect to="/" />)
     }
 }
+
+const mapPropsToState = state => ({ // set redux's state in components props
+    auth: state.auth // set this.props.auth to redux's auth state
+})
+
+export default connect(mapPropsToState)(WhyBoids); // add state to props in component
