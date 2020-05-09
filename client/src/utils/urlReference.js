@@ -8,7 +8,9 @@ export const referenceUrl = function (input) {
 }
 
 export const extractReference = function (url) {
-    url.replace('%2B', '+')
-    url.replace('%20', ' ')
+    let checkPlus = /%2B/;
+    let checkSpace = /%20/;
+    if (checkPlus.test(url)) { url.replace('%2B', '+') }
+    if (checkSpace.test(url)) { url.replace('%20', ' ') }
     return url
 }
