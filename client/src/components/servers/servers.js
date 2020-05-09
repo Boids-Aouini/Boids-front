@@ -3,6 +3,7 @@ import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../actions/serverActions';
 import { retreiveServerAsLeader } from '../../actions/serverActions';
+import { Link } from 'react-router-dom';
 
 class Servers extends Component {
     constructor(props) {
@@ -38,7 +39,20 @@ class Servers extends Component {
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>
+                <div id="serversAsALeader">
+                    {this.props.servers.serversAsLeader.map((server, i) => {
+                        return (
+                            <div key={i}>
+                                <Link to={'/boidsServer/' + server.name}>
+                                    <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
+                                </Link>
+                                <p>{server.name}</p>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+
         )
     }
 }
