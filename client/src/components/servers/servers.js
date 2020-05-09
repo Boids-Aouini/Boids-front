@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createServer } from '../../actions/serverActions';
 import { retreiveServerAsLeader } from '../../actions/serverActions';
 import { Link } from 'react-router-dom';
-
+import referenceUrl from '../../utils/urlReference'
 class Servers extends Component {
     constructor(props) {
         super(props);
@@ -43,7 +43,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
-                                <Link class="link" to={'/boidsServer/' + server.name.replace('+', '%2B').replace(' ', '+')}>
+                                <Link class="link" to={'/boidsServer/' + referenceUrl(server.name)}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
                                         <p>{server.name}</p>
