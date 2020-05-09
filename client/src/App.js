@@ -12,10 +12,18 @@ import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
 import { connect } from 'react-redux';
 import Servers from './components/servers/servers';
+import { retreiveServerAsLeader } from './actions/serverActions';
 
 class App extends Component {
 
+  componentWillMount() {
+    if (!!this.props.auth.openedAcc) {
+      this.props.retreiveServerAsLeader();
+    }
+  }
+
   render() {
+
     return (
 
       <Router>
@@ -49,4 +57,4 @@ class App extends Component {
 const mapPropsToState = state => ({
   auth: state.auth
 })
-export default connect(mapPropsToState)(App);
+export default connect(mapPropsToState, { retreiveServerAsLeader })(App);
