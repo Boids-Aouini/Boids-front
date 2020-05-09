@@ -1,4 +1,4 @@
-import { CREATE_SERVER, serversAsLeader } from '../actions/type';
+import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER } from '../actions/type';
 
 let initState = {
     serversAsLeader: [],

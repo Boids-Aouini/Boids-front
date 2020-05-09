@@ -28,6 +28,7 @@ export const retreiveServerAsLeader = () => dispatch => {
         })
         .then(res => {
             let { servers } = res.data.results;
+            console.log(servers);
             dispatch({
                 serversAsLeader: servers,
                 type: RETREIVE_SERVER_AS_LEADER
