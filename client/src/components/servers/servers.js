@@ -36,7 +36,7 @@ class Servers extends Component {
     render() {
         return (
             <div id="servers">
-                <span onClick={this.onNewServer.bind(this)}>
+                <span id="makeNewServer" onClick={this.onNewServer.bind(this)}>
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>

@@ -21,28 +21,31 @@ class App extends Component {
     return (
 
       <Router>
-        <div >
-          <NavBar></NavBar>
+        <div id="app">
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
-          <Switch>
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
-            <Route exact path="/whyBoids">
-              <WhyBoids></WhyBoids>
-            </Route>
-            <Route exact path="/register">
 
-              <Register />
-            </Route>
-            <Route exact path="/login">
-              <Login></Login>
-            </Route>
-            {/* <Route exact path="/help">
-                <div></div>
-            </Route> */}
+          <div >
+            <NavBar></NavBar>
+            <Switch>
+              <Route exact path="/">
+                <LandingPage></LandingPage>
+              </Route>
+              <Route exact path="/whyBoids">
+                <WhyBoids></WhyBoids>
+              </Route>
+              <Route exact path="/register">
 
-          </Switch>
+                <Register />
+              </Route>
+              <Route exact path="/login">
+                <Login></Login>
+              </Route>
+              <Route exact path="/boidsServer/:serverName">
+                <div>1</div>
+              </Route>
+
+            </Switch>
+          </div>
         </div>
       </Router>
     )

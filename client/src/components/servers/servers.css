@@ -1,27 +1,28 @@
-#servers{
-    display: flex;
-}
 
-#serversAsALeader{
-    display: flex;
+.serverAsLeader{
+    border: 2px solid violet;
+    margin-top: 20px;
+    border-radius: 50%;
     
 }
 
-.serverAsLeader{
-    border-left: 2px solid violet;
-    margin-left: 25px;
-    margin-right: 12px;
+#makeNewServer{
+    color: thistle;
+    margin-left: 30px;
+}
+
+.serversLeader{
+    margin-top: 8px;
 }
 
 .serversLeader .iconify{
     color: darkturquoise;
     width: 40px;
     height: 40px;
-}
-
-.serversLeader{
     margin-left: 30px;
 }
+
+
 
 p{
     text-align: center;
@@ -30,4 +31,5 @@ p{
 .iconify{
     width: 40px;
     height: 40px;
+
 }
