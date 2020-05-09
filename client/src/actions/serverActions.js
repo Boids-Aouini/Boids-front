@@ -18,3 +18,19 @@ export const createServer = (newServer) => dispatch => {
         })
         .catch(err => console.log(err));
 }
+
+export const retreiveServerAsLeader = () => dispatch => {
+    axios.get('http://localhost:4044/api/boidsServers/serversAsLeader',
+        {
+            headers: {
+                'auth_token': localStorage.getItem('_____auth_______________token')
+            }
+        })
+        .then(res => {
+            let { servers } = res.data.results;
+            dispatch({
+                serversAsLeader: servers
+            })
+        })
+        .catch(err => console.log(err));
+}
