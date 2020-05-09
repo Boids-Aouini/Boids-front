@@ -16,12 +16,6 @@ import { retreiveServerAsLeader } from './actions/serverActions';
 
 class App extends Component {
 
-  componentWillMount() {
-    if (!!this.props.auth.openedAcc) {
-      this.props.retreiveServerAsLeader();
-    }
-  }
-
   render() {
 
     return (

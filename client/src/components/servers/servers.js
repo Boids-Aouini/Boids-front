@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../actions/serverActions';
+import { retreiveServerAsLeader } from '../../actions/serverActions';
+
 class Servers extends Component {
     constructor(props) {
         super(props);
@@ -23,9 +25,11 @@ class Servers extends Component {
             this.props.createServer(newServer)
 
         }
-        console.log('ss')
 
+    }
 
+    componentWillMount() {
+        this.props.retreiveServerAsLeader();
     }
     render() {
         return (
@@ -43,4 +47,4 @@ const mapPropsToState = state => ({
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer })(Servers);
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader })(Servers);
