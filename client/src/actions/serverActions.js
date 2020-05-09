@@ -20,7 +20,7 @@ export const createServer = (newServer) => dispatch => {
 }
 
 export const retreiveServerAsLeader = () => dispatch => {
-    axios.get('http://localhost:4044/api/boidsServers/serversAsLeader',
+    axios.get('http://localhost:4404/api/boidsServers/serversAsLeader',
         {
             headers: {
                 'auth_token': localStorage.getItem('_____auth_______________token')
