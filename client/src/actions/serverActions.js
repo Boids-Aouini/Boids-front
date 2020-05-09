@@ -1,4 +1,4 @@
-import { CREATE_SERVER } from './type';
+import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER } from './type';
 import axios from "axios";
 
 export const createServer = (newServer) => dispatch => {
@@ -29,7 +29,8 @@ export const retreiveServerAsLeader = () => dispatch => {
         .then(res => {
             let { servers } = res.data.results;
             dispatch({
-                serversAsLeader: servers
+                serversAsLeader: servers,
+                type: RETREIVE_SERVER_AS_LEADER
             })
         })
         .catch(err => console.log(err));
