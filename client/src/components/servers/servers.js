@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../actions/serverActions';
+import { retreiveServerAsLeader } from '../../actions/serverActions';
+import { Link } from 'react-router-dom';
+
 class Servers extends Component {
     constructor(props) {
         super(props);
@@ -23,9 +26,11 @@ class Servers extends Component {
             this.props.createServer(newServer)
 
         }
-        console.log('ss')
 
+    }
 
+    componentWillMount() {
+        this.props.retreiveServerAsLeader();
     }
     render() {
         return (
@@ -34,7 +39,22 @@ class Servers extends Component {
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>
+                <div id="serversAsALeader">
+                    {this.props.servers.serversAsLeader.map((server, i) => {
+                        return (
+                            <div class="serverAsLeader" key={i}>
+                                <Link class="link" to={'/boidsServer/' + server.name}>
+                                    <div class="serversLeader">
+                                        <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
+                                        <p>{server.name}</p>
+                                    </div>
+                                </Link>
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
+
         )
     }
 }
@@ -43,4 +63,4 @@ const mapPropsToState = state => ({
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer })(Servers);
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader })(Servers);
