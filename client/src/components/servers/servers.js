@@ -42,11 +42,13 @@ class Servers extends Component {
                 <div id="serversAsALeader">
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
-                            <div key={i}>
-                                <Link to={'/boidsServer/' + server.name}>
-                                    <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
+                            <div class="serverAsLeader" key={i}>
+                                <Link class="link" to={'/boidsServer/' + server.name}>
+                                    <div class="serversLeader">
+                                        <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
+                                        <p>{server.name}</p>
+                                    </div>
                                 </Link>
-                                <p>{server.name}</p>
                             </div>
                         )
                     })}
