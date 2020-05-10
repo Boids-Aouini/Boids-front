@@ -40,7 +40,7 @@ class App extends Component {
               <Route exact path="/login">
                 <Login></Login>
               </Route>
-              <Route exact path="/boidsServer/:serverName">
+              <Route exact path="/boidsServer/:serverName/:channel">
                 <div>1</div>
               </Route>
 
