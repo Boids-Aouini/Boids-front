@@ -1,7 +1,8 @@
 #servers{
     overflow-y: scroll;
-    width: 100%;
+    width: 9%;
     height: 100%;
+    position: absolute;
 }
 
 .serverAsLeader{

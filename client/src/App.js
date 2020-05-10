@@ -24,7 +24,7 @@ class App extends Component {
         <div id="app">
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
-          <div >
+          <div id="content">
             <NavBar></NavBar>
             <Switch>
               <Route exact path="/">
