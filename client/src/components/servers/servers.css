@@ -6,36 +6,42 @@
 }
 
 .serverAsLeader{
-    border: 2px solid violet;
     margin-top: 20px;
-    border-radius: 50%;
+    margin-right: 10px;
+    
     
 }
 
 #makeNewServer{
     color: thistle;
-    margin-left: 30px;
+    margin-left: 20px;
 }
 
 .serversLeader{
-    margin-top: 8px;
+    margin-top: 4px;
 }
 
 .serversLeader .iconify{
     color: darkturquoise;
     width: 40px;
     height: 40px;
-    margin-left: 30px;
+    margin-left: 20px;
 }
-
-
 
 p{
     text-align: center;
 }
 
 .iconify{
+    
+    border: 2px solid violet;
+    padding: 10px;
+    border-radius: 50%;
     width: 40px;
     height: 40px;
 
+}
+
+#logout{
+    margin-right: 10px;
 }

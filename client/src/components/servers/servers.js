@@ -5,7 +5,7 @@ import { createServer } from '../../actions/serverActions';
 import { retreiveServerAsLeader } from '../../actions/serverActions';
 import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../utils/urlReference';
-
+import { logoutAction } from '../../actions/authActions';
 class Servers extends Component {
     constructor(props) {
         super(props);
@@ -36,6 +36,7 @@ class Servers extends Component {
     render() {
         return (
             <div id="servers">
+
                 <span id="makeNewServer" onClick={this.onNewServer.bind(this)}>
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
@@ -54,6 +55,9 @@ class Servers extends Component {
                         )
                     })}
                 </div>
+                <Link id="logout" onClick={(e) => this.props.logoutAction()}>
+                    <span class="iconify" data-icon="ri:logout-box-r-line" data-inline="false"></span>
+                </Link>
             </div>
 
         )
@@ -64,4 +68,4 @@ const mapPropsToState = state => ({
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader })(Servers);
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction })(Servers);
