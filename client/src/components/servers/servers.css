@@ -1,3 +1,8 @@
+#servers{
+    overflow-y: scroll;
+    width: 100%;
+    height: 100%;
+}
 
 .serverAsLeader{
     border: 2px solid violet;
