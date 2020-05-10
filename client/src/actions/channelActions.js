@@ -1,4 +1,4 @@
-import { GET_SERVER_CHANNELS } from './type';
+import { GET_CHANNELS_SERVER } from './type';
 import axios from 'axios';
 
 export const getChannels = (serverName) => dispatch => {
@@ -12,7 +12,7 @@ export const getChannels = (serverName) => dispatch => {
 
             dispatch({
                 channels,
-                type: GET_SERVER_CHANNELS
+                type: GET_CHANNELS_SERVER
             })
         })
         .catch(err => console.log(err));
