@@ -11,8 +11,9 @@ import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
 import { connect } from 'react-redux';
-import Servers from './components/servers/servers';
+import Servers from './components/logedIn/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
+import AddNewMember from './components/logedIn/addNewMember/addNewMember';
 
 class App extends Component {
 
@@ -21,28 +22,34 @@ class App extends Component {
     return (
 
       <Router>
-        <div >
-          <NavBar></NavBar>
+        <div id="app">
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
-          <Switch>
-            <Route exact path="/">
-              <LandingPage></LandingPage>
-            </Route>
-            <Route exact path="/whyBoids">
-              <WhyBoids></WhyBoids>
-            </Route>
-            <Route exact path="/register">
 
-              <Register />
-            </Route>
-            <Route exact path="/login">
-              <Login></Login>
-            </Route>
-            {/* <Route exact path="/help">
+          <div id="content">
+            <NavBar></NavBar>
+            <Switch>
+              <Route exact path="/">
+                <LandingPage></LandingPage>
+              </Route>
+              <Route exact path="/whyBoids">
+                <WhyBoids></WhyBoids>
+              </Route>
+              <Route exact path="/register">
+
+                <Register />
+              </Route>
+              <Route exact path="/login">
+                <Login></Login>
+              </Route>
+              <Route exact path="/boidsServer/:serverName/:channel">
                 <div></div>
-            </Route> */}
+              </Route>
+              <Route exact path='/options/boidsServer/:serverName/addMember'>
+                <AddNewMember />
+              </Route>
 
-          </Switch>
+            </Switch>
+          </div>
         </div>
       </Router>
     )

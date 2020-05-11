@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
-import { createServer } from '../../actions/serverActions';
-import { retreiveServerAsLeader } from '../../actions/serverActions';
+import { createServer } from '../../../actions/serverActions';
+import { retreiveServerAsLeader } from '../../../actions/serverActions';
 import { Link } from 'react-router-dom';
-
+import { referenceUrl } from '../../../utils/urlReference';
+import { logoutAction } from '../../../actions/authActions';
 class Servers extends Component {
     constructor(props) {
         super(props);
@@ -35,7 +36,8 @@ class Servers extends Component {
     render() {
         return (
             <div id="servers">
-                <span onClick={this.onNewServer.bind(this)}>
+
+                <span id="makeNewServer" onClick={this.onNewServer.bind(this)}>
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>
@@ -43,7 +45,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
-                                <Link class="link" to={'/boidsServer/' + server.name}>
+                                <Link class="link" to={'/boidsServer/' + referenceUrl(server.name)}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
                                         <p>{server.name}</p>
@@ -53,6 +55,9 @@ class Servers extends Component {
                         )
                     })}
                 </div>
+                <Link id="logout" onClick={(e) => this.props.logoutAction()}>
+                    <span class="iconify" data-icon="ri:logout-box-r-line" data-inline="false"></span>
+                </Link>
             </div>
 
         )
@@ -63,4 +68,4 @@ const mapPropsToState = state => ({
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader })(Servers);
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction })(Servers);
