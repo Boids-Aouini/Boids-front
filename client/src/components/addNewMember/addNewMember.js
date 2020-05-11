@@ -19,10 +19,10 @@ export default class AddNewMember extends Component {
         return (
             <div>
                 <form>
-                    <input placeholder="Role" type="text" name="role"></input><br></br>
-                    <input placeholder="Email" type="email" name="email"></input><br></br>
-                    <textarea placeholder="Message" name="message"></textarea><br></br>
-                    <button>Add Member</button>
+                    <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
+                    <input onChange={this.onChange.bind(this)} placeholder="Email" type="email" name="email"></input><br></br>
+                    <textarea onChange={this.onChange.bind(this)} placeholder="Message" name="message"></textarea><br></br>
+                    <button onClick={this.onAdd.bind(this)}>Add Member</button>
                 </form>
             </div>
         )
