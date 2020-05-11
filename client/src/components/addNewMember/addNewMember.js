@@ -12,6 +12,9 @@ export default class AddNewMember extends Component {
     onChange(e) {
         this.setState({ [e.tagert.name]: e.target.value });
     }
+    onAdd(e) {
+        e.preventDefault()
+    }
     render() {
         return (
             <div>
