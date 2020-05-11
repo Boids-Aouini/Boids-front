@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { extractReference } from '../../../utils/urlReference';
 
 export default class AddNewMember extends Component {
     constructor(props) {
@@ -7,7 +8,7 @@ export default class AddNewMember extends Component {
             role: '',
             email: '',
             message: '',
-            server_name: window.location.pathname.split('/')[3]
+            server_name: extractReference(window.location.pathname.split('/')[3])
         }
     }
     onChange(e) {
