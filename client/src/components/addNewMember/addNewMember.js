@@ -1,6 +1,17 @@
 import React, { Component } from 'react'
 
 export default class AddNewMember extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            role: '',
+            email: '',
+            message: ''
+        }
+    }
+    onChange(e) {
+        this.setState({ [e.tagert.name]: e.target.value });
+    }
     render() {
         return (
             <div>
