@@ -6,7 +6,8 @@ export default class AddNewMember extends Component {
         this.state = {
             role: '',
             email: '',
-            message: ''
+            message: '',
+            server_name: window.location.pathname.split('/')[3]
         }
     }
     onChange(e) {
