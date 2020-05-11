@@ -44,7 +44,7 @@ class App extends Component {
               <Route exact path="/boidsServer/:serverName/:channel">
                 <div></div>
               </Route>
-              <Route exact path='/options/boidsServer/:serveName/addMember'>
+              <Route exact path='/options/boidsServer/:serverName/addMember'>
                 <AddNewMember />
               </Route>
 
