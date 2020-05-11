@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { extractReference } from '../../../utils/urlReference';
-
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 class AddNewMember extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +30,7 @@ class AddNewMember extends Component {
         e.preventDefault()
     }
     render() {
-        return (
+        return !this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.server.serversAsLeader) ? (
             <div>
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
@@ -38,8 +39,10 @@ class AddNewMember extends Component {
                     <button onClick={this.onAdd.bind(this)}>Add Member</button>
                 </form>
             </div>
-        )
+        ) : <Redirect to="/" />
     }
 }
-
-export default AddNewMember;
+let mapPropsToState = state => ({
+    server: state.serversAsLeader
+})
+export default connect(mapPropsToState)(AddNewMember);
