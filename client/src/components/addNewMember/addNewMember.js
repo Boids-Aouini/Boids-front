@@ -16,9 +16,10 @@ export default class AddNewMember extends Component {
         return (
             <div>
                 <form>
-                    <input placeholder="Role" type="text" name="role"></input>
-                    <input placeholder="Email" type="email" name="email"></input>
-                    <textarea placeholder="Message" name="message"></textarea>
+                    <input placeholder="Role" type="text" name="role"></input><br></br>
+                    <input placeholder="Email" type="email" name="email"></input><br></br>
+                    <textarea placeholder="Message" name="message"></textarea><br></br>
+                    <button>Add Member</button>
                 </form>
             </div>
         )
