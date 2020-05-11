@@ -13,6 +13,7 @@ import WhyBoids from './components/notLogedIn/whyBoids';
 import { connect } from 'react-redux';
 import Servers from './components/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
+import AddNewMember from './components/addNewMember/addNewMember';
 
 class App extends Component {
 
@@ -41,7 +42,10 @@ class App extends Component {
                 <Login></Login>
               </Route>
               <Route exact path="/boidsServer/:serverName/:channel">
-                <div>1</div>
+                <div></div>
+              </Route>
+              <Route exact path='/options/boidsServer/:serveName/addMember'>
+                <AddNewMember />
               </Route>
 
             </Switch>
