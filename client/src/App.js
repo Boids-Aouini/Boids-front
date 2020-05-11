@@ -11,9 +11,9 @@ import NavBar from './components/navbar/navBar';
 import LandingPage from './components/notLogedIn/landingPage';
 import WhyBoids from './components/notLogedIn/whyBoids';
 import { connect } from 'react-redux';
-import Servers from './components/servers/servers';
+import Servers from './components/logedIn/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
-import AddNewMember from './components/addNewMember/addNewMember';
+import AddNewMember from './components/logedIn/addNewMember/addNewMember';
 
 class App extends Component {
 

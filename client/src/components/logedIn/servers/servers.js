@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
-import { createServer } from '../../actions/serverActions';
-import { retreiveServerAsLeader } from '../../actions/serverActions';
+import { createServer } from '../../../actions/serverActions';
+import { retreiveServerAsLeader } from '../../../actions/serverActions';
 import { Link } from 'react-router-dom';
-import { referenceUrl } from '../../utils/urlReference';
-import { logoutAction } from '../../actions/authActions';
+import { referenceUrl } from '../../../utils/urlReference';
+import { logoutAction } from '../../../actions/authActions';
 class Servers extends Component {
     constructor(props) {
         super(props);
