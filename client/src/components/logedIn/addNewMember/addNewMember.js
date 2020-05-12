@@ -23,7 +23,6 @@ class AddNewMember extends Component {
         let i = 0;
         let result = null
         while (i < serversAsLeader.length) {
-            console.log(serversAsLeader[i])
             if (serversAsLeader[i].name === serverName) {
 
                 result = serversAsLeader[i].id;
@@ -35,12 +34,14 @@ class AddNewMember extends Component {
     }
     setServerState(server_id) {
         if (server_id !== null) {
-            this.setState({ server_id });
+            setTimeout(() => { this.setState({ server_id }) }, 200)
+
 
             return true
         }
         return false
     }
+
     onAdd(e) {
         e.preventDefault()
         let validEmail = /@./;
