@@ -21,14 +21,18 @@ class AddNewMember extends Component {
     validPage(serverName, serversAsLeader) {
         for (let server of serversAsLeader) {
             if (server.name === serverName) {
+                console.log(server.id)
                 return server.id;
             }
         }
         return null;
     }
     setServerState(server_id) {
-        if (!!server_id) {
-            this.setState({ server_id });
+        if (server_id !== null) {
+            setTimeout(() => {
+                this.setState({ server_id });
+
+            }, 800)
             return true
         }
         return false
