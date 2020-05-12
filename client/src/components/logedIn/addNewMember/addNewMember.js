@@ -47,7 +47,7 @@ class AddNewMember extends Component {
         }
     }
     render() {
-        return this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.servers.serversAsLeader) ? (
+        return this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[2]), this.props.servers.serversAsLeader)) ? (
             <div>
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
