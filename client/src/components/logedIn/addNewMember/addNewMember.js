@@ -19,18 +19,15 @@ class AddNewMember extends Component {
         this.setState({ [e.tagert.name]: e.target.value });
     }
     validPage(serverName, serversAsLeader) {
-        let server_id;
         for (let server of serversAsLeader) {
             if (server.name === serverName) {
-                server_id = server.id;
-                break;
+                return server.id;
             }
         }
-        if (!!server_id) {
-            this.setState({ server_id });
-            return true;
-        }
         return false;
+    }
+    setServerState(server_id) {
+
     }
     onAdd(e) {
         e.preventDefault()
