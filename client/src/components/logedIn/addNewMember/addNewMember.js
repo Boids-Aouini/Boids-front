@@ -17,7 +17,7 @@ class AddNewMember extends Component {
         this.validPage = this.validPage.bind(this);
     }
     onChange(e) {
-        this.setState({ [e.tagert.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     }
     validPage(serverName, serversAsLeader) {
         let result = null
