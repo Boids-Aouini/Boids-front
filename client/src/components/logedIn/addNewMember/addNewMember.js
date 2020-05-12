@@ -24,10 +24,14 @@ class AddNewMember extends Component {
                 return server.id;
             }
         }
-        return false;
+        return null;
     }
     setServerState(server_id) {
-
+        if (!!server_id) {
+            this.setState({ server_id });
+            return true
+        }
+        return false
     }
     onAdd(e) {
         e.preventDefault()
