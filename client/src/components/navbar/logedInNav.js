@@ -32,4 +32,5 @@ class LogedInNav extends Component {
     }
 }
 
+
 export default connect(() => { }, { logoutAction })(LogedInNav);

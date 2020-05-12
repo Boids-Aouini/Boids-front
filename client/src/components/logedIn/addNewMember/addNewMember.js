@@ -13,26 +13,30 @@ class AddNewMember extends Component {
             message: '',
             server_id: null
         }
+        this.setServerState = this.setServerState.bind(this);
+        this.validPage = this.validPage.bind(this);
     }
-    // extractReference(window.location.pathname.split('/')[3])
     onChange(e) {
         this.setState({ [e.tagert.name]: e.target.value });
     }
     validPage(serverName, serversAsLeader) {
-        for (let server of serversAsLeader) {
-            if (server.name === serverName) {
-                console.log(server.id)
-                return server.id;
+        let i = 0;
+        let result = null
+        while (i < serversAsLeader.length) {
+            console.log(serversAsLeader[i])
+            if (serversAsLeader[i].name === serverName) {
+
+                result = serversAsLeader[i].id;
+                break;
             }
+            i++;
         }
-        return null;
+        return result;
     }
     setServerState(server_id) {
         if (server_id !== null) {
-            setTimeout(() => {
-                this.setState({ server_id });
+            this.setState({ server_id });
 
-            }, 800)
             return true
         }
         return false
@@ -51,7 +55,7 @@ class AddNewMember extends Component {
         }
     }
     render() {
-        return this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[2]), this.props.servers.serversAsLeader)) ? (
+        return this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.servers.serversAsLeader)) ? (
             <div>
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
