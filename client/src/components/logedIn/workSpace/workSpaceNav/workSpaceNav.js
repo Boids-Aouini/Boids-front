@@ -22,11 +22,11 @@ class WorkSpaceNav extends Component {
         return false;
     }
     render() {
-        return (
+        return this.check(window.location.pathname.split('/')[2], this.props.servers.serversAsLeader)(
             <nav>
                 <Link to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
             </nav>
-        )
+        ) : (<div></div>)
     }
 }
 
