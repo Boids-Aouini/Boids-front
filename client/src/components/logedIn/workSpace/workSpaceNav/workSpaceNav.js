@@ -22,11 +22,28 @@ class WorkSpaceNav extends Component {
         }
         return false;
     }
+    makeChannel() {
+        let name = prompt('insert your new channel\'s name');
+        while (name === "") {
+            name = prompt('your new channel\'s name is empty');
+
+        }
+        if (name !== null) {
+            console.log(name, this.state.server_id)
+            let newChannel = {
+                name,
+                server_id: this.state.server_id
+            };
+            let currentDate = new Date();
+            newChannel.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
+
+        }
+    }
     render() {
         return this.check(window.location.pathname.split('/')[2], this.props.servers.serversAsLeader) ? (
             <nav>
                 <Link class="link" to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
-                <Link class="link" >Add Channel</Link>
+                <Link class="link" onClick={this.makeChannel.bind(this)}>Add Channel</Link>
             </nav>
         ) : (<div></div>)
     }
