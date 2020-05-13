@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { makeChannel } from '../../../../actions/channelActions';
+import './workSpaceNav.css'
 
 class WorkSpaceNav extends Component {
     constructor(props) {
@@ -24,7 +25,8 @@ class WorkSpaceNav extends Component {
     render() {
         return this.check(window.location.pathname.split('/')[2], this.props.servers.serversAsLeader) ? (
             <nav>
-                <Link to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
+                <Link class="link" to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
+                <Link class="link" >Add Channel</Link>
             </nav>
         ) : (<div></div>)
     }
