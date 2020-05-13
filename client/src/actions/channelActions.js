@@ -17,3 +17,18 @@ export const getChannels = (serverName) => dispatch => {
         })
         .catch(err => console.log(err));
 }
+
+export const makeChannel = (newChannel) => dispatch => {
+    axios.post('http://localhost:4404/api/channels/makeChannel', newChannel, {
+        headers: {
+            'auth_token': localStorage.getItem('_____auth_______________token')
+        }
+    })
+        .then(res => {
+            let { channel } = res.data.results;
+            dispatch({
+                channel
+            })
+        })
+        .catch(err => console.log(err))
+}
