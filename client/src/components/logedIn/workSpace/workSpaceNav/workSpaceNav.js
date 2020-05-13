@@ -12,6 +12,15 @@ class WorkSpaceNav extends Component {
             server_id: null
         }
     }
+    check(serverName, serversAsLeader) {
+        for (let server of serversAsLeader) {
+            if (server.name === serverName) {
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                return true;
+            }
+        }
+        return false;
+    }
     render() {
         return (
             <nav>
