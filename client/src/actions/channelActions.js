@@ -25,9 +25,9 @@ export const makeChannel = (newChannel) => dispatch => {
         }
     })
         .then(res => {
-            let { channel } = res.data.results;
+            let { newChannel } = res.data.results;
             dispatch({
-                channel
+                newChannel
             })
         })
         .catch(err => console.log(err))
