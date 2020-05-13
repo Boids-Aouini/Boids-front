@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { makeChannel } from '../../../../actions/channelActions';
 
-export default class WorkSpaceNav extends Component {
+class WorkSpaceNav extends Component {
     render() {
         return (
             <nav>
@@ -10,3 +12,5 @@ export default class WorkSpaceNav extends Component {
         )
     }
 }
+
+export default connect(() => { }, { makeChannel })(WorkSpaceNav);
