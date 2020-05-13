@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER } from './type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL } from './type';
 import axios from 'axios';
 
 export const getChannels = (serverName) => dispatch => {
@@ -27,7 +27,8 @@ export const makeChannel = (newChannel) => dispatch => {
         .then(res => {
             let { newChannel } = res.data.results;
             dispatch({
-                newChannel
+                newChannel,
+                type: MAKE_CHANNEL
             })
         })
         .catch(err => console.log(err))
