@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import Servers from './components/logedIn/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
 import AddNewMember from './components/logedIn/addNewMember/addNewMember';
+import WorkSpace from './components/logedIn/workSpace/workSpace';
 
 class App extends Component {
 
@@ -42,7 +43,7 @@ class App extends Component {
                 <Login></Login>
               </Route>
               <Route exact path="/boidsServer/:serverName/:channel">
-                <div></div>
+                <WorkSpace />
               </Route>
               <Route exact path='/options/boidsServer/:serverName/addMember'>
                 <AddNewMember />
