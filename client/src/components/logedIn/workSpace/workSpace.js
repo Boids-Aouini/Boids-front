@@ -5,24 +5,32 @@ import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../../utils/urlReference';
 import { getChannels, extractReference } from '../../../actions/channelActions';
 class WorkSpace extends Component {
-    componentWillMount() {
-        // this.getChannels(extractReference(window.location.pathname.split('/')[3]))
+    constructor(props) {
+        this.state = {
+            channel_id: null,
+            server_id: null
+        }
     }
     getServerId(serverName) {
         for (let server of this.props.servers.serversAsLeader) {
             if (server.name === serverName) {
-                return server.id
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                return true
             }
         }
 
         for (let server of this.props.servers.serversAsMember) {
             if (server.name === serverName) {
-                return server.id
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                return true
             }
         }
-        return null;
+        return false;
     }
-    
+    componentWillMount() {
+        // this.getChannels(extractReference(window.location.pathname.split('/')[3]))
+    }
+
     render() {
         return (
             <div>
