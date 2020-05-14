@@ -11,21 +11,29 @@ class WorkSpace extends Component {
             server_id: null
         }
     }
-    getServerId(serverName) {
+    getIds(serverName, channelName) {
+        let check = 0;
         for (let server of this.props.servers.serversAsLeader) {
             if (server.name === serverName) {
                 setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                return true
+                check++;
             }
         }
 
         for (let server of this.props.servers.serversAsMember) {
             if (server.name === serverName) {
                 setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                return true
+                check++;
             }
         }
-        return false;
+
+        for (let channel of this.props.channels.channels) {
+            if (channel.name === channelName) {
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                check++
+            }
+        }
+        return check === 2;
     }
     componentWillMount() {
         // this.getChannels(extractReference(window.location.pathname.split('/')[3]))
