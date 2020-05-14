@@ -8,9 +8,21 @@ class WorkSpace extends Component {
     componentWillMount() {
         // this.getChannels(extractReference(window.location.pathname.split('/')[3]))
     }
-    getServerId() {
+    getServerId(serverName) {
+        for (let server of this.props.servers.serversAsLeader) {
+            if (server.name === serverName) {
+                return server.id
+            }
+        }
 
+        for (let server of this.props.servers.serversAsMember) {
+            if (server.name === serverName) {
+                return server.id
+            }
+        }
+        return null;
     }
+    
     render() {
         return (
             <div>
