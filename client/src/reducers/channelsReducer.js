@@ -8,7 +8,7 @@ export default function (state = initState, action) {
     switch (action.type) {
         case GET_CHANNELS_SERVER:
             return {
-                channels: action.newhannels
+                channels: action.channels
             }
         case MAKE_CHANNEL:
             return {
