@@ -36,7 +36,7 @@ class WorkSpaceNav extends Component {
             };
             let currentDate = new Date();
             newChannel.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
-
+            this.props.makeChannel(newChannel);
         }
     }
     render() {
