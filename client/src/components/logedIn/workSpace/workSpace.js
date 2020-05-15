@@ -56,9 +56,7 @@ class WorkSpace extends Component {
 
     componentWillMount() {
         this.getServerId(extractReference(window.location.pathname.split('/')[2]))
-        console.log(this.state)
-        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 30)
-        console.log(this.props.channels)
+        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 50)
     }
 
     render() {
@@ -68,7 +66,7 @@ class WorkSpace extends Component {
                     <WorkSpaceNav />
                     <div>
                         {this.props.channels.channels.map((channel, i) => (
-                            <div>
+                            <div key={i}>
                                 <Link to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>{channel.name}</Link>
                             </div>
                         ))}
