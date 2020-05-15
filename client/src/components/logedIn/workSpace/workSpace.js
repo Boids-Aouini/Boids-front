@@ -41,13 +41,13 @@ class WorkSpace extends Component {
     getServerId(serverName) {
         for (let server of this.props.servers.serversAsLeader) {
             if (server.name === serverName) {
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                this.setState({ server_id: server.id })
                 return true
             }
         }
         for (let server of this.props.servers.serversAsMember) {
             if (server.name === serverName) {
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                this.setState({ server_id: server.id })
                 return true;
             }
         }
@@ -56,7 +56,9 @@ class WorkSpace extends Component {
 
     componentWillMount() {
         this.getServerId(extractReference(window.location.pathname.split('/')[2]))
-        // this.getChannels(this.state.server_id);
+        console.log(this.state)
+        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 30)
+        console.log(this.props.channels)
     }
 
     render() {

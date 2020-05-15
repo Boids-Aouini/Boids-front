@@ -2,6 +2,7 @@ import { GET_CHANNELS_SERVER, MAKE_CHANNEL } from './type';
 import axios from 'axios';
 
 export const getChannels = (server_id) => dispatch => {
+    console.log(server_id)
     axios.get('http://localhost:4404/api/channels/getChannels/' + server_id, {
         headers: {
             'auth_token': localStorage.getItem('_____auth_______________token')
@@ -9,7 +10,7 @@ export const getChannels = (server_id) => dispatch => {
     })
         .then(res => {
             let { channels } = res.data.results;
-
+            console.log(channels)
             dispatch({
                 channels,
                 type: GET_CHANNELS_SERVER
