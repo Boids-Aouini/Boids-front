@@ -42,14 +42,14 @@ class AddNewMember extends Component {
     onAdd(e) {
         e.preventDefault()
         let validEmail = /@./;
-        if (this.state.role === "" ||
+        if (this.state.role === "" || // if there is a prob make alert 
             !validEmail.test(this.state.email) ||
             this.state.message === "") {
             if (this.state.role === '') alert('role is empty')
             else if (!validEmail.test(this.state.email)) alert('email is not valid')
             else if (this.state.message === '') alert('message is empty')
         } else {
-            this.props.addMember(this.state)
+            this.props.addMember(this.state) //make request to add new member to server
         }
     }
     render() {
