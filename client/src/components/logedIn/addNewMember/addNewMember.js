@@ -19,7 +19,7 @@ class AddNewMember extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-    validPage(serverName, serversAsLeader) {
+    validPage(serverName, serversAsLeader) { // if server name in serversAsLeader return server's id
         let result = null
         for (let server of serversAsLeader) {
             if (server.name === serverName) {
@@ -30,9 +30,9 @@ class AddNewMember extends Component {
         }
         return result;
     }
-    setServerState(server_id) {
+    setServerState(server_id) { // if server_id is not null return true else false
         if (server_id !== null) {
-            setTimeout(() => { this.setState({ server_id }) }, 200)
+            setTimeout(() => { this.setState({ server_id }) }, 0)
 
             return true
         }
