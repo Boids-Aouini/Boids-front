@@ -7,6 +7,7 @@ class ChannelsNav extends Component {
             <div>
                 {this.props.channels.channels.map((channel, i) => (
                     <div key={i}>
+                        <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
                         <Link to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>{channel.name}</Link>
                     </div>
                 ))}
