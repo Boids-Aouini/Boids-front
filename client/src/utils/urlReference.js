@@ -10,7 +10,7 @@ export const referenceUrl = function (input) {
 export const extractReference = function (url) {
     let checkPlus = /%2B/;
     let checkSpace = /%20/;
-    if (checkPlus.test(url)) { url.replace('%2B', '+') }
-    if (checkSpace.test(url)) { url.replace('%20', ' ') }
+    if (checkPlus.test(url)) { url.replace('%2B', '+') } // if url has %2B return it to +
+    if (checkSpace.test(url)) { url.replace('%20', ' ') } // if url has %20 return it to space
     return url
 }
