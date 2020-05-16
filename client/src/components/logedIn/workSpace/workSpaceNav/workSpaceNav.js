@@ -13,7 +13,7 @@ class WorkSpaceNav extends Component {
             server_id: null
         }
     }
-    check(serverName, serversAsLeader) {
+    check(serverName, serversAsLeader) { // check if server in the serversAsLeader state
         for (let server of serversAsLeader) {
             if (server.name === serverName) {
                 setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
@@ -22,21 +22,20 @@ class WorkSpaceNav extends Component {
         }
         return false;
     }
-    makeChannel() {
-        let name = prompt('insert your new channel\'s name');
+    makeChannel() { // make new channel
+        let name = prompt('insert your new channel\'s name'); // retrive new channel name
         while (name === "") {
             name = prompt('your new channel\'s name is empty');
 
         }
         if (name !== null) {
-            console.log(name, this.state.server_id)
             let newChannel = {
                 name,
                 server_id: this.state.server_id
             };
             let currentDate = new Date();
             newChannel.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
-            this.props.makeChannel(newChannel);
+            this.props.makeChannel(newChannel); // make request to add channel to the boids server
         }
     }
     render() {
@@ -49,8 +48,8 @@ class WorkSpaceNav extends Component {
     }
 }
 
-let mapPropsToState = state => ({
+let mapPropsToState = state => ({ // add servers redux's state to props comp
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { makeChannel })(WorkSpaceNav);
+export default connect(mapPropsToState, { makeChannel })(WorkSpaceNav); // add makeChannel action
