@@ -9,11 +9,14 @@ class ChannelsNav extends Component {
             <div id="channelsNav">
                 {this.props.channels.channels.map((channel, i) => (
                     <div key={i}>
-                        <span class="iconify" data-icon="uil:channel" data-inline="false"></span>
-                        <Link to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>{channel.name}</Link>
+                        <Link class="channelLink" to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>
+                            <span class="iconify" data-icon="uil:channel" data-inline="false"></span>
+                            {channel.name}
+                        </Link>
                     </div>
                 ))}
             </div>
+
         )
     }
 }

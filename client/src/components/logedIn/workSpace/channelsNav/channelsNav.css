@@ -1,4 +1,16 @@
 #channelsNav{
     overflow-x: scroll;
-    position: absolute;
+    position: flex;
+    display: flex;
+    flex-direction: row;
+}
+
+.channelLink{
+    margin-left: 20px;
+    display: grid;
+    grid-column: auto auto;
+}
+
+.channelLink .iconify{
+    margin-left: 25%;
 }
