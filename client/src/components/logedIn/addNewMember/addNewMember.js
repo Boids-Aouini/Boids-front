@@ -65,7 +65,7 @@ class AddNewMember extends Component {
         ) : (<Redirect to="/" />)
     }
 }
-let mapPropsToState = state => ({
+let mapPropsToState = state => ({ // set props to servers redux's state
     servers: state.servers
 })
-export default connect(mapPropsToState, { addMember })(AddNewMember);
+export default connect(mapPropsToState, { addMember })(AddNewMember); // added action
