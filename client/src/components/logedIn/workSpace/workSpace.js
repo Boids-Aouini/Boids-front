@@ -75,9 +75,9 @@ class WorkSpace extends Component {
             ) : <Redirect to="/" />
     }
 }
-let mapPropsToState = state => ({
+let mapPropsToState = state => ({ // setup channels and servers state to props in workspace comp
     channels: state.channels,
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { getChannels })(WorkSpace);
+export default connect(mapPropsToState, { getChannels })(WorkSpace); //  add get channels to props in workspace comp
