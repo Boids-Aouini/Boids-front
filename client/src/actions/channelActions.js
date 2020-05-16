@@ -2,21 +2,20 @@ import { GET_CHANNELS_SERVER, MAKE_CHANNEL } from './type';
 import axios from 'axios';
 
 export const getChannels = (server_id) => dispatch => {
-    console.log(server_id)
     axios.get('http://localhost:4404/api/channels/getChannels/' + server_id, {
+        // make get request to reteive channels and added server_id as a param
         headers: {
-            'auth_token': localStorage.getItem('_____auth_______________token')
+            'auth_token': localStorage.getItem('_____auth_______________token') // setup token as a header
         }
     })
         .then(res => {
             let { channels } = res.data.results;
-            console.log(channels)
-            dispatch({
+            dispatch({ // dispatch new channels to redux's state
                 channels,
                 type: GET_CHANNELS_SERVER
             })
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err)); // console error in case there is one
 }
 
 export const makeChannel = (newChannel) => dispatch => {
