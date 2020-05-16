@@ -16,7 +16,7 @@ export default function (state = initialState, action) {
             }
         case LOG_OUT:
             return {
-                openedAcc: action.openedAcc
+                openedAcc: action.openedAcc // set up openedAcc to null so the app can logout
             }
         default:
             return state;

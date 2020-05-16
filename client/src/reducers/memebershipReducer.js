@@ -6,7 +6,7 @@ let initState = {
 
 export default function (state = initState, action) {
     switch (action.type) {
-        case ADD_MEMBER: return state;
+        case ADD_MEMBER: return state; // return state
         default: return state;
     }
 }
