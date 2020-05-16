@@ -59,7 +59,7 @@ class Register extends Component {
     }
 }
 Register.propTypes = {
-    registerAction: PropTypes.func.isRequired
+    registerAction: PropTypes.func.isRequired // register action is required in register component
 }
 
 const mapStateToProps = state => ({ // reteive redux's state(s)
