@@ -22,7 +22,7 @@ class Register extends Component {
         e.preventDefault();
         let validEmail = /@./;
 
-        if (this.state.firstname.length === 0 ||
+        if (this.state.firstname.length === 0 || // send alert if there is a prob
             this.state.lastname.length === 0 ||
             this.state.email.length === 0 ||
             this.state.password.length === 0 ||
@@ -39,7 +39,7 @@ class Register extends Component {
             let creds = this.state;
             let newDate = new Date();
             creds.createdAt = newDate.getFullYear() + "-" + newDate.getDay() + "-" + newDate.getMonth();
-            this.props.registerAction(creds);
+            this.props.registerAction(creds); // make request to register new account
         }
     }
     render() {
@@ -59,7 +59,7 @@ class Register extends Component {
     }
 }
 Register.propTypes = {
-    registerAction: PropTypes.func.isRequired
+    registerAction: PropTypes.func.isRequired // register action is required in register component
 }
 
 const mapStateToProps = state => ({ // reteive redux's state(s)

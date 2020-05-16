@@ -19,7 +19,7 @@ class AddNewMember extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
-    validPage(serverName, serversAsLeader) {
+    validPage(serverName, serversAsLeader) { // if server name in serversAsLeader return server's id
         let result = null
         for (let server of serversAsLeader) {
             if (server.name === serverName) {
@@ -30,9 +30,9 @@ class AddNewMember extends Component {
         }
         return result;
     }
-    setServerState(server_id) {
+    setServerState(server_id) { // if server_id is not null return true else false
         if (server_id !== null) {
-            setTimeout(() => { this.setState({ server_id }) }, 200)
+            setTimeout(() => { this.setState({ server_id }) }, 0)
 
             return true
         }
@@ -42,14 +42,14 @@ class AddNewMember extends Component {
     onAdd(e) {
         e.preventDefault()
         let validEmail = /@./;
-        if (this.state.role === "" ||
+        if (this.state.role === "" || // if there is a prob make alert 
             !validEmail.test(this.state.email) ||
             this.state.message === "") {
             if (this.state.role === '') alert('role is empty')
             else if (!validEmail.test(this.state.email)) alert('email is not valid')
             else if (this.state.message === '') alert('message is empty')
         } else {
-            this.props.addMember(this.state)
+            this.props.addMember(this.state) //make request to add new member to server
         }
     }
     render() {
@@ -65,7 +65,7 @@ class AddNewMember extends Component {
         ) : (<Redirect to="/" />)
     }
 }
-let mapPropsToState = state => ({
+let mapPropsToState = state => ({ // set props to servers redux's state
     servers: state.servers
 })
-export default connect(mapPropsToState, { addMember })(AddNewMember);
+export default connect(mapPropsToState, { addMember })(AddNewMember); // added action

@@ -20,18 +20,18 @@ class Servers extends Component {
         if (newServerName !== null && newServerName !== "") {
             let currentDate = new Date();
             let createdAt = currentDate.getFullYear() + '-' + currentDate.getDay() + '-' + currentDate.getMonth()
-            let newServer = {
+            let newServer = { // create server data
                 name: newServerName,
                 createdAt
             }
-            this.props.createServer(newServer)
+            this.props.createServer(newServer) // make request to create new server
 
         }
 
     }
 
     componentWillMount() {
-        this.props.retreiveServerAsLeader();
+        this.props.retreiveServerAsLeader(); // retreive servers the user is leader in them and add it to serversAsLeader in redux's state
     }
     render() {
         return (
@@ -64,8 +64,8 @@ class Servers extends Component {
     }
 }
 
-const mapPropsToState = state => ({
+const mapPropsToState = state => ({ // add to props redux's servers state
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction })(Servers);
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction })(Servers); // add actions to servers comp props
