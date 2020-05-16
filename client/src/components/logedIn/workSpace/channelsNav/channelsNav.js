@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class ChannelsNav extends Component {
     render() {
         return (
-            <div>
+            <div id="channelsNav">
                 {this.props.channels.channels.map((channel, i) => (
                     <div key={i}>
                         <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
