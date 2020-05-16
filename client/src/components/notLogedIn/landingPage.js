@@ -14,8 +14,8 @@ class LandingPage extends Component {
     }
 }
 
-let setPropsToState = state => ({
+let setPropsToState = state => ({ // added auth redux's state to props comp
     auth: state.auth
 })
 
-export default connect(setPropsToState)(LandingPage);
+export default connect(setPropsToState)(LandingPage); 
