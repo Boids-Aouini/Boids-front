@@ -21,18 +21,18 @@ export const createServer = (newServer) => dispatch => {
 
 export const retreiveServerAsLeader = () => dispatch => {
     axios.get('http://localhost:4404/api/boidsServers/serversAsLeader',
+        // retreive all servers that logged in user is a leader
         {
             headers: {
-                'auth_token': localStorage.getItem('_____auth_______________token')
+                'auth_token': localStorage.getItem('_____auth_______________token') // add token as a header
             }
         })
         .then(res => {
             let { servers } = res.data.results;
-            console.log(servers);
-            dispatch({
+            dispatch({ // dispatch servers to add it to serversAsLeader redux's state
                 serversAsLeader: servers,
                 type: RETREIVE_SERVER_AS_LEADER
             })
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err)); // console error in case there is one
 }
