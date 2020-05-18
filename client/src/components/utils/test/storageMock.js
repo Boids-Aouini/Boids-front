@@ -15,7 +15,4 @@ export class LocalStorageMock {
         this.storage = {};
     }
 }
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg5MjczNjM1fQ.CjLls-VQdsfjlPWdLueg9JHR0VWtz0swUdgYiQ-cESI";
-export const storage = {
-    '_____auth_______________token': token
-}
+export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg5MjczNjM1fQ.CjLls-VQdsfjlPWdLueg9JHR0VWtz0swUdgYiQ-cESI";

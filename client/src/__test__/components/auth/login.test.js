@@ -6,6 +6,13 @@ import Login from '../../../components/auth/login';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import store from '../../../store';
+import { token } from '../../../components/utils/test/storageMock'
+const storeMock = configureStore();
+let intialTestState = {
+    auth: {
+        openedAcc: token
+    }
+}
 describe('<Login />', () => {
     describe('render()', () => {
         test('renders without crashing', () => {
