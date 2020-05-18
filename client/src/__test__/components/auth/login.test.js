@@ -4,11 +4,11 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import Login from '../../../components/auth/login';
 import ReactDOM from 'react-dom';
-import { token } from '../../../components/utils/test/storageMock'
+
 const storeMock = configureStore();
 let intialTestState = {
     auth: {
-        openedAcc: token
+        openedAcc: null
     }
 }
 let store = storeMock(intialTestState)
