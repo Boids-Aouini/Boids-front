@@ -1,0 +1,47 @@
+#servers{
+    overflow-y: scroll;
+    width: 9%;
+    height: 100%;
+    position: absolute;
+}
+
+.serverAsLeader{
+    margin-top: 20px;
+    margin-right: 10px;
+    
+    
+}
+
+#makeNewServer{
+    color: thistle;
+    margin-left: 20px;
+}
+
+.serversLeader{
+    margin-top: 4px;
+}
+
+.serversLeader .iconify{
+    color: darkturquoise;
+    width: 40px;
+    height: 40px;
+    margin-left: 20px;
+}
+
+p{
+    text-align: center;
+}
+
+.iconify{
+    
+    border: 2px solid violet;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+
+#logout{
+    margin-right: 10px;
+}
