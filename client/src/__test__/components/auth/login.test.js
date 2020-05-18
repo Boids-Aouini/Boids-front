@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import Login from '../../../components/auth/login';
-import ReactDOM from 'react-dom';
 
 const storeMock = configureStore();
 let intialTestState = {
