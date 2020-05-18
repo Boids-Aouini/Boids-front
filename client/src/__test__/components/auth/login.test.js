@@ -11,5 +11,12 @@ describe('<Login />', () => {
         test('renders without crashing', () => {
             shallow(<Provider store={store}><Login /></Provider>);
         });
+
+        test('renders component', () => {
+            const wrapper = shallow(<Provider store={store}><Login /></Provider>);
+            const component = wrapper.dive();
+
+            expect(toJson(component)).toMatchSnapshot();
+        })
     });
 });
