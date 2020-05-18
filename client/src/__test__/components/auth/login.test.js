@@ -4,14 +4,12 @@ import toJson from 'enzyme-to-json';
 import configureStore from 'redux-mock-store';
 import Login from '../../../components/auth/login';
 import ReactDOM from 'react-dom';
-
+import { Provider } from 'react-redux'
+import store from '../../../store';
 describe('<Login />', () => {
     describe('render()', () => {
         test('renders without crashing', () => {
-            const wrapper = shallow(<Login />);
-            // const component = wrapper.dive();
-
-            // expect(toJson(component)).toMatchSnapshot();
+            shallow(<Provider store={store}><Login /></Provider>);
         });
     });
 });
