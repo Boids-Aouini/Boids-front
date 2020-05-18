@@ -1,3 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Login /> render() renders component 1`] = `<Connect(Login) />`;
+exports[`<Login /> render() renders component 1`] = `
+<Login
+  auth={
+    Object {
+      "openedAcc": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg5MjczNjM1fQ.CjLls-VQdsfjlPWdLueg9JHR0VWtz0swUdgYiQ-cESI",
+    }
+  }
+  loginAction={[Function]}
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+/>
+`;
