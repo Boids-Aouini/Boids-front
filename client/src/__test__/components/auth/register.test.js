@@ -17,5 +17,12 @@ describe('<Register />', () => {
         test('render without crashing', () => {
             shallow(<Register store={store} />)
         })
+        test('renders component', () => {
+            const wrapper = shallow(<Register store={store} />);
+            const component = wrapper.dive();
+
+            expect(toJson(component)).toMatchSnapshot();
+        })
+
     })
 })
