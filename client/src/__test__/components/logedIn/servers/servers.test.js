@@ -13,5 +13,10 @@ describe('<Servers />', () => {
         test('render without crashing', () => {
             shallow(<Servers store={store} />);
         })
+        test('render component', () => {
+            let wrapper = shallow(<Servers store={store} />);
+            let component = wrapper.dive();
+            expect(toJson(component)).toMatchSnapshot();
+        })
     })
 })
