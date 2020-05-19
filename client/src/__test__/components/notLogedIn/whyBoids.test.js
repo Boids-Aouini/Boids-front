@@ -13,6 +13,11 @@ describe('<WhyBoids />', () => {
         test('render without crashing', () => {
             shallow(<WhyBoids store={store} />)
         })
+        test('render component', () => {
+            let wrapper = shallow(<WhyBoids store={store} />);
+            let component = wrapper.dive();
+            expect(toJson(component)).toMatchSnapshot();
+        })
     })
 
 })
