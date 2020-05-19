@@ -14,7 +14,6 @@ describe('<NotLogedNav />', () => {
             expect(toJson(component)).toMatchSnapshot();
         })
 
-
     })
 
 })
