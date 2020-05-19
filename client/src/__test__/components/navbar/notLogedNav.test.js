@@ -13,6 +13,12 @@ describe('<NotLogedNav />', () => {
         test('should render without crashing', () => {
             shallow(<NotLogedNav store={store} />)
         })
+        test('should render component', () => {
+            let wrapper = shallow(<NotLogedNav store={store} />)
+            let comp = wrapper.dive();
+            expect(toJson(comp)).toMatchSnapshot();
+        })
+
 
     })
 
