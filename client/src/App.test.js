@@ -6,7 +6,12 @@ import configureStore from 'redux-mock-store';
 let mockStore = configureStore();
 let initialState = {}
 let store = mockStore(initialState)
-test('render without crashing', () => {
-  shallow(<App store={store} />);
+describe('<App />', () => {
+  describe('render()', () => {
+    test('render without crashing', () => {
+      shallow(<App store={store} />);
 
-});
+    });
+
+  })
+})
