@@ -22,7 +22,6 @@ class LogedInNav extends Component {
         return (
             <nav>
 
-
             </nav>
         )
     }
