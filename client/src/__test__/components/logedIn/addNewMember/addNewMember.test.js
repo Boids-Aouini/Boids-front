@@ -13,6 +13,11 @@ describe('<AddNewMember />', () => {
         test('should render without crashing', () => {
             shallow(<AddNewMember store={store} />)
         })
+        test('render component', () => {
+            let wrapper = shallow(<AddNewMember store={store} />)
+            let component = wrapper.dive();
+            expect(toJson(component)).toMatchSnapshot()
+        })
 
     })
 
