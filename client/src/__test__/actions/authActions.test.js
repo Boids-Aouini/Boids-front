@@ -1,4 +1,4 @@
-import * as authActions from '../../actions/authActions';
+import { registerAction } from '../../actions/authActions';
 import configureStore from 'redux-mock-store';
 import { OPEN_ACC, REGISTER } from '../../actions/type';
 
@@ -14,5 +14,7 @@ describe('authActions', () => {
             email: 'aminaouini565@gmail.com',
             password: '123456789'
         }
+        store.dispatch(registerAction(account))
+        expect(store.getActions()[0]['type']).toEqual(OPEN_ACC)
     })
 })
