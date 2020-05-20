@@ -13,6 +13,11 @@ describe('<LandingPage />', () => {
         test('render without crashing', () => {
             shallow(<LandingPage store={store} />)
         })
+        test('render component', () => {
+            let wrapper = shallow(<LandingPage store={store} />)
+            let component = wrapper.dive();
+            expect(toJson(component)).toMatchSnapshot()
+        })
     })
 
 })
