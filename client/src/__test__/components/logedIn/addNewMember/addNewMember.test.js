@@ -7,3 +7,13 @@ import AddNewMember from '../../../../components/logedIn/addNewMember/addNewMemb
 let mockStore = configureStore();
 let initState = {};
 let store = mockStore(initState);
+
+describe('<AddNewMember />', () => {
+    describe('render()', () => {
+        test('should render without crashing', () => {
+            shallow(<AddNewMember store={store} />)
+        })
+
+    })
+
+})
