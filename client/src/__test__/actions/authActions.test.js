@@ -3,3 +3,9 @@ import configureStore from 'redux-mock-store';
 
 let mockStore = configureStore();
 let store = mockStore();
+
+describe('authActions', () => {
+    beforeEach(() => {
+        store.clearActions();
+    })
+})
