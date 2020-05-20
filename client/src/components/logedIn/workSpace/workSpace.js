@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import WorkSpaceNav from './workSpaceNav/workSpaceNav'
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { referenceUrl, extractReference } from '../../../utils/urlReference';
+import { referenceUrl, extractReference } from '../../utils/urlReference';
 import { getChannels } from '../../../actions/channelActions';
 import ChannelsNav from './channelsNav/channelsNav';
 class WorkSpace extends Component {
@@ -65,13 +65,6 @@ class WorkSpace extends Component {
             ? (
                 <div>
                     <WorkSpaceNav />
-                    {/* <div>
-                        {this.props.channels.channels.map((channel, i) => (
-                            <div key={i}>
-                                <Link to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>{channel.name}</Link>
-                            </div>
-                        ))}
-                    </div> */}
                     <ChannelsNav />
                 </div>
             ) : <Redirect to="/" />

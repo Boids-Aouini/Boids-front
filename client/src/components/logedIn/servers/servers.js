@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { createServer } from '../../../actions/serverActions';
 import { retreiveServerAsLeader } from '../../../actions/serverActions';
 import { Link } from 'react-router-dom';
-import { referenceUrl } from '../../../utils/urlReference';
+import { referenceUrl } from '../../utils/urlReference';
 import { logoutAction } from '../../../actions/authActions';
 class Servers extends Component {
     constructor(props) {
@@ -35,13 +35,13 @@ class Servers extends Component {
     }
     render() {
         return (
-            <div id="servers">
+            <div data-testid="serversComp" id="servers">
 
-                <span id="makeNewServer" onClick={this.onNewServer.bind(this)}>
+                <span data-testid="makeNewServer" id="makeNewServer" onClick={this.onNewServer.bind(this)}>
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>
-                <div id="serversAsALeader">
+                <div data-testid="serversAsLeader" id="serversAsALeader">
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import './channelsNav.css'
 import { Link } from 'react-router-dom';
-import { referenceUrl } from '../../../../utils/urlReference';
-import { shortChannelName } from '../../../../utils/shortName';
+import { referenceUrl } from '../../../utils/urlReference';
+import { shortChannelName } from '../../../utils/shortName';
 class ChannelsNav extends Component {
     render() {
         return (

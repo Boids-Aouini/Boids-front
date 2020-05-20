@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { extractReference } from '../../../utils/urlReference';
+import { extractReference } from '../../utils/urlReference';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addMember } from '../../../actions/membershipsActions';
