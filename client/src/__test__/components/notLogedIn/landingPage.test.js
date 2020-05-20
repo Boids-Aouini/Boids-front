@@ -7,3 +7,12 @@ import LandingPage from '../../../components/notLogedIn/landingPage';
 let mockStore = configureStore();
 let initState = {};
 let store = mockStore(initState);
+
+describe('<LandingPage />', () => {
+    describe('render()', () => {
+        test('render without crashing', () => {
+            shallow(<LandingPage store={store} />)
+        })
+    })
+
+})
