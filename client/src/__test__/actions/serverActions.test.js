@@ -21,5 +21,8 @@ describe('serverActions', () => {
             })
 
     })
+    test('CREATE_SERVER Action', () => {
+
+    })
 })
 

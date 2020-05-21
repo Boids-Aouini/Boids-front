@@ -6,6 +6,7 @@ export const LOG_OUT = "LOG_OUT";
 // servers types
 export const CREATE_SERVER = "CREATE_SERVER";
 export const RETREIVE_SERVER_AS_LEADER = 'RETREIVE_SERVER_AS_LEADER';
+export const RETREIVE_SERVER_AS_MEMBER = "RETREIVE_SERVER_AS_MEMBER";
 
 // memberships types
 export const ADD_MEMBER = 'ADD_MEMBER';
