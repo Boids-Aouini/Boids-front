@@ -1,5 +1,6 @@
 import { REGISTER, OPEN_ACC, LOG_OUT } from './type';
 import axios from 'axios';
+import { Promise } from 'bluebird';
 
 export const registerAction = (creds) => dispatch => { // makes post http request to register new account
     return axios.post('http://localhost:4404/api/auth/register', creds)
@@ -29,10 +30,17 @@ export const loginAction = creds => dispatch => { // makes post http request to 
 }
 
 export const logoutAction = () => dispatch => {
-    localStorage.removeItem('_____auth_______________token'); // remove token from local storage on the browser
-    return dispatch({
-        type: LOG_OUT,
-        openedAcc: null
+    return new Promise(function (resolve) {
+
+        resolve()
     })
+        .then(() => {
+            localStorage.removeItem('_____auth_______________token'); // remove token from local storage on the browser
+            return dispatch({
+                type: LOG_OUT,
+                openedAcc: null
+            })
+
+        })
 }
 

@@ -23,7 +23,7 @@ describe('authActions', () => {
     })
     test('REGISTER Action', () => {
         let newAcc = {
-            firstname: 'register', lastname: 'test', email: 'regis2ts1erTest@email.com',
+            firstname: 'register', lastname: 'test', email: 'regis2tzesd1erTest@email.com',
             password: '123456789', createdAt: '2020-05-05', birthDate: '2020-05-05'
         };
 
