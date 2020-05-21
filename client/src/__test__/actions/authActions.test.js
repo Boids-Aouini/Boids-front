@@ -17,8 +17,8 @@ describe('authActions', () => {
         }
         return store.dispatch(authActions.loginAction(account))
             .then(() => {
-                const actions = store.getActions()
-                expect(actions[0]['type']).toEqual(OPEN_ACC)
+                const [action] = store.getActions()
+                expect(action['type']).toEqual(OPEN_ACC)
             })
     })
     test('REGISTER Action', () => {
@@ -29,8 +29,8 @@ describe('authActions', () => {
 
         return store.dispatch(authActions.registerAction(newAcc))
             .then(() => {
-                const actions = store.getActions()
-                expect(actions[0]['type']).toEqual(REGISTER)
+                const [action] = store.getActions()
+                expect(action['type']).toEqual(REGISTER)
             })
     })
     test('LOG_OUT Action', () => {
