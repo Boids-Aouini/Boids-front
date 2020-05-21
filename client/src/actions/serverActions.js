@@ -2,7 +2,7 @@ import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER } from './type';
 import axios from "axios";
 
 export const createServer = (newServer) => dispatch => {
-    axios.post('http://localhost:4404/api/boidsServers/createServer', newServer,
+    return axios.post('http://localhost:4404/api/boidsServers/createServer', newServer,
         // make post request to make new server
         {
             headers: {
@@ -11,7 +11,7 @@ export const createServer = (newServer) => dispatch => {
         })
         .then(res => {
             let { server } = res.data.results;
-            dispatch({ // dispatch new server to serversAsLeader redux's state
+            return dispatch({ // dispatch new server to serversAsLeader redux's state
                 type: CREATE_SERVER,
                 server
             })

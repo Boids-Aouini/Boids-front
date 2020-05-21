@@ -8,3 +8,4 @@ let mockStore = configureStore(middlewares);
 let store = mockStore({})
 window.localStorage = new LocalStorageMock;
 localStorage.setItem('_____auth_______________token', token);
+
