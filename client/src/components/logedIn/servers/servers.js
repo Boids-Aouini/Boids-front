@@ -55,6 +55,18 @@ class Servers extends Component {
                             </div>
                         )
                     })}
+                    {this.props.servers.serversAsMember.map((server, i) => {
+                        return (
+                            <div class="serverAsLeader" key={i}>
+                                <Link class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                    <div class="serversLeader">
+                                        <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
+                                        <p>{server.name}</p>
+                                    </div>
+                                </Link>
+                            </div>
+                        )
+                    })}
                 </div>
                 <Link id="logout" onClick={(e) => this.props.logoutAction()}>
                     <span class="iconify" data-icon="ri:logout-box-r-line" data-inline="false"></span>
