@@ -9,3 +9,9 @@ let store = mockStore({})
 window.localStorage = new LocalStorageMock;
 localStorage.setItem('_____auth_______________token', token);
 
+describe('serverActions', () => {
+    beforeEach(() => {
+        store.clearActions();
+    })
+})
+
