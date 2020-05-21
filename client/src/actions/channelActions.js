@@ -42,6 +42,7 @@ export const sendPost = (newPost) => dispatch => {
         }
     })
         .then(res => {
+            console.log(res.data)
             dispatch({
                 type: SEND_POST
             })
