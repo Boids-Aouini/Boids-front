@@ -19,7 +19,7 @@ export const getChannels = (server_id) => dispatch => {
 }
 
 export const makeChannel = (newChannel) => dispatch => {
-    axios.post('http://localhost:4404/api/channels/makeChannel', newChannel, {
+    return axios.post('http://localhost:4404/api/channels/makeChannel', newChannel, {
         // made post request to make new channel in a server
         headers: {
             'auth_token': localStorage.getItem('_____auth_______________token') // added token as a header
@@ -27,7 +27,7 @@ export const makeChannel = (newChannel) => dispatch => {
     })
         .then(res => {
             let { newChannel } = res.data.results;
-            dispatch({ // dispatch new channel to redux's state
+            return dispatch({ // dispatch new channel to redux's state
                 newChannel,
                 type: MAKE_CHANNEL
             })
