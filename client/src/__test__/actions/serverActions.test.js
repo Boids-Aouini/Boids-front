@@ -13,5 +13,13 @@ describe('serverActions', () => {
     beforeEach(() => {
         store.clearActions();
     })
+    test('RETREIVE_SERVER_AS_LEADER Action', () => {
+        return store.dispatch(serverActions.retreiveServerAsLeader())
+            .then(() => {
+                let [action] = store.getActions();
+                expect(action['type']).toEqual(RETREIVE_SERVER_AS_LEADER)
+            })
+
+    })
 })
 
