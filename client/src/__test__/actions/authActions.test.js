@@ -23,7 +23,7 @@ describe('authActions', () => {
     })
     test('REGISTER Action', () => {
         let newAcc = {
-            firstname: 'register', lastname: 'test', email: 'regis2t1erTest@email.com',
+            firstname: 'register', lastname: 'test', email: 'regis2ts1erTest@email.com',
             password: '123456789', createdAt: '2020-05-05', birthDate: '2020-05-05'
         };
 
@@ -34,10 +34,14 @@ describe('authActions', () => {
             })
     })
     test('LOG_OUT Action', () => {
+        let expectedResult = {
+            type: LOG_OUT,
+            openedAcc: null
+        }
         return store.dispatch(authActions.logoutAction())
             .then(() => {
-                let actions = store.getActions()
-                expect(actions[0]['type']).toEqual(LOG_OUT)
+                const [action] = store.getActions()
+                expect(action).toEqual(expectedResult)
             })
     })
 
