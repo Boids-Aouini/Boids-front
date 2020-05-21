@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../../actions/serverActions';
-import { retreiveServerAsLeader } from '../../../actions/serverActions';
+import { retreiveServerAsLeader, retreiveServerAsMember } from '../../../actions/serverActions';
 import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../utils/urlReference';
 import { logoutAction } from '../../../actions/authActions';
@@ -32,6 +32,7 @@ class Servers extends Component {
 
     componentWillMount() {
         this.props.retreiveServerAsLeader(); // retreive servers the user is leader in them and add it to serversAsLeader in redux's state
+        this.props.retreiveServerAsMember();
     }
     render() {
         return (
@@ -68,4 +69,4 @@ const mapPropsToState = state => ({ // add to props redux's servers state
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction })(Servers); // add actions to servers comp props
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction, retreiveServerAsMember })(Servers); // add actions to servers comp props

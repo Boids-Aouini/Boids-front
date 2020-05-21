@@ -38,7 +38,7 @@ export const retreiveServerAsLeader = () => dispatch => {
 }
 
 export const retreiveServerAsMember = () => {
-    return axios.get('http://localhost:4404/api/boidsServers/serversAsMember/',
+    return axios.get('http://localhost:4404/api/boidsServers/serversAsMember',
         {
             headers: {
                 'auth_token': localStorage.getItem('_____auth_______________token') // add token as a header
