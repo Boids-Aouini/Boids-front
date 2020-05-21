@@ -53,7 +53,7 @@ class AddNewMember extends Component {
             else if (!validEmail.test(this.state.email)) alert('email is not valid')
             else if (this.state.message === '') alert('message is empty')
         } else {
-            this.props.addMember(this.state, this.onAddMember) //make request to add new member to server
+            this.props.addMember(this.state, this.onAddMember.bind(this)) //make request to add new member to server
         }
     }
     render() {
@@ -71,5 +71,6 @@ class AddNewMember extends Component {
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
     servers: state.servers
+
 })
 export default connect(mapPropsToState, { addMember })(AddNewMember); // added action

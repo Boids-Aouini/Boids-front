@@ -4,7 +4,8 @@ import Register from './components/auth/register';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Login from './components/auth/login';
 import NavBar from './components/navbar/navBar';
@@ -46,7 +47,7 @@ class App extends Component {
                 <WorkSpace />
               </Route>
               <Route exact path='/options/boidsServer/:serverName/addMember'>
-                <AddNewMember />
+                {this.props.auth.openedAcc ? (<AddNewMember />) : <Redirect to="/" />}
               </Route>
 
             </Switch>
