@@ -18,7 +18,6 @@ describe('authActions', () => {
         return store.dispatch(authActions.loginAction(account))
             .then(() => {
                 const actions = store.getActions()
-                console.log(actions)
                 expect(actions[0]['type']).toEqual(OPEN_ACC)
             })
     })
