@@ -33,5 +33,12 @@ describe('authActions', () => {
                 expect(actions[0]['type']).toEqual(REGISTER)
             })
     })
+    test('LOG_OUT Action', () => {
+        return store.dispatch(authActions.logoutAction())
+            .then(() => {
+                let actions = store.getActions()
+                expect(actions[0]['type']).toEqual(LOG_OUT)
+            })
+    })
 
 })
