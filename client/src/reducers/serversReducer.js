@@ -1,4 +1,4 @@
-import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER } from '../actions/type';
+import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER, RETREIVE_SERVER_AS_MEMBER } from '../actions/type';
 
 let initState = {
     serversAsLeader: [],
@@ -17,6 +17,11 @@ export default function (state = initState, action) {
             return {
                 ...state,
                 serversAsLeader: action.serversAsLeader
+            }
+        case RETREIVE_SERVER_AS_MEMBER:
+            return {
+                ...state,
+                serversAsMember: action.serversAsMember
             }
 
         default: return state;
