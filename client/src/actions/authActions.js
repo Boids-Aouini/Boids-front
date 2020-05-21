@@ -30,7 +30,7 @@ export const loginAction = creds => dispatch => { // makes post http request to 
 
 export const logoutAction = () => dispatch => {
     localStorage.removeItem('_____auth_______________token'); // remove token from local storage on the browser
-    dispatch({
+    return dispatch({
         type: LOG_OUT,
         openedAcc: null
     })
