@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL } from '../actions/type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST } from '../actions/type';
 
 let initState = {
     channels: [],
@@ -17,6 +17,7 @@ export default function (state = initState, action) {
                 ...state,
                 channels: [...state.channels, action.newChannel] // setup new channel with other channels to redux's state
             }
+        case SEND_POST: return state
         default: return state;
     }
 }
