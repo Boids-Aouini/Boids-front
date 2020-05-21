@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL } from './type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST } from './type';
 import axios from 'axios';
 
 export const getChannels = (server_id) => dispatch => {
@@ -33,4 +33,18 @@ export const makeChannel = (newChannel) => dispatch => {
             })
         })
         .catch(err => console.log(err)) // console error in case there is one
+}
+
+export const sendPost = (newPost) => dispatch => {
+    axios.post('http://localhost:4404/api/channels/send', newPost, {
+        headers: {
+            'auth_token': localStorage.getItem('_____auth_______________token')
+        }
+    })
+        .then(res => {
+            dispatch({
+                type: SEND_POST
+            })
+        })
+        .catch(err => console.log(err))
 }
