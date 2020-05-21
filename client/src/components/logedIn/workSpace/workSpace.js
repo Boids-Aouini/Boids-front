@@ -5,6 +5,7 @@ import { Link, Redirect } from 'react-router-dom';
 import { referenceUrl, extractReference } from '../../utils/urlReference';
 import { getChannels } from '../../../actions/channelActions';
 import ChannelsNav from './channelsNav/channelsNav';
+import Messages from './messages/messages';
 class WorkSpace extends Component {
     constructor(props) {
         super(props);
@@ -66,6 +67,7 @@ class WorkSpace extends Component {
                 <div>
                     <WorkSpaceNav />
                     <ChannelsNav />
+                    <Messages channel_id={this.state.channel_id} />
                 </div>
             ) : <Redirect to="/" />
     }

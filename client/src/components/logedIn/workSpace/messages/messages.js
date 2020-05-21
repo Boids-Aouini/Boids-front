@@ -5,7 +5,7 @@ export default class Messages extends Component {
         super(props);
         this.state = {
             message: "",
-            channel_id: null
+            channel_id: this.props.channel_id
         }
     }
     onChange(e) {
