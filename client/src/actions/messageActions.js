@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { SEND_MESSAGE } from './type';
 
 export const sendMessage = (newMessage) => dispatch => {
     axios.post('/api/message/send', newMessage, {
@@ -7,7 +8,9 @@ export const sendMessage = (newMessage) => dispatch => {
         }
     })
         .then(res => {
-
+            dispatch({
+                type: SEND_MESSAGE
+            })
         })
         .catch(err => console.log(err))
 } 
