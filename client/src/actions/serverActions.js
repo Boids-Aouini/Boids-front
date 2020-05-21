@@ -37,7 +37,7 @@ export const retreiveServerAsLeader = () => dispatch => {
         .catch(err => console.log(err)); // console error in case there is one
 }
 
-export const retreiveServerAsMember = () => {
+export const retreiveServerAsMember = () => dispatch => {
     return axios.get('http://localhost:4404/api/boidsServers/serversAsMember',
         {
             headers: {
