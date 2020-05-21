@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import { sendPost } from '../../../../actions/channelActions';
 
 class Messages extends Component {
     constructor(props) {
@@ -14,6 +15,9 @@ class Messages extends Component {
     }
     onSend(e) {
         e.preventDefault();
+        if (this.state.message.length !== 0) {
+
+        }
     }
     render() {
         return (
@@ -28,6 +32,6 @@ class Messages extends Component {
 }
 
 let mapPropsToState = state => ({
-
+    channel: state.channels
 })
-export default Messages
+export default connect(mapPropsToState, { sendPost })(Messages)
