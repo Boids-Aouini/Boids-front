@@ -36,6 +36,7 @@ export const makeChannel = (newChannel) => dispatch => {
 }
 
 export const sendPost = (newPost) => dispatch => {
+    console.log(newPost.message)
     axios.post('http://localhost:4404/api/channels/send', newPost, {
         headers: {
             'auth_token': localStorage.getItem('_____auth_______________token')

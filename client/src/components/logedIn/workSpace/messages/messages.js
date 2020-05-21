@@ -15,16 +15,21 @@ class Messages extends Component {
     }
     onSend(e) {
         e.preventDefault();
-        if (this.state.message.length !== 0) {
 
+        if (this.state.message.length > 0) {
+            let newMessage = this.state;
+            let currentDate = new Date();
+            newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
+            this.props.sendPost(newMessage)
+            console.log(this.state)
         }
     }
     render() {
         return (
             <div>
                 <form>
-                    <input type="text" name="message" ></input>
-                    <button type="submit" onClick={this.onSend.bind(this)}>send</button>
+                    <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
+                    <button type="submit" onSubmit={this.onSend.bind(this)}>send</button>
                 </form>
             </div>
         )
