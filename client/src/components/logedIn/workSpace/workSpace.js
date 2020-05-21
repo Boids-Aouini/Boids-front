@@ -57,7 +57,7 @@ class WorkSpace extends Component {
 
     componentWillMount() {
         this.getServerId(extractReference(window.location.pathname.split('/')[2]))
-        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 50)
+        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 0)
     }
 
     render() {

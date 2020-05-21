@@ -16,12 +16,14 @@ class AddNewMember extends Component {
         }
         this.setServerState = this.setServerState.bind(this);
         this.validPage = this.validPage.bind(this);
+        this.onAddMember = this.onAddMember.bind(this)
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
     onAddMember() {
         this.setState({ addedMember: true })
+
     }
     validPage(serverName, serversAsLeader) { // if server name in serversAsLeader return server's id
         let result = null
@@ -53,7 +55,11 @@ class AddNewMember extends Component {
             else if (!validEmail.test(this.state.email)) alert('email is not valid')
             else if (this.state.message === '') alert('message is empty')
         } else {
-            this.props.addMember(this.state, this.onAddMember.bind(this)) //make request to add new member to server
+            let newMember = this.state;
+            delete newMember.addedMember
+            this.props.addMember(newMember) //make request to add new member to server
+
+
         }
     }
     render() {
