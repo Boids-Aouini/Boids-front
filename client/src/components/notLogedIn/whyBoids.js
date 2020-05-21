@@ -12,7 +12,7 @@ class WhyBoids extends Component {
                 <h2>Stay secured</h2>
                 <h5>We promise our costumers that we dont sell any of the conversations or any thing unlike other platforms</h5>
                 <br></br>
-                <Link to="/Register">Register</Link>
+                {!this.props.auth.openedAcc ? <Link to="/Register">Register</Link> : <span></span>}
             </div>
         ) : (<Redirect to="/" />)
     }

@@ -11,13 +11,17 @@ class AddNewMember extends Component {
             role: '',
             email: '',
             message: '',
-            server_id: null
+            server_id: null,
+            addedMember: false
         }
         this.setServerState = this.setServerState.bind(this);
         this.validPage = this.validPage.bind(this);
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+    }
+    onAddMember() {
+        this.setState({ addedMember: true })
     }
     validPage(serverName, serversAsLeader) { // if server name in serversAsLeader return server's id
         let result = null
@@ -49,11 +53,11 @@ class AddNewMember extends Component {
             else if (!validEmail.test(this.state.email)) alert('email is not valid')
             else if (this.state.message === '') alert('message is empty')
         } else {
-            this.props.addMember(this.state) //make request to add new member to server
+            this.props.addMember(this.state, this.onAddMember) //make request to add new member to server
         }
     }
     render() {
-        return this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.servers.serversAsLeader)) ? (
+        return !this.addedMember ? (this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.servers.serversAsLeader)) ? (
             <div>
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
@@ -61,8 +65,8 @@ class AddNewMember extends Component {
                     <textarea onChange={this.onChange.bind(this)} placeholder="Message" name="message"></textarea><br></br>
                     <button onClick={this.onAdd.bind(this)}>Add Member</button>
                 </form>
-            </div>
-        ) : (<Redirect to="/" />)
+            </div>)
+            : (<Redirect to="/" />)) : (<Redirect to={'/boidsServer/' + window.location.pathname.split('/')[3] + '/Announcement'} />)
     }
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
