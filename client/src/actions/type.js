@@ -15,7 +15,7 @@ export const ADD_MEMBER = 'ADD_MEMBER';
 export const GET_CHANNELS_SERVER = 'GET_CHANNELS_SERVER';
 export const MAKE_CHANNEL = 'MAKE_CHANNEL';
 export const SEND_POST = ' SEND_POST'
-
+export const GET_POSTS = 'GET_POSTS'
 // messages types
 
 export const SEND_MESSAGE = 'SEND_MESSAGE'
