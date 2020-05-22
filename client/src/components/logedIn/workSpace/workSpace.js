@@ -32,7 +32,7 @@ class WorkSpace extends Component {
             }
         }
 
-        for (let channel of this.props.channels.channels[this.state.server_id]) {
+        for (let channel of this.props.channels.channels) {
             if (channel.name === channelName) {
                 setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
                 check++
