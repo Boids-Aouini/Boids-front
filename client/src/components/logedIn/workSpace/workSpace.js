@@ -69,17 +69,6 @@ class WorkSpace extends Component {
 
     }
 
-    componentWillMount() {
-
-        // this.getServerId(extractReference(window.location.pathname.split('/')[2]))
-    }
-    componentDidMount() {
-        // this.props.getChannels(this.state.server_id)
-        // setTimeout(() => { this.props.getPosts(this.state.server_id, this.state.channel_id) }, 500)
-
-
-    }
-
     render() {
 
         return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3])) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
