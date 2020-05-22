@@ -72,7 +72,7 @@ class WorkSpace extends Component {
                 <div>
                     <WorkSpaceNav />
                     <ChannelsNav />
-                    {this.state.channel_id ? <Messages channel_id={this.state.channel_id} /> : <div></div>}
+                    {this.state.channel_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <div></div>}
                 </div>
             ) : <Redirect to="/" />
     }
