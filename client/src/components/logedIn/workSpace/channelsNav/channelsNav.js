@@ -8,7 +8,7 @@ class ChannelsNav extends Component {
     render() {
         return (
             <div id="channelsNav">
-                {this.props.channels[this.props.server_id].map((channel, i) => (
+                {this.props.channels.channels.map((channel, i) => (
                     <div key={i}>
                         <Link class="channelLink" to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>
                             <span class="iconify" data-icon="uil:channel" data-inline="false"></span>

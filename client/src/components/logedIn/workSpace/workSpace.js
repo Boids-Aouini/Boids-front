@@ -44,20 +44,17 @@ class WorkSpace extends Component {
 
                 }
             }
-            if (!this.state.channel_id && this.state.server_id) {
-                this.props.getChannels(this.state.server_id)
-                return false
-            }
-            this.getServerId(extractReference(window.location.pathname.split('/')[2]))
 
-            return this.state.server_id && this.state.channel_id;
+            return check === 2;
 
         } else {
-            this.props.getPosts(this.state.server_id, this.state.channel_id)
+
+            return true
         }
     }
     getServerId(serverName) {
         for (let server of this.props.servers.serversAsLeader) {
+            console.log(server)
             if (server.name === serverName) {
                 this.setState({ server_id: server.id })
                 return true
@@ -72,19 +69,21 @@ class WorkSpace extends Component {
 
     }
 
-    // componentWillMount() {
+    componentWillMount() {
 
-    // }
-    // componentDidMount() {
+        // this.getServerId(extractReference(window.location.pathname.split('/')[2]))
+    }
+    componentDidMount() {
+        // this.props.getChannels(this.state.server_id)
+        // setTimeout(() => { this.props.getPosts(this.state.server_id, this.state.channel_id) }, 500)
 
-    //     setTimeout(() => {
 
-    //     }, 450)
-    // }
+    }
 
     render() {
 
-        return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3]))
+        return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3])) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
+
             ? (
 
                 <div>
