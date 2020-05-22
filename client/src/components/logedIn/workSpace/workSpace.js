@@ -38,6 +38,7 @@ class WorkSpace extends Component {
                 check++
             }
         }
+        console.log(check === 2)
         return check === 2;
     }
     getServerId(serverName) {
@@ -59,6 +60,9 @@ class WorkSpace extends Component {
     componentWillMount() {
         this.getServerId(extractReference(window.location.pathname.split('/')[2]))
         setTimeout(() => { this.props.getChannels(this.state.server_id) }, 0)
+    }
+    componentDidMount() {
+        this.props.getPosts(this.state.server_id, this.state.channel_id)
     }
 
     render() {
