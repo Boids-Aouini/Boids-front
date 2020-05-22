@@ -32,13 +32,13 @@ class WorkSpace extends Component {
             }
         }
 
-        for (let channel of this.props.channels.channels) {
+        for (let channel of this.props.channels.channels[this.state.server_id]) {
             if (channel.name === channelName) {
                 setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
                 check++
             }
         }
-        console.log(check === 2)
+
         return check === 2;
     }
     getServerId(serverName) {
@@ -66,6 +66,7 @@ class WorkSpace extends Component {
     }
 
     render() {
+
         return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3]))
             ? (
 
@@ -73,8 +74,9 @@ class WorkSpace extends Component {
                     <WorkSpaceNav />
                     <ChannelsNav server_id={this.state.server_id} />
                     {this.state.channel_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <div></div>}
-                </div>
-            ) : <Redirect to="/" />
+                </div>) :
+            <div></div>
+
     }
 }
 let mapPropsToState = state => ({ // setup channels and servers state to props in workspace comp
