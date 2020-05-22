@@ -19,7 +19,7 @@ class WorkSpace extends Component {
         for (let server of this.props.servers.serversAsLeader) {
             if (server.name === serverName) {
                 setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                return true;
+                check++;
             }
         }
         if (check === 0) {
@@ -67,7 +67,7 @@ class WorkSpace extends Component {
                 <div>
                     <WorkSpaceNav />
                     <ChannelsNav />
-                    <Messages channel_id={this.state.channel_id} />
+                    {this.state.channel_id ? <Messages channel_id={this.state.channel_id} /> : <div></div>}
                 </div>
             ) : <Redirect to="/" />
     }

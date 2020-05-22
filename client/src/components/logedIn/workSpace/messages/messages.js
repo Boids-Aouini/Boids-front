@@ -15,7 +15,6 @@ class Messages extends Component {
     }
     onSend(e) {
         e.preventDefault();
-
         if (this.state.message.length > 0) {
             let newMessage = this.state;
             let currentDate = new Date();
@@ -29,7 +28,7 @@ class Messages extends Component {
             <div>
                 <form>
                     <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
-                    <button type="submit" onSubmit={this.onSend.bind(this)}>send</button>
+                    <button type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </form>
             </div>
         )
