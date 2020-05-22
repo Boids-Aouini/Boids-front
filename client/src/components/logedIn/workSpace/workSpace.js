@@ -16,78 +16,79 @@ class WorkSpace extends Component {
         }
     }
     getIds(serverName, channelName) {
-        let server_name = null;
+        let prev_server = sessionStorage.getItem('sshhhhhxc_prev_server');
+        let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
         let check = 0;
+        if (prev_channel !== channelName && prev_server !== serverName) {
+            if (prev_server !== serverName) {
+                for (let server of this.props.servers.serversAsLeader) {
+                    if (server.name === serverName) {
+                        server_name = server.name;
+                        this.props.getChannels(server.id)
+                        sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
+                        setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                        check++;
+                        break;
+                        // sessionStorage.setItem('sshhhhhxc_prev_server', serverName)
 
-        for (let server of this.props.servers.serversAsLeader) {
-            if (server.name === serverName) {
-                server_name = server.name;
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                check++;
-                // console.log(server)
-            }
-        }
-        if (check === 0) {
-
-            for (let server of this.props.servers.serversAsMember) {
-                if (server.name === serverName) {
-                    server_name = server.name;
-                    setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                    check++;
-                    // console.log(server)
+                        // console.log(server)
+                    }
                 }
+                if (check === 0) {
+
+                    for (let server of this.props.servers.serversAsMember) {
+                        if (server.name === serverName) {
+                            server_name = server.name;
+                            this.props.getChannels(server.id)
+                            sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
+                            setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                            check++;
+                            // console.log(server)
+                        }
+                    }
+                }
+
             }
-        }
-        if (check === 1) {
 
-            sessionStorage.setItem('shhhxx', server_name)
-        }
+            if (prev_channel !== channelName) {
 
-        for (let channel of this.props.channels.channels) {
-            if (channel.name === channelName) {
-                setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
-                check++
-                // console.log(channel)
+                for (let channel of this.props.channels.channels) {
+                    if (channel.name === channelName) {
+                        this.props.getPosts(this.state.server_id, channel.id)
+                        setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+
+                        check++
+                    }
+                }
+
             }
+
+            return check === 2;
+
+
         }
-
-        return check === 2;
-
 
     }
-    retreiveChannels(serverName) {
-        for (let server of this.props.servers.serversAsLeader) {
-            console.log(server)
-            if (server.name === serverName) {
-                this.props.getChannels(server.id)
-                return true
-            }
-        }
-        for (let server of this.props.servers.serversAsMember) {
-            if (server.name === serverName) {
-                this.props.getChannels(server.id)
-                return true;
-            }
-        }
 
-    }
 
     // componentWillUpdate() {
     // console.log(window.location.pathname.split('/')[2], this.state.server_name)
     // this.setState({ server_name: })
     // }
-    componentDidUpdate(prevProps) {
-        const locationChanged = this.props.location !== prevProps.location;
-
-        if (locationChanged) {
-            this.retreiveChannels(extractReference(window.location.pathname.split('/')[2]))
-        }
-
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     const locationChanged = this.props.location !== nextProps.location;
+    //     console.log(this.props, nextProps, 1)
+    //     console.log(this.props.location, nextProps.location)
+    //     console.log(nextProps, nextState, locationChanged)
+    //     if (locationChanged) {
+    //         this.retreiveChannels(extractReference(window.location.pathname.split('/')[2]))
+    //     }
+    //     return true
+    // }
 
 
     render() {
-        return this.getIds(extractReference(serverName), extractReference(channel)) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
+        return this.getIds(extractReference(extractReference(window.location.pathname.split('/')[2])), extractReference(extractReference(window.location.pathname.split('/')[3]))) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
 
             ? (
 
