@@ -19,11 +19,11 @@ class WorkSpace extends Component {
         let prev_server = sessionStorage.getItem('sshhhhhxc_prev_server');
         let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
         let check = 0;
-        if (prev_channel !== channelName && prev_server !== serverName) {
+        if (prev_channel !== channelName || prev_server !== serverName) {
             if (prev_server !== serverName) {
                 for (let server of this.props.servers.serversAsLeader) {
                     if (server.name === serverName) {
-                        server_name = server.name;
+
                         this.props.getChannels(server.id)
                         sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
                         setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
@@ -38,7 +38,7 @@ class WorkSpace extends Component {
 
                     for (let server of this.props.servers.serversAsMember) {
                         if (server.name === serverName) {
-                            server_name = server.name;
+
                             this.props.getChannels(server.id)
                             sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
                             setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
