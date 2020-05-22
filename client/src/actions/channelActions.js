@@ -51,7 +51,7 @@ export const sendPost = (newPost) => dispatch => {
 }
 
 export const getPosts = (channel_id) => dispatch => {
-    axios.get('/api/channels/getPosts/' + channel_id, {
+    axios.get('http://localhost:4404/api/channels/getPosts/' + channel_id, {
         headers: {
             'auth_token': localStorage.getItem('_____auth_______________token')
         }

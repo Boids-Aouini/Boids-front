@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { sendPost } from '../../../../actions/channelActions';
+import { sendPost, getPosts } from '../../../../actions/channelActions';
 
 class Messages extends Component {
     constructor(props) {
@@ -20,12 +20,16 @@ class Messages extends Component {
             let currentDate = new Date();
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             this.props.sendPost(newMessage)
-            console.log(this.state)
         }
     }
+    componentWillMount() {
+        this.props.getPosts(this.state.channel_id)
+    }
+
     render() {
         return (
             <div>
+
                 <form>
                     <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
@@ -38,4 +42,4 @@ class Messages extends Component {
 let mapPropsToState = state => ({
     channel: state.channels
 })
-export default connect(mapPropsToState, { sendPost })(Messages)
+export default connect(mapPropsToState, { sendPost, getPosts })(Messages)
