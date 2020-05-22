@@ -55,38 +55,39 @@ class WorkSpace extends Component {
 
 
     }
-    getServerId(serverName) {
+    retreiveChannels(serverName) {
         for (let server of this.props.servers.serversAsLeader) {
             console.log(server)
             if (server.name === serverName) {
-                this.setState({ server_id: server.id })
+                this.props.getChannels(server.id)
                 return true
             }
         }
         for (let server of this.props.servers.serversAsMember) {
             if (server.name === serverName) {
-                this.setState({ server_id: server.id })
+                this.props.getChannels(server.id)
                 return true;
             }
         }
 
     }
 
-    componentWillUpdate() {
-        // console.log(window.location.pathname.split('/')[2], this.state.server_name)
-        // this.setState({ server_name: })
-    }
-    // onUrlChange() {
-    //     let location = useLocation();
-    //     React.useEffect(() => {
-    //         ga.send(["pageview", location.pathname]);
-    //         console.log(location)
-    //     }, [location]);
-
+    // componentWillUpdate() {
+    // console.log(window.location.pathname.split('/')[2], this.state.server_name)
+    // this.setState({ server_name: })
     // }
+    componentDidUpdate(prevProps) {
+        const locationChanged = this.props.location !== prevProps.location;
+
+        if (locationChanged) {
+            this.retreiveChannels(extractReference(window.location.pathname.split('/')[2]))
+        }
+
+    }
+
+
     render() {
-        let { serverName, channel } = useParams();
-        return this.getIds(extractReference(serverName), extractReference(channel)) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : sessionStorage.getItem('shhhxx') !== this.state.server_name ? this.props.getChannels(this.state.server_id) : null)
+        return this.getIds(extractReference(serverName), extractReference(channel)) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
 
             ? (
 
