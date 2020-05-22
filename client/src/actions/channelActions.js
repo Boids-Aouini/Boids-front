@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST } from './type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS } from './type';
 import axios from 'axios';
 
 export const getChannels = (server_id) => dispatch => {
@@ -59,7 +59,9 @@ export const getPosts = (channel_id) => dispatch => {
         .then(res => {
             let { posts } = res.data.results;
             dispatch({
-                posts
+                channel_id,
+                posts,
+                type: GET_POSTS
             })
         })
         .catch(err => console.log(err))
