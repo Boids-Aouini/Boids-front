@@ -15,31 +15,46 @@ class WorkSpace extends Component {
         }
     }
     getIds(serverName, channelName) {
-        let check = 0;
-        for (let server of this.props.servers.serversAsLeader) {
-            if (server.name === serverName) {
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                check++;
-            }
-        }
-        if (check === 0) {
+        if (this.state.channel_id === null || this.state.server_id === null) {
+            let check = 0;
+            if (this.state.server_id === null) {
+                for (let server of this.props.servers.serversAsLeader) {
+                    if (server.name === serverName) {
+                        setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                        check++;
+                        // console.log(server)
+                    }
+                }
+                if (check === 0) {
 
-            for (let server of this.props.servers.serversAsMember) {
-                if (server.name === serverName) {
-                    setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                    check++;
+                    for (let server of this.props.servers.serversAsMember) {
+                        if (server.name === serverName) {
+                            setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                            check++;
+                            // console.log(server)
+                        }
+                    }
                 }
             }
-        }
 
-        for (let channel of this.props.channels.channels) {
-            if (channel.name === channelName) {
-                setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
-                check++
+            for (let channel of this.props.channels.channels) {
+                if (channel.name === channelName) {
+                    setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+                    check++
+
+                }
             }
-        }
+            if (!this.state.channel_id && this.state.server_id) {
+                this.props.getChannels(this.state.server_id)
+                return false
+            }
+            this.getServerId(extractReference(window.location.pathname.split('/')[2]))
 
-        return check === 2;
+            return this.state.server_id && this.state.channel_id;
+
+        } else {
+            this.props.getPosts(this.state.server_id, this.state.channel_id)
+        }
     }
     getServerId(serverName) {
         for (let server of this.props.servers.serversAsLeader) {
@@ -57,13 +72,15 @@ class WorkSpace extends Component {
 
     }
 
-    componentWillMount() {
-        this.getServerId(extractReference(window.location.pathname.split('/')[2]))
-        setTimeout(() => { this.props.getChannels(this.state.server_id) }, 0)
-    }
-    componentDidMount() {
-        this.props.getPosts(this.state.server_id, this.state.channel_id)
-    }
+    // componentWillMount() {
+
+    // }
+    // componentDidMount() {
+
+    //     setTimeout(() => {
+
+    //     }, 450)
+    // }
 
     render() {
 
