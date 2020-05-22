@@ -1,7 +1,7 @@
 import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS } from '../actions/type';
 
 let initState = {
-    channels: [],
+    channels: {},
     posts: {}
 }
 
@@ -10,7 +10,7 @@ export default function (state = initState, action) {
         case GET_CHANNELS_SERVER:
             return {
                 ...state,
-                channels: action.channels // setup channels to channels state
+                channels: { ...state.channels, [action.server_id]: action.channels } // setup channels to channels state
             }
         case MAKE_CHANNEL:
             return {

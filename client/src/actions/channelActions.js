@@ -9,9 +9,10 @@ export const getChannels = (server_id) => dispatch => {
         }
     })
         .then(res => {
-            let { channels } = res.data.results;
+            let { channels, server_id } = res.data.results;
             return dispatch({ // dispatch new channels to redux's state
                 channels,
+                server_id,
                 type: GET_CHANNELS_SERVER
             })
         })
