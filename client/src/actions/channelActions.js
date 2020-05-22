@@ -43,9 +43,23 @@ export const sendPost = (newPost) => dispatch => {
         }
     })
         .then(res => {
-            console.log(res.data)
             dispatch({
                 type: SEND_POST
+            })
+        })
+        .catch(err => console.log(err))
+}
+
+export const getPosts = (channel_id) => dispatch => {
+    axios.get('/api/channels/getPosts/' + channel_id, {
+        headers: {
+            'auth_token': localStorage.getItem('_____auth_______________token')
+        }
+    })
+        .then(res => {
+            let { posts } = res.data.results;
+            dispatch({
+                posts
             })
         })
         .catch(err => console.log(err))
