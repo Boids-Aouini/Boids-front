@@ -7,7 +7,8 @@ class Messages extends Component {
         super(props);
         this.state = {
             message: "",
-            channel_id: this.props.channel_id
+            channel_id: this.props.channel_id,
+            server_id: this.props.server_id
         }
     }
     onChange(e) {
@@ -23,7 +24,7 @@ class Messages extends Component {
         }
     }
     componentWillMount() {
-        this.props.getPosts(this.state.channel_id)
+        this.props.getPosts(this.state.server_id, this.state.channel_id)
     }
 
     render() {
