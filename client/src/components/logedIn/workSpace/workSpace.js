@@ -70,23 +70,6 @@ class WorkSpace extends Component {
 
     }
 
-
-    // componentWillUpdate() {
-    // console.log(window.location.pathname.split('/')[2], this.state.server_name)
-    // this.setState({ server_name: })
-    // }
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     const locationChanged = this.props.location !== nextProps.location;
-    //     console.log(this.props, nextProps, 1)
-    //     console.log(this.props.location, nextProps.location)
-    //     console.log(nextProps, nextState, locationChanged)
-    //     if (locationChanged) {
-    //         this.retreiveChannels(extractReference(window.location.pathname.split('/')[2]))
-    //     }
-    //     return true
-    // }
-
-
     render() {
         return this.getIds(extractReference(extractReference(window.location.pathname.split('/')[2])), extractReference(extractReference(window.location.pathname.split('/')[3]))) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
 
