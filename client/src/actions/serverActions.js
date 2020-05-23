@@ -1,5 +1,6 @@
 import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER, RETREIVE_SERVER_AS_MEMBER, CHANGE_CURRENT_SERVER } from './type';
 import axios from "axios";
+import { getChannels } from './channelActions';
 
 export const createServer = (newServer) => dispatch => {
     return axios.post('http://localhost:4404/api/boidsServers/createServer', newServer,
@@ -57,6 +58,7 @@ export const retreiveServerAsMember = () => dispatch => {
 }
 
 export const current_server = currentServer => dispatch => {
+    getChannels(currentServer)
     dispatch({
         type: CHANGE_CURRENT_SERVER,
         currentServer
