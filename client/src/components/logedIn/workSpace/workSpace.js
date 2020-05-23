@@ -25,12 +25,10 @@ class WorkSpace extends Component {
                     if (server.name === serverName) {
 
                         this.props.getChannels(server.id)
-                        sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
+                        sessionStorage.setItem('sshhhhhxc_prev_server', server.name)
                         setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                         check++;
                         break;
-                        // sessionStorage.setItem('sshhhhhxc_prev_server', serverName)
-
                         // console.log(server)
                     }
                 }
@@ -40,7 +38,7 @@ class WorkSpace extends Component {
                         if (server.name === serverName) {
 
                             this.props.getChannels(server.id)
-                            sessionStorage.setItem('sshhhhhxc_prev_channel', server.name)
+                            sessionStorage.setItem('sshhhhhxc_prev_server', server.name)
                             setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                             check++;
                             // console.log(server)
@@ -55,6 +53,7 @@ class WorkSpace extends Component {
                 for (let channel of this.props.channels.channels) {
                     if (channel.name === channelName) {
                         this.props.getPosts(this.state.server_id, channel.id)
+                        sessionStorage.setItem('sshhhhhxc_prev_channel', channel.id)
                         setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
 
                         check++
@@ -67,12 +66,13 @@ class WorkSpace extends Component {
 
 
         }
+        return true
 
     }
 
     render() {
-        return this.getIds(extractReference(extractReference(window.location.pathname.split('/')[2])), extractReference(extractReference(window.location.pathname.split('/')[3]))) || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
-
+        return this.getIds(extractReference(extractReference(window.location.pathname.split('/')[2])), extractReference(extractReference(window.location.pathname.split('/')[3])))
+            // || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
             ? (
 
                 <div>
