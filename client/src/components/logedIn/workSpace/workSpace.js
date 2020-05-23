@@ -27,7 +27,6 @@ class WorkSpace extends Component {
                     setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                     check++;
                     break;
-                    // console.log(server)
                 }
             }
             if (check === 0) {
@@ -39,7 +38,6 @@ class WorkSpace extends Component {
                         sessionStorage.setItem('sshhhhhxc_prev_server', server.name)
                         setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                         check++;
-                        // console.log(server)
                     }
                 }
             }

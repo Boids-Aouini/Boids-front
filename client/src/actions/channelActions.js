@@ -10,11 +10,19 @@ export const getChannels = (server_id) => dispatch => {
     })
         .then(res => {
             let { channels, server_id } = res.data.results;
-            return dispatch({ // dispatch new channels to redux's state
+            dispatch({ // dispatch new channels to redux's state
                 channels,
                 server_id,
                 type: GET_CHANNELS_SERVER
             })
+            return channels[0].id
+        })
+        .then((channel_id) => {
+            return {
+                type: GET_CHANNELS_SERVER,
+                channel_id,
+                server_id
+            }
         })
         .catch(err => console.log(err)); // console error in case there is one
 }

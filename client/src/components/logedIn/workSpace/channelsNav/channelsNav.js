@@ -4,6 +4,7 @@ import './channelsNav.css'
 import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../../utils/urlReference';
 import { shortChannelName } from '../../../utils/shortName';
+import { extractReference } from '../../../utils/urlReference'
 import { currentChannel, getPosts } from '../../../../actions/channelActions'
 class ChannelsNav extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class ChannelsNav extends Component {
     }
     componentWillMount() {
         let check = 0;
+        let serverName = extractReference(window.location.pathname.split('/')[3])
         for (let server of this.props.servers.serversAsLeader) {
             if (server.name === serverName) {
 
@@ -32,8 +34,8 @@ class ChannelsNav extends Component {
             for (let server of this.props.servers.serversAsMember) {
                 if (server.name === serverName) {
 
-                    this.props.getChannels(server.id) =
-                        setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                    this.props.getChannels(server.id)
+                    setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                     check++;
                     // console.log(server)
                 }
