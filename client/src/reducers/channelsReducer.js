@@ -24,7 +24,7 @@ export default function (state = initState, action) {
                 posts: action.posts
             }
 
-        case SEND_POST: return state,
+        case SEND_POST: return state
         case CHANGE_CURRENT_CHANNEL:
             return {
                 ...state,
