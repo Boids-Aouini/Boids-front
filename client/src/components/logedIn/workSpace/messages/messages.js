@@ -9,7 +9,7 @@ class Messages extends Component {
         this.state = {
             message: "",
             channel_id: this.props.channel_id,
-            server_id: this.props.server_id
+            server_id: this.props.servers.currentServer
         }
     }
     onChange(e) {
@@ -39,6 +39,7 @@ class Messages extends Component {
 }
 
 let mapPropsToState = state => ({
-    channel: state.channels
+    channel: state.channels,
+    servers: state.servers
 })
 export default connect(mapPropsToState, { sendPost, getPosts })(Messages)
