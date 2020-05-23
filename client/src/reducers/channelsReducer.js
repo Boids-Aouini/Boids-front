@@ -2,7 +2,8 @@ import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS } from '../acti
 
 let initState = {
     channels: [],
-    posts: []
+    posts: [],
+    currentChannel: null
 }
 
 export default function (state = initState, action) {
@@ -22,6 +23,7 @@ export default function (state = initState, action) {
                 ...state,
                 posts: action.posts
             }
+
         case SEND_POST: return state
         default: return state;
     }
