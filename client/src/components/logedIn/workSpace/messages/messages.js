@@ -24,27 +24,6 @@ class Messages extends Component {
             this.props.sendPost(newMessage)
         }
     }
-    componentWillMount() {
-        this.props.getPosts(this.state.server_id, this.state.channel_id)
-    }
-    checkChange(channelName) {
-
-
-        return true
-    }
-    componentDidUpdate() {
-        let channelName = extractReference(window.location.pathname.split('/')[3])
-        let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
-        if (prev_channel !== channelName) {
-
-            for (let channel of this.props.channels.channels) {
-                if (channel.name === channelName) {
-                    this.props.getPosts(this.state.server_id, channel.id)
-
-                }
-            }
-        }
-    }
 
     render() {
         return (
