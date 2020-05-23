@@ -58,7 +58,6 @@ export const retreiveServerAsMember = () => dispatch => {
 }
 
 export const current_server = currentServer => dispatch => {
-    getChannels(currentServer)
     dispatch({
         type: CHANGE_CURRENT_SERVER,
         currentServer
