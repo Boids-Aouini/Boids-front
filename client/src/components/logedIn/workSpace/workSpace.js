@@ -39,16 +39,16 @@ class WorkSpace extends Component {
 
             }
 
-            for (let channel of this.props.channels.channels) {
-                if (channel.name === channelName) {
-                    setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
-                    check++;
-                    break
-                }
-            }
 
         }
-        return true
+        for (let channel of this.props.channels.channels) {
+            if (channel.name === channelName) {
+                setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+                check++;
+                break
+            }
+        }
+        return check === 2
 
     }
 
@@ -58,7 +58,7 @@ class WorkSpace extends Component {
             <div>
                 <WorkSpaceNav />
                 <ChannelsNav server_id={this.state.server_id} />
-                <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} />
+                {this.state.server_id && this.state.channel_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <></>}
             </div>
         ) : <></>
 
