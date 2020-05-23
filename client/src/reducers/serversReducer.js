@@ -3,7 +3,7 @@ import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER, RETREIVE_SERVER_AS_MEMBER, CH
 let initState = {
     serversAsLeader: [],
     serversAsMember: [],
-    currrentServer: null
+    currentServer: null
 }
 
 export default function (state = initState, action) {
@@ -27,7 +27,7 @@ export default function (state = initState, action) {
         case CHANGE_CURRENT_SERVER:
             return {
                 ...state,
-                currrentServer: action.currrentServer
+                currentServer: action.currentServer
             }
 
         default: return state;

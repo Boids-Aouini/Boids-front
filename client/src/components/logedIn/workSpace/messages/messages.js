@@ -8,8 +8,8 @@ class Messages extends Component {
         super(props);
         this.state = {
             message: "",
-            channel_id: this.props.channel.currentChannel,
-            server_id: this.props.servers.currentServer
+            channel_id: this.props.channel_id,
+            server_id: this.props.server_id
         }
     }
     onChange(e) {
@@ -17,6 +17,7 @@ class Messages extends Component {
     }
     onSend(e) {
         e.preventDefault();
+        console.log(this.state)
         if (this.state.message.length > 0) {
             let newMessage = this.state;
             let currentDate = new Date();

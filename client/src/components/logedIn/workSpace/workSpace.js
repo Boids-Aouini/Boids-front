@@ -10,51 +10,42 @@ class WorkSpace extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            channel_id: null,
-            server_id: null,
+            channel_id: this.props.channels.currentChannel,
+            server_id: this.props.servers.currentServer,
             server_name: window.location.pathname.split('/')[2]
         }
     }
     getIds(serverName, channelName) {
-        let prev_server = sessionStorage.getItem('sshhhhhxc_prev_server');
         let check = 0;
-        if (prev_server !== serverName) {
-            for (let server of this.props.servers.serversAsLeader) {
+        for (let server of this.props.servers.serversAsLeader) {
+            if (server.name === serverName) {
+
+                // this.props.getChannels(server.id)
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                check++;
+                break;
+            }
+        }
+        if (check === 0) {
+
+            for (let server of this.props.servers.serversAsMember) {
                 if (server.name === serverName) {
 
-                    this.props.getChannels(server.id)
-                    sessionStorage.setItem('sshhhhhxc_prev_server', server.name)
+                    // this.props.getChannels(server.id)
                     setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
                     check++;
-                    break;
-                }
-            }
-            if (check === 0) {
-
-                for (let server of this.props.servers.serversAsMember) {
-                    if (server.name === serverName) {
-
-                        this.props.getChannels(server.id)
-                        sessionStorage.setItem('sshhhhhxc_prev_server', server.name)
-                        setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                        check++;
-                    }
-                }
-            }
-
-            let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
-            if (prev_channel !== channelName) {
-
-                for (let channel of this.props.channels.channels) {
-                    if (channel.name === channelName) {
-                        sessionStorage.setItem('sshhhhhxc_prev_channel', channel.id)
-                        setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
-
-                    }
+                    break
                 }
 
             }
 
+            for (let channel of this.props.channels.channels) {
+                if (channel.name === channelName) {
+                    setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+                    check++;
+                    break
+                }
+            }
 
         }
         return true
@@ -62,13 +53,14 @@ class WorkSpace extends Component {
     }
 
     render() {
-        return (
+        return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3])) ? (
 
             <div>
                 <WorkSpaceNav />
                 <ChannelsNav server_id={this.state.server_id} />
-                {this.state.channel_id && this.state.server_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <div></div>}
-            </div>)
+                <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} />
+            </div>
+        ) : <></>
 
     }
 }

@@ -28,7 +28,7 @@ export default function (state = initState, action) {
         case CHANGE_CURRENT_CHANNEL:
             return {
                 ...state,
-                currentChannel: action.currentChannel
+                currentChannel: action.channel_id
             }
         default: return state;
     }
