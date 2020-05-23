@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { sendPost, getPosts } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
-
+import { message } from './messageTemplate'
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -14,7 +14,6 @@ class Messages extends Component {
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-        console.log(this.state)
     }
     onSend(e) {
         e.preventDefault();
@@ -30,7 +29,7 @@ class Messages extends Component {
     render() {
         return (
             <div>
-
+                {this.props.channel.posts.map((post, i) => (message(post)))}
                 <form>
                     <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
