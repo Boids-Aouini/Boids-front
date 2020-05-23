@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../../actions/serverActions';
-import { retreiveServerAsLeader, retreiveServerAsMember } from '../../../actions/serverActions';
+import { retreiveServerAsLeader, retreiveServerAsMember, current_server } from '../../../actions/serverActions';
 import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../utils/urlReference';
 import { logoutAction } from '../../../actions/authActions';
@@ -46,7 +46,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
-                                <Link class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={this.props.current_server(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
                                         <p>{server.name}</p>
@@ -58,7 +58,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsMember.map((server, i) => {
                         return (
                             <div class="serverAsMember" key={i}>
-                                <Link class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={this.props.current_server(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversMember">
                                         <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
                                         <p>{server.name}</p>
@@ -81,4 +81,4 @@ const mapPropsToState = state => ({ // add to props redux's servers state
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, logoutAction, retreiveServerAsMember })(Servers); // add actions to servers comp props
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, current_server, logoutAction, retreiveServerAsMember })(Servers); // add actions to servers comp props
