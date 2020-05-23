@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { sendPost, getPosts } from '../../../../actions/channelActions';
+import { extractReference } from '../../../utils/urlReference';
 
 class Messages extends Component {
     constructor(props) {
@@ -26,9 +27,26 @@ class Messages extends Component {
     componentWillMount() {
         this.props.getPosts(this.state.server_id, this.state.channel_id)
     }
+    checkChange(channelName) {
+
+        let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
+        if (prev_channel !== channelName) {
+
+            for (let channel of this.props.channels.channels) {
+                if (channel.name === channelName) {
+                    this.props.getPosts(this.state.server_id, channel.id)
+                    sessionStorage.setItem('sshhhhhxc_prev_channel', channel.id)
+                    setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+
+                }
+            }
+
+        }
+        return true
+    }
 
     render() {
-        return (
+        return this.checkChange(extractReference(window.location.pathname.split('/')[3])) ? (
             <div>
 
                 <form>
@@ -36,7 +54,7 @@ class Messages extends Component {
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </form>
             </div>
-        )
+        ) : <div></div>
     }
 }
 
