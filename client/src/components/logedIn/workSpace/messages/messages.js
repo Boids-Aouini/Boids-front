@@ -8,7 +8,7 @@ class Messages extends Component {
         super(props);
         this.state = {
             message: "",
-            channel_id: this.props.channel_id,
+            channel_id: this.props.channel.currentChannel,
             server_id: this.props.servers.currentServer
         }
     }

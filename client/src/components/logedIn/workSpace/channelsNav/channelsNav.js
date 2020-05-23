@@ -6,9 +6,40 @@ import { referenceUrl } from '../../../utils/urlReference';
 import { shortChannelName } from '../../../utils/shortName';
 import { currentChannel, getPosts } from '../../../../actions/channelActions'
 class ChannelsNav extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            server_id: this.props.servers.currentServer
+        }
+    }
     onChangeChannel(channel_id) {
         this.props.currentChannel(channel_id)
-        this.props.getPosts(this.props.servers.currentServer, channel_id)
+        this.props.getPosts(this.state.server_id, channel_id)
+    }
+    componentWillMount() {
+        let check = 0;
+        for (let server of this.props.servers.serversAsLeader) {
+            if (server.name === serverName) {
+
+                this.props.getChannels(server.id)
+                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                check++;
+                break;
+                // console.log(server)
+            }
+        }
+        if (check === 0) {
+            for (let server of this.props.servers.serversAsMember) {
+                if (server.name === serverName) {
+
+                    this.props.getChannels(server.id) =
+                        setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                    check++;
+                    // console.log(server)
+                }
+
+            }
+        }
     }
     render() {
         return (
