@@ -33,8 +33,8 @@ class Messages extends Component {
                     <>
                         <hr></hr>
                         <div key={i}>
-                            {name(post).html()}
-                            {message(post).html()}
+                            <b>{name(post)}</b >
+                            <p>{message(post)}</p>
                         </div>
                     </>
                 ))}
