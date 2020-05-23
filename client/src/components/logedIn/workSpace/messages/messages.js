@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { sendPost, getPosts } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
-import { message } from './messageTemplate'
+import { message, name } from './messageTemplates'
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +29,15 @@ class Messages extends Component {
     render() {
         return (
             <div>
-                {this.props.channel.posts.map((post, i) => (message(post)))}
+                {this.props.channel.posts.map((post, i) => (
+                    <>
+                        <hr></hr>
+                        <div key={i}>
+                            {name(post).html()}
+                            {message(post).html()}
+                        </div>
+                    </>
+                ))}
                 <form>
                     <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
