@@ -29,24 +29,25 @@ class Messages extends Component {
     }
     checkChange(channelName) {
 
+
+        return true
+    }
+    componentDidUpdate() {
+        let channelName = extractReference(window.location.pathname.split('/')[3])
         let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
         if (prev_channel !== channelName) {
 
             for (let channel of this.props.channels.channels) {
                 if (channel.name === channelName) {
                     this.props.getPosts(this.state.server_id, channel.id)
-                    sessionStorage.setItem('sshhhhhxc_prev_channel', channel.id)
-                    setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
 
                 }
             }
-
         }
-        return true
     }
 
     render() {
-        return this.checkChange(extractReference(window.location.pathname.split('/')[3])) ? (
+        return (
             <div>
 
                 <form>
@@ -54,7 +55,7 @@ class Messages extends Component {
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </form>
             </div>
-        ) : <div></div>
+        )
     }
 }
 

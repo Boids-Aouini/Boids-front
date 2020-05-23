@@ -1,4 +1,4 @@
-import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER, RETREIVE_SERVER_AS_MEMBER } from './type';
+import { CREATE_SERVER, RETREIVE_SERVER_AS_LEADER, RETREIVE_SERVER_AS_MEMBER, CHANGE_CURRENT_SERVER } from './type';
 import axios from "axios";
 
 export const createServer = (newServer) => dispatch => {
@@ -54,4 +54,11 @@ export const retreiveServerAsMember = () => dispatch => {
         .catch(err => {
             console.log(err)
         })
+}
+
+export const current_server = currentServer => dispatch => {
+    dispatch({
+        type: CHANGE_CURRENT_SERVER,
+        currentServer
+    })
 }

@@ -15,7 +15,7 @@ class WorkSpace extends Component {
             server_name: window.location.pathname.split('/')[2]
         }
     }
-    getIds(serverName) {
+    getIds(serverName, channelName) {
         let prev_server = sessionStorage.getItem('sshhhhhxc_prev_server');
         let check = 0;
         if (prev_server !== serverName) {
@@ -44,6 +44,19 @@ class WorkSpace extends Component {
                 }
             }
 
+            let prev_channel = sessionStorage.getItem('sshhhhhxc_prev_channel')
+            if (prev_channel !== channelName) {
+
+                for (let channel of this.props.channels.channels) {
+                    if (channel.name === channelName) {
+                        sessionStorage.setItem('sshhhhhxc_prev_channel', channel.id)
+                        setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
+
+                    }
+                }
+
+            }
+
 
         }
         return true
@@ -51,14 +64,14 @@ class WorkSpace extends Component {
     }
 
     render() {
-        return this.getIds(extractReference(window.location.pathname.split('/')[2]))
+        return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3]))
             // || (!this.state.channel_id && this.state.server_id ? this.props.getChannels(this.state.server_id) : null)
             ? (
 
                 <div>
                     <WorkSpaceNav />
                     <ChannelsNav server_id={this.state.server_id} />
-                    {this.state.server_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <div></div>}
+                    {this.state.channel_id && this.state.server_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <div></div>}
                 </div>) :
             <div></div>
 
