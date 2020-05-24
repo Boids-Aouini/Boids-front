@@ -81,3 +81,10 @@ export const currentChannel = channel_id => dispatch => {
         channel_id
     })
 }
+
+export const addPost = post => dispatch => {
+    dispatch({
+        type: ADD_POST,
+        post
+    })
+}
