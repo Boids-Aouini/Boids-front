@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL } from '../actions/type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL, ADD_POST } from '../actions/type';
 
 let initState = {
     channels: [],
@@ -29,6 +29,11 @@ export default function (state = initState, action) {
             return {
                 ...state,
                 currentChannel: action.channel_id
+            }
+        case ADD_POST:
+            return {
+                ...state,
+                posts: [...state.posts, action.post]
             }
         default: return state;
     }
