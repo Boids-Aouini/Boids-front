@@ -6,7 +6,7 @@ import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
 import './messages.css';
 import { animateScroll } from 'react-scroll';
-import { DropDown } from 'react-bootstap';
+import { Dropdown } from 'react-bootstrap';
 
 class Messages extends Component {
     constructor(props) {

@@ -5,6 +5,10 @@
     flex-direction: row;
 }
 
+#channelsNav .iconify {
+    padding: 33px;
+}
+
 .channelLink{
     margin-left: 20px;
     display: grid;
