@@ -24,7 +24,7 @@ class Messages extends Component {
             let newMessage = this.state;
             newMessage.server_id = this.props.servers.currentServer;
             newMessage.channel_id = this.props.channel.currentChannel;
-            newMessage.token = localStorage.getItem('_____auth_______________token');
+            newMessage.token = this.props.auth.openedAcc;
             let currentDate = new Date();
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             socket.emit('sendPost', newMessage)
@@ -58,6 +58,7 @@ class Messages extends Component {
 
 let mapPropsToState = state => ({
     channel: state.channels,
-    servers: state.servers
+    servers: state.servers,
+    auth: state.auth
 })
 export default connect(mapPropsToState, { sendPost, getPosts })(Messages)
