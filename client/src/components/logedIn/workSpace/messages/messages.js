@@ -40,12 +40,16 @@ class Messages extends Component {
 
             }
         })
+        this.triggerScroll();
+    }
+    triggerScroll() {
+        this.cont.scrollTop = this.cont.scrollHeight;
     }
 
     render() {
         return (
             <div id="messagesComp">
-                <div id="allMessages">
+                <div id="allMessages" ref={node => { this.cont = node }}>
                     {this.props.channel.posts.map((post, i) => (
                         <>
                             <hr></hr>
