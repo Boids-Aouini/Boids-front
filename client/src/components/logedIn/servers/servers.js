@@ -46,13 +46,13 @@ class Servers extends Component {
     }
     render() {
         return (
-            <div data-testid="serversComp" id="servers">
+            <div data-testid="serversComp" id="serversComp">
 
                 <span data-testid="makeNewServer" id="makeNewServer" onClick={this.onNewServer.bind(this)}>
 
                     <span class="iconify" data-icon="mdi:server-plus" data-inline="false"></span>
                 </span>
-                <div data-testid="serversAsLeader" id="serversAsALeader">
+                <div data-testid="servers" id="servers">
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
