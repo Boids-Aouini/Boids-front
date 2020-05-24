@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { sendPost, getPosts } from '../../../../actions/channelActions';
+import { sendPost, getPosts, addPost } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
 import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
@@ -28,8 +28,17 @@ class Messages extends Component {
             let currentDate = new Date();
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             socket.emit('sendPost', newMessage)
-            this.props.sendPost(newMessage)
+            // this.props.sendPost(newMessage)
         }
+    }
+    componentDidMount() {
+        socket.on('sendPost', newPost => {
+            // console.log(newPost)
+            if (newPost.server_id === this.props.servers.currentServer &&
+                newPost.channel_id === this.props.channel.currentChannel) {
+                this.props.addPost(newPost)
+            }
+        })
     }
 
     render() {
@@ -61,4 +70,4 @@ let mapPropsToState = state => ({
     servers: state.servers,
     auth: state.auth
 })
-export default connect(mapPropsToState, { sendPost, getPosts })(Messages)
+export default connect(mapPropsToState, { sendPost, getPosts, addPost })(Messages)
