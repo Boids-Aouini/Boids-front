@@ -17,6 +17,9 @@ import { retreiveServerAsLeader } from './actions/serverActions';
 import AddNewMember from './components/logedIn/addNewMember/addNewMember';
 import WorkSpace from './components/logedIn/workSpace/workSpace';
 import socket from './components/utils/socket';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 class App extends Component {
   constructor(props) {
     super(props);

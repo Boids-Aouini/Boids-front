@@ -6,6 +6,7 @@ import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
 import './messages.css';
 import { animateScroll } from 'react-scroll';
+import { DropDown } from 'react-bootstap';
 
 class Messages extends Component {
     constructor(props) {
@@ -54,9 +55,22 @@ class Messages extends Component {
                     {this.props.channel.posts.map((post, i) => (
                         <>
                             <br></br>
-                            <div key={i}>
-                                <b>{name(post)}</b >
-                                <p>{message(post)}</p>
+                            <div id="message">
+                                <div key={i}>
+                                    <b>{name(post)}</b >
+                                    <p>{message(post)}</p>
+                                </div>
+
+                                <Dropdown>
+                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                        option
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item >Update</Dropdown.Item>
+                                        <Dropdown.Item >Delete</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </div>
                         </>
                     ))}
