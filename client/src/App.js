@@ -16,9 +16,12 @@ import Servers from './components/logedIn/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
 import AddNewMember from './components/logedIn/addNewMember/addNewMember';
 import WorkSpace from './components/logedIn/workSpace/workSpace';
-
+import socket from './components/utils/socket';
 class App extends Component {
-
+  constructor(props) {
+    super(props);
+    socket
+  }
 
   render() {
 
