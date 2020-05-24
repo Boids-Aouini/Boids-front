@@ -78,6 +78,6 @@ export const getPosts = (server_id, channel_id) => dispatch => {
 export const currentChannel = channel_id => dispatch => {
     dispatch({
         type: CHANGE_CURRENT_CHANNEL,
-        currentChannel: channel_id
+        channel_id
     })
 }
