@@ -51,16 +51,16 @@ class WorkSpace extends Component {
         return check === 2
 
     }
-
+    // this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3])) ? 
     render() {
-        return this.getIds(extractReference(window.location.pathname.split('/')[2]), extractReference(window.location.pathname.split('/')[3])) ? (
+        return (
 
             <div>
                 <WorkSpaceNav />
                 <ChannelsNav server_id={this.state.server_id} />
                 {this.props.servers.currentServer && this.props.channels.currentChannel ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <></>}
             </div>
-        ) : <></>
+        )
 
     }
 }

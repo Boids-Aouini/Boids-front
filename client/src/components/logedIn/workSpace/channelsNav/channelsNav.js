@@ -15,9 +15,9 @@ class ChannelsNav extends Component {
     }
     onChangeChannel(channel_id) {
         this.props.currentChannel(channel_id)
-        this.props.getPosts(this.state.server_id, channel_id)
+        this.props.getPosts(this.props.servers.currentServer, channel_id)
     }
-    componentWillMount() {
+    componentDidMount() {
         let check = 0;
         let serverName = extractReference(window.location.pathname.split('/')[3])
         for (let server of this.props.servers.serversAsLeader) {
