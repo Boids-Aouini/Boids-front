@@ -58,7 +58,7 @@ class WorkSpace extends Component {
             <div>
                 <WorkSpaceNav />
                 <ChannelsNav server_id={this.state.server_id} />
-                {this.state.server_id && this.state.channel_id ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <></>}
+                {this.props.servers.currentServer && this.props.channels.currentChannel ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <></>}
             </div>
         ) : <></>
 
