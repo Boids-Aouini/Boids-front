@@ -36,7 +36,6 @@ class Messages extends Component {
         socket.on('sendPost', newPost => {
             if (newPost.server_id === this.props.servers.currentServer &&
                 newPost.channel_id === this.props.channel.currentChannel) {
-                console.log('it works')
                 this.props.addPost(newPost)
 
             }

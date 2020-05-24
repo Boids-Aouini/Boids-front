@@ -47,7 +47,7 @@ class App extends Component {
                 <Login></Login>
               </Route>
               <Route exact path="/boidsServer/:serverName/:channel">
-                <WorkSpace />
+                {this.props.auth.openedAcc ? (<WorkSpace />) : <Redirect to="/" />}
               </Route>
               <Route exact path='/options/boidsServer/:serverName/addMember'>
                 {this.props.auth.openedAcc ? (<AddNewMember />) : <Redirect to="/" />}
