@@ -3,7 +3,7 @@ import './servers.css';
 import { connect } from 'react-redux';
 import { createServer } from '../../../actions/serverActions';
 import { retreiveServerAsLeader, retreiveServerAsMember, current_server } from '../../../actions/serverActions';
-import { getChannels, getPosts } from '../../../actions/channelActions'
+import { getChannels, getPosts, currentChannel } from '../../../actions/channelActions'
 import { Link } from 'react-router-dom';
 import { referenceUrl } from '../../utils/urlReference';
 import { logoutAction } from '../../../actions/authActions';
@@ -40,6 +40,7 @@ class Servers extends Component {
         this.props.current_server(server_id)
         this.props.getChannels(server_id)
             .then(landingChannel => {
+                this.props.currentChannel(landingChannel.channel_id)
                 this.props.getPosts(landingChannel.server_id, landingChannel.channel_id)
             })
     }
@@ -58,7 +59,7 @@ class Servers extends Component {
                                 <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
-                                        <p>{server.name}</p>
+                                        <p class="serverName">{server.name}</p>
                                     </div>
                                 </Link>
                             </div>
@@ -90,4 +91,4 @@ const mapPropsToState = state => ({ // add to props redux's servers state
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, getChannels, current_server, logoutAction, retreiveServerAsMember, getPosts })(Servers); // add actions to servers comp props
+export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, getChannels, current_server, logoutAction, retreiveServerAsMember, getPosts, currentChannel })(Servers); // add actions to servers comp props
