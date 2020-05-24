@@ -24,6 +24,7 @@ class Messages extends Component {
             let newMessage = this.state;
             newMessage.server_id = this.props.servers.currentServer;
             newMessage.channel_id = this.props.channel.currentChannel;
+            newMessage.token = localStorage.getItem('_____auth_______________token');
             let currentDate = new Date();
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             socket.emit('sendPost', newMessage)
