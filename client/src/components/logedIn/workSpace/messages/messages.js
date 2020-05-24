@@ -7,9 +7,7 @@ class Messages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: "",
-            channel_id: this.props.channel_id,
-            server_id: this.props.server_id
+            message: ""
         }
     }
     onChange(e) {
@@ -17,14 +15,14 @@ class Messages extends Component {
     }
     onSend(e) {
         e.preventDefault();
-        console.log(this.state)
-        // if (this.state.message.length > 0) {
-        //     let newMessage = this.state;
-        //     let currentDate = new Date();
-        //     newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
-        //     this.props.sendPost(newMessage)
-        // }
-        console.log(this.props.servers.currentServer, this.props.channel.currentChannel)
+        if (this.state.message.length > 0) {
+            let newMessage = this.state;
+            newMessage.server_id = this.props.servers.currentServer;
+            newMessage.channel_id = this.props.channel.currentChannel;
+            let currentDate = new Date();
+            newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
+            this.props.sendPost(newMessage)
+        }
     }
 
     render() {
