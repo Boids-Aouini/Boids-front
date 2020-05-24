@@ -29,14 +29,19 @@ class Messages extends Component {
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             socket.emit('sendPost', newMessage)
             // this.props.sendPost(newMessage)
+            console.log('emit', newMessage)
         }
     }
     componentDidMount() {
         socket.on('sendPost', newPost => {
-            // console.log(newPost)
+            console.log('on', newPost)
+            console.log(this.props.servers.currentServer, newPost.server_id)
+            console.log(this.props.channel.currentChannel, newPost.channel_id)
             if (newPost.server_id === this.props.servers.currentServer &&
                 newPost.channel_id === this.props.channel.currentChannel) {
+                console.log('it works')
                 this.props.addPost(newPost)
+
             }
         })
     }
