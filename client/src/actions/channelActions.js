@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL } from './type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL, ADD_POST } from './type';
 import axios from 'axios';
 
 export const getChannels = (server_id) => dispatch => {
