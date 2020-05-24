@@ -44,9 +44,7 @@ class Messages extends Component {
         this.triggerScroll();
     }
     triggerScroll() {
-        animateScroll.scrollToBottom({
-            containerId: "allMessages"
-        });
+        animateScroll.scrollTo(100)
     }
 
     render() {
