@@ -44,7 +44,7 @@ class Messages extends Component {
         this.triggerScroll();
     }
     triggerScroll() {
-        animateScroll.scrollTo(100)
+        animateScroll.scrollToBottom()
     }
 
     render() {
@@ -53,7 +53,7 @@ class Messages extends Component {
                 <div id="allMessages" ref={node => { this.cont = node }}>
                     {this.props.channel.posts.map((post, i) => (
                         <>
-                            <hr></hr>
+                            <br></br>
                             <div key={i}>
                                 <b>{name(post)}</b >
                                 <p>{message(post)}</p>
