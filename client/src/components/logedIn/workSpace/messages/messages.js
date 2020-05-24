@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { sendPost, getPosts } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
-import { message, name } from './messageTemplates'
+import { message, name } from './messageTemplates';
+import './messages.css';
+
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -27,17 +29,20 @@ class Messages extends Component {
 
     render() {
         return (
-            <div>
-                {this.props.channel.posts.map((post, i) => (
-                    <>
-                        <hr></hr>
-                        <div key={i}>
-                            <b>{name(post)}</b >
-                            <p>{message(post)}</p>
-                        </div>
-                    </>
-                ))}
-                <form>
+            <div id="messagesComp">
+                <div id="allMessages">
+                    {this.props.channel.posts.map((post, i) => (
+                        <>
+                            <hr></hr>
+                            <div key={i}>
+                                <b>{name(post)}</b >
+                                <p>{message(post)}</p>
+                            </div>
+                        </>
+                    ))}
+
+                </div>
+                <form className="sendMsgForm">
                     <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </form>
