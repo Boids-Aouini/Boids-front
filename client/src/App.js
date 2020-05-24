@@ -20,11 +20,10 @@ import socket from './components/utils/socket';
 class App extends Component {
   constructor(props) {
     super(props);
-    socket
+
   }
 
   render() {
-
     return (
 
       <Router>

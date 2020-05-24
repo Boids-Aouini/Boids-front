@@ -17,6 +17,7 @@ export const GET_CHANNELS_SERVER = 'GET_CHANNELS_SERVER';
 export const MAKE_CHANNEL = 'MAKE_CHANNEL';
 export const SEND_POST = ' SEND_POST'
 export const GET_POSTS = 'GET_POSTS'
+export const ADD_POST = 'ADD_POST'
 export const CHANGE_CURRENT_CHANNEL = 'CHANGE_CURRENT_CHANNEL'
 // messages types
 

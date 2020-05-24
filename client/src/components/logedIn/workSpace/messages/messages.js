@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { sendPost, getPosts } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
 import { message, name } from './messageTemplates';
-import socketIOClient from 'socket.io-client'
+import socket from '../../../utils/socket';
 import './messages.css';
 
 class Messages extends Component {
@@ -12,7 +12,6 @@ class Messages extends Component {
         this.state = {
             message: ""
         }
-        sock
 
     }
 
