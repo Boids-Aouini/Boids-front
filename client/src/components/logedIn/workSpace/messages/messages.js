@@ -26,6 +26,7 @@ class Messages extends Component {
             newMessage.channel_id = this.props.channel.currentChannel;
             let currentDate = new Date();
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
+            socket.emit('sendPost', newMessage)
             this.props.sendPost(newMessage)
         }
     }
