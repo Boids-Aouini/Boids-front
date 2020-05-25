@@ -7,7 +7,7 @@ import socket from '../../../utils/socket';
 import './messages.css';
 import { Dropdown } from 'react-bootstrap';
 import jwt from 'jsonwebtoken'
-import tokenSecret from '../../../utils/token';
+import { tokenSecret } from '../../../utils/token';
 
 class Messages extends Component {
     constructor(props) {
