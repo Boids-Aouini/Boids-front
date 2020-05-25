@@ -67,24 +67,23 @@ class Messages extends Component {
         let verifiedUser = jwt.verify(token, tokenSecret)
         return this.props.channel.posts.map((post, i) => (
 
-            <>
-                <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
-                    <div key={i}>
-                        <b>{name(post)}</b >
-                        <p>{message(post)}</p>
-                    </div>
-
-                    {verifiedUser.id === post.user_id ? (<Dropdown id="options">
-                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                        </Dropdown.Toggle>
-
-                        <Dropdown.Menu>
-                            <Dropdown.Item >Update</Dropdown.Item>
-                            <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>) : <></>}
+            <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
+                <div key={i}>
+                    <b>{name(post)}</b >
+                    <p>{message(post)}</p>
                 </div>
-            </>
+
+                {verifiedUser.id === post.user_id ? (<Dropdown id="options">
+                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                        <Dropdown.Item >Update</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>) : <></>}
+            </div>
+
         ))
     }
 
