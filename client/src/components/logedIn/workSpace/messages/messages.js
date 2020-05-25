@@ -74,7 +74,7 @@ class Messages extends Component {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item >Update</Dropdown.Item>
-                                        <Dropdown.Item >Delete</Dropdown.Item>
+                                        <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
