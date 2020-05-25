@@ -59,7 +59,7 @@ class Servers extends Component {
                                 <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
-                                        <p class="serverName">{server.name}</p>
+                                        <p className="serverName">{server.name}</p>
                                     </div>
                                 </Link>
                             </div>
@@ -71,7 +71,7 @@ class Servers extends Component {
                                 <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversMember">
                                         <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
-                                        <p>{server.name}</p>
+                                        <p className="serverName">{server.name}</p>
                                     </div>
                                 </Link>
                             </div>
