@@ -6,7 +6,7 @@ import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
 import './messages.css';
 import { Dropdown } from 'react-bootstrap';
-
+import jwt from 'jsonwebtoken'
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -59,6 +59,10 @@ class Messages extends Component {
             channel_id: this.props.channel.currentChannel
         }
         socket.emit('deletePost', msgData)
+    }
+    renderPosts() {
+        let token = this.props.auth.openedAcc;
+        // let verifiedUser = jwt.verify(token, process.env.TOKEN_SECRET_KEY)
     }
 
     render() {
