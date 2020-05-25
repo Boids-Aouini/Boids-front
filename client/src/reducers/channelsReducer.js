@@ -39,7 +39,7 @@ export default function (state = initState, action) {
             let posts = state.posts;
             for (let i = 0; i < posts.length; i++) {
                 if (posts[i].id === action.post_id) {
-                    posts.splice(i + 1, 1);
+                    posts.splice(i, 1);
                     break;
                 }
             }
