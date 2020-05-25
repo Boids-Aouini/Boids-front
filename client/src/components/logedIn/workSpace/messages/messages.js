@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { sendPost, getPosts, addPost } from '../../../../actions/channelActions';
+import { sendPost, getPosts, addPost, deletePost } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
 import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
@@ -44,7 +44,7 @@ class Messages extends Component {
         socket.on('deletePost', (deletedPost) => {
             if (deletedPost.server_id === this.props.servers.currentServer &&
                 deletedPost.channel_id === this.props.channel.currentChannel) {
-                console.log(deletedPost)
+                this.props.deletePost(deletedPost.id);
             }
         })
         this.triggerScroll();
@@ -102,4 +102,4 @@ let mapPropsToState = state => ({
     servers: state.servers,
     auth: state.auth
 })
-export default connect(mapPropsToState, { sendPost, getPosts, addPost })(Messages)
+export default connect(mapPropsToState, { sendPost, getPosts, addPost, deletePost })(Messages)
