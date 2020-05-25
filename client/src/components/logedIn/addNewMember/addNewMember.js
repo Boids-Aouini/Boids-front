@@ -11,12 +11,10 @@ class AddNewMember extends Component {
             role: '',
             email: '',
             message: '',
-            server_id: null,
             addedMember: false
         }
         this.setServerState = this.setServerState.bind(this);
         this.validPage = this.validPage.bind(this);
-        this.onAddMember = this.onAddMember.bind(this)
     }
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -56,14 +54,17 @@ class AddNewMember extends Component {
             else if (this.state.message === '') alert('message is empty')
         } else {
             let newMember = this.state;
-            delete newMember.addedMember
+            delete newMember.addedMember;
+            newMember.server_id = this.props.servers.currentServer;
             this.props.addMember(newMember) //make request to add new member to server
-
+                .then(() => {
+                    this.onAddMember()
+                })
 
         }
     }
     render() {
-        return !this.addedMember ? (this.setServerState(this.validPage(extractReference(window.location.pathname.split('/')[3]), this.props.servers.serversAsLeader)) ? (
+        return !this.addedMember ? (
             <div>
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
@@ -71,8 +72,7 @@ class AddNewMember extends Component {
                     <textarea onChange={this.onChange.bind(this)} placeholder="Message" name="message"></textarea><br></br>
                     <button onClick={this.onAdd.bind(this)}>Add Member</button>
                 </form>
-            </div>)
-            : (<Redirect to="/" />)) : (<Redirect to={'/boidsServer/' + window.location.pathname.split('/')[3] + '/Announcement'} />)
+            </div>) : (<Redirect to={'/boidsServer/' + window.location.pathname.split('/')[3] + '/Announcement'} />)
     }
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
