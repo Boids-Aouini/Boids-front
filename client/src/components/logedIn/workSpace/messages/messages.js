@@ -44,7 +44,7 @@ class Messages extends Component {
         socket.on('deletePost', (deletedPost) => {
             if (deletedPost.server_id === this.props.servers.currentServer &&
                 deletedPost.channel_id === this.props.channel.currentChannel) {
-
+                console.log(deletedPost)
             }
         })
         this.triggerScroll();
