@@ -5,7 +5,6 @@ import { extractReference } from '../../../utils/urlReference';
 import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
 import './messages.css';
-import { animateScroll } from 'react-scroll';
 import { Dropdown } from 'react-bootstrap';
 
 class Messages extends Component {
@@ -45,7 +44,7 @@ class Messages extends Component {
         this.triggerScroll();
     }
     triggerScroll() {
-        animateScroll.scrollToBottom()
+        this.cont.scrollTop = this.cont.scrollHeight()
     }
 
     render() {
