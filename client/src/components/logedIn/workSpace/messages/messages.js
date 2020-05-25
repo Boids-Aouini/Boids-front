@@ -44,7 +44,7 @@ class Messages extends Component {
         this.triggerScroll();
     }
     triggerScroll() {
-        this.cont.scrollTop = this.cont.scrollHeight()
+        this.cont.scrollTop = this.cont.scrollHeight
     }
 
     render() {

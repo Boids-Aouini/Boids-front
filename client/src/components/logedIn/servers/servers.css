@@ -13,7 +13,7 @@
 
 #makeNewServer{
     color: thistle;
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 /* .serversLeader{
@@ -22,9 +22,9 @@
 
 .serversLeader .iconify{
     color: darkturquoise;
-    width: 40px;
-    height: 40px;
-    margin-left: 20px;
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
 }
 
 /* .serversMember{
@@ -33,9 +33,9 @@
 
 .serversMember .iconify{
     color: rgb(224, 93, 17);
-    width: 40px;
-    height: 40px;
-    margin-left: 33px;
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
 }
 
 .serverAsMember{
@@ -52,11 +52,11 @@
     
     border: 2px solid violet;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    width: 70px;
+    height: 70px;
 
 }
 
 #logout{
-    margin-left: 20px;
+    margin-left: 15px;
 }
