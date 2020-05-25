@@ -54,13 +54,13 @@ class Messages extends Component {
                     {this.props.channel.posts.map((post, i) => (
 
                         <>
-                            <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : 'white' }}>
+                            <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
                                 <div key={i}>
                                     <b>{name(post)}</b >
                                     <p>{message(post)}</p>
                                 </div>
 
-                                <Dropdown>
+                                <Dropdown id="options">
                                     <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                                     </Dropdown.Toggle>
 
@@ -70,7 +70,6 @@ class Messages extends Component {
                                     </Dropdown.Menu>
                                 </Dropdown>
                             </div>
-                            <br></br>
                         </>
                     ))}
 
