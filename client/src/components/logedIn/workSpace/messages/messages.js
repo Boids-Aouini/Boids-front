@@ -7,6 +7,8 @@ import socket from '../../../utils/socket';
 import './messages.css';
 import { Dropdown } from 'react-bootstrap';
 import jwt from 'jsonwebtoken'
+import tokenSecret from '../../../utils/token';
+
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -62,34 +64,35 @@ class Messages extends Component {
     }
     renderPosts() {
         let token = this.props.auth.openedAcc;
-        // let verifiedUser = jwt.verify(token, process.env.TOKEN_SECRET_KEY)
+        let verifiedUser = jwt.verify(token, tokenSecret)
+        return this.props.channel.posts.map((post, i) => (
+
+            <>
+                <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
+                    <div key={i}>
+                        <b>{name(post)}</b >
+                        <p>{message(post)}</p>
+                    </div>
+
+                    {verifiedUser.id === post.user_id ? (<Dropdown id="options">
+                        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item >Update</Dropdown.Item>
+                            <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>) : <></>}
+                </div>
+            </>
+        ))
     }
 
     render() {
         return (
             <div id="messagesComp">
                 <div id="allMessages" ref={node => { this.cont = node }}>
-                    {this.props.channel.posts.map((post, i) => (
-
-                        <>
-                            <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
-                                <div key={i}>
-                                    <b>{name(post)}</b >
-                                    <p>{message(post)}</p>
-                                </div>
-
-                                <Dropdown id="options">
-                                    <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                        <Dropdown.Item >Update</Dropdown.Item>
-                                        <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
-                                    </Dropdown.Menu>
-                                </Dropdown>
-                            </div>
-                        </>
-                    ))}
+                    {this.renderPosts()}
 
                 </div>
                 <form className="sendMsgForm">

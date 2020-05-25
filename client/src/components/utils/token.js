@@ -1,1 +1,1 @@
-export const token = 'qsdfqsdf_______shhhhhhhsssssssssssssssssssssssssstoken'
+export const tokenSecret = 'qsdfqsdf_______shhhhhhhsssssssssssssssssssssssssstoken'
