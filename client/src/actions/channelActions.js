@@ -89,9 +89,9 @@ export const addPost = post => dispatch => {
     })
 }
 
-export const deletePost = post => dispatch => {
+export const deletePost = post_id => dispatch => {
     dispatch({
-        post,
+        post_id,
         type: DELETE_POST
     })
 }

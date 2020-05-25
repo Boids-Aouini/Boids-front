@@ -1,4 +1,4 @@
-import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL, ADD_POST } from '../actions/type';
+import { GET_CHANNELS_SERVER, MAKE_CHANNEL, SEND_POST, GET_POSTS, CHANGE_CURRENT_CHANNEL, ADD_POST, DELETE_POST } from '../actions/type';
 
 let initState = {
     channels: [],
@@ -35,6 +35,20 @@ export default function (state = initState, action) {
                 ...state,
                 posts: [...state.posts, action.post]
             }
+        case DELETE_POST: {
+            let posts = state.posts;
+            for (let i = 0; i < posts.length; i++) {
+                if (posts[i].id === action.post_id) {
+                    posts.splice(i, i + 1);
+                    break;
+                }
+            }
+            return {
+                ...state,
+                posts
+            }
+
+        }
         default: return state;
     }
 }
