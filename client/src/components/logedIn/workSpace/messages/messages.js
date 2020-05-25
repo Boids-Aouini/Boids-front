@@ -44,7 +44,7 @@ class Messages extends Component {
         socket.on('deletePost', (deletedPost) => {
             if (deletedPost.server_id === this.props.servers.currentServer &&
                 deletedPost.channel_id === this.props.channel.currentChannel) {
-                this.props.deletePost(deletedPost.msg_id);
+                this.props.deletePost(deletedPost.post_id);
             }
         })
         this.triggerScroll();
@@ -52,9 +52,9 @@ class Messages extends Component {
     triggerScroll() {
         this.cont.scrollTop = this.cont.scrollHeight
     }
-    deleteMessage(msg_id) {
+    deleteMessage(post_id) {
         let msgData = {
-            msg_id,
+            post_id,
             server_id: this.props.servers.currentServer,
             channel_id: this.props.channel.currentChannel
         }
