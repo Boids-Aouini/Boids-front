@@ -46,6 +46,14 @@ class Messages extends Component {
     triggerScroll() {
         this.cont.scrollTop = this.cont.scrollHeight
     }
+    deleteMessage(msg_id) {
+        let msgData = {
+            msg_id,
+            server_id: this.props.servers.currentServer,
+            channel_id: this.props.channel.currentChannel
+        }
+        socket.emit('deletePost', msgData)
+    }
 
     render() {
         return (
