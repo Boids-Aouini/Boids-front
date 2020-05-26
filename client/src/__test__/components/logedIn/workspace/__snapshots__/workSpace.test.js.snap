@@ -3,6 +3,7 @@
 exports[`<WorkSpace /> render() render component 1`] = `
 <WorkSpace
   getChannels={[Function]}
+  getPosts={[Function]}
   store={
     Object {
       "clearActions": [Function],

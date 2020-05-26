@@ -58,7 +58,7 @@ class AddNewMember extends Component {
             newMember.server_id = this.props.servers.currentServer;
             this.props.addMember(newMember) //make request to add new member to server
                 .then(() => {
-                    this.onAddMember()
+                    this.setState({ addedMember: true })
                 })
 
         }

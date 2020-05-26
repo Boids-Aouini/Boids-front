@@ -32,7 +32,6 @@ class Messages extends Component {
             newMessage.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
             socket.emit('sendPost', newMessage)
             // this.props.sendPost(newMessage)
-            console.log('emit', newMessage)
         }
     }
     componentDidMount() {
@@ -44,6 +43,7 @@ class Messages extends Component {
             }
         })
         socket.on('deletePost', (deletedPost) => {
+            console.log('deletePost')
             if (deletedPost.server_id === this.props.servers.currentServer &&
                 deletedPost.channel_id === this.props.channel.currentChannel) {
                 this.props.deletePost(deletedPost.post_id);
@@ -85,6 +85,21 @@ class Messages extends Component {
             </div>
 
         ))
+    }
+    updatePost(id, post){
+        let updatedPost = prompt('Update post', post);
+        while(updatedPost === ''){
+            updatedPost = prompt('Post is empty')
+        }
+        if(updatedPost!== null){
+            let post = {
+                server_id: this.props.servers.currentServer,
+                channel_id: this.props.channel.currentChannel,
+                updatedPost,
+                post_id: id
+            }
+            socket.emit('updatePost', post)
+        }
     }
 
     render() {

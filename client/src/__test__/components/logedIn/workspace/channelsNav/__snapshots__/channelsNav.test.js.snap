@@ -2,7 +2,8 @@
 
 exports[`<ChannelsNav /> render() render component 1`] = `
 <ChannelsNav
-  dispatch={[Function]}
+  currentChannel={[Function]}
+  getPosts={[Function]}
   store={
     Object {
       "clearActions": [Function],
