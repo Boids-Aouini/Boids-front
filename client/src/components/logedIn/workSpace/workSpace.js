@@ -8,14 +8,7 @@ import { current_server } from '../../../actions/serverActions'
 import ChannelsNav from './channelsNav/channelsNav';
 import Messages from './messages/messages';
 class WorkSpace extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            channel_id: this.props.channels.currentChannel,
-            server_id: this.props.servers.currentServer,
-            server_name: window.location.pathname.split('/')[2]
-        }
-    }
+
     getIds(serverName, channelName) {
         console.log(this.props.servers.currentServer, this.props.channels.currentChannel)
         if (this.props.servers.currentServer && this.props.channels.currentChannel) return true;
@@ -74,9 +67,9 @@ class WorkSpace extends Component {
         return (
 
             <div>
-                {this.props.servers.currentServer && this.props.channels.currentChannel ? <WorkSpaceNav /> : <></>}
-                {this.props.servers.currentServer ? (<ChannelsNav server_id={this.state.server_id} />) : <></>}
-                {this.props.servers.currentServer && this.props.channels.currentChannel ? <Messages server_id={this.state.server_id} channel_id={this.state.channel_id} /> : <></>}
+                {this.props.servers.currentServer && this.props.channels.currentChannel ? (<WorkSpaceNav />) : <></>}
+                {this.props.servers.currentServer ? (<ChannelsNav />) : <></>}
+                {this.props.servers.currentServer && this.props.channels.currentChannel ? <Messages /> : <></>}
             </div>
         )
 

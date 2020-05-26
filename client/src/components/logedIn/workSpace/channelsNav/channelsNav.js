@@ -7,19 +7,16 @@ import { shortChannelName } from '../../../utils/shortName';
 import { extractReference } from '../../../utils/urlReference'
 import { currentChannel, getPosts } from '../../../../actions/channelActions'
 class ChannelsNav extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            server_id: this.props.servers.currentServer
-        }
-    }
+
     onChangeChannel(channel_id) {
         this.props.currentChannel(channel_id)
         this.props.getPosts(this.props.servers.currentServer, channel_id)
     }
     componentWillMount() {
         let channelName = extractReference(window.location.pathname.split('/')[3])
+        console.log(channelName)
         for (let channel of this.props.channels.channels) {
+            console.log(channel)
             if (channel.name === channelName) {
                 this.props.currentChannel(channel.id)
                 this.props.getPosts(this.props.servers.currentServer, channel.id)
