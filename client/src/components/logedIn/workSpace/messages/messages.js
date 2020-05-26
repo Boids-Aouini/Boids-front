@@ -51,7 +51,7 @@ class Messages extends Component {
         socket.on('updatePost', post => {
             if (post.server_id === this.props.servers.currentServer &&
                 post.channel_id === this.props.channel.currentChannel) {
-                this.props.updatePost(post.post_id, post.post)
+                this.props.updatePost(post.post_id, post.updatedPost)
             }
         })
         this.triggerScroll();

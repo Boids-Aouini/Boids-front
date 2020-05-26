@@ -35,6 +35,18 @@ class Servers extends Component {
     componentWillMount() {
         this.props.retreiveServerAsLeader(); // retreive servers the user is leader in them and add it to serversAsLeader in redux's state
         this.props.retreiveServerAsMember();
+        if (window.location.pathname.split('/')[1] === 'boidsServer') {
+            for (let server of this.props.servers.serversAsLeader) {
+                if (server.name === window.location.pathname.split('/')[2]) {
+                    this.props.current_server(server.id)
+                    this.props.getChannels(server.id)
+                    // .then(landingChannel => {
+                    //     this.props.currentChannel(landingChannel.channel_id)
+                    //     this.props.getPosts(landingChannel.server_id, landingChannel.channel_id)
+                    // })
+                }
+            }
+        }
     }
     onClickServer(server_id) {
         this.props.current_server(server_id)

@@ -3,7 +3,8 @@ import WorkSpaceNav from './workSpaceNav/workSpaceNav'
 import { connect } from 'react-redux';
 import { Link, Redirect, useLocation, useParams } from 'react-router-dom';
 import { referenceUrl, extractReference } from '../../utils/urlReference';
-import { getChannels, getPosts } from '../../../actions/channelActions';
+import { getChannels, getPosts, currentChannel } from '../../../actions/channelActions';
+import { current_server } from '../../../actions/serverActions'
 import ChannelsNav from './channelsNav/channelsNav';
 import Messages from './messages/messages';
 class WorkSpace extends Component {
@@ -16,38 +17,55 @@ class WorkSpace extends Component {
         }
     }
     getIds(serverName, channelName) {
+        console.log(this.props.servers.currentServer, this.props.channels.currentChannel)
+        if (this.props.servers.currentServer && this.props.channels.currentChannel) return true;
         let check = 0;
-        for (let server of this.props.servers.serversAsLeader) {
-            if (server.name === serverName) {
-
-                // this.props.getChannels(server.id)
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                check++;
-                break;
-            }
-        }
-        if (check === 0) {
-
-            for (let server of this.props.servers.serversAsMember) {
+        if (!this.props.servers.currentServer) {
+            for (let server of this.props.servers.serversAsLeader) {
                 if (server.name === serverName) {
 
                     // this.props.getChannels(server.id)
-                    setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
+                    this.props.currentServer(server.id)
                     check++;
-                    break
+                    break;
+                }
+            }
+            if (check === 0) {
+
+                for (let server of this.props.servers.serversAsMember) {
+                    if (server.name === serverName) {
+
+                        // this.props.getChannels(server.id)
+                        this.props.currentServer(server.id)
+                        check++;
+                        break
+                    }
+
                 }
 
             }
 
 
-        }
-        for (let channel of this.props.channels.channels) {
-            if (channel.name === channelName) {
-                setTimeout(() => { this.setState({ channel_id: channel.id }) }, 0)
-                check++;
-                break
+        } else if (this.state.server_id) { check++ }
+
+        if (!this.props.channels.currentChannel) {
+
+            for (let channel of this.props.channels.channels) {
+                if (channel.name === channelName) {
+                    this.props.currentChannel(channel.id)
+                    check++;
+                    break
+                }
+            }
+            if (check === 1) {
+                this.props.getChannels(this.props.servers.currentServer)
+                    .then(landingChannel => {
+                        this.props.currentChannel(landingChannel.channel_id)
+                        this.props.getPosts(landingChannel.server_id, landingChannel.channel_id)
+                    })
             }
         }
+
         return check === 2
 
     }
@@ -69,4 +87,4 @@ let mapPropsToState = state => ({ // setup channels and servers state to props i
     servers: state.servers
 })
 
-export default connect(mapPropsToState, { getChannels, getPosts })(WorkSpace); //  add get channels to props in workspace comp
+export default connect(mapPropsToState, { getChannels, getPosts, currentChannel, current_server })(WorkSpace); //  add get channels to props in workspace comp
