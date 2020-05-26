@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { sendPost, getPosts, addPost, deletePost } from '../../../../actions/channelActions';
+import { sendPost, getPosts, addPost, deletePost, updatePost } from '../../../../actions/channelActions';
 import { extractReference } from '../../../utils/urlReference';
 import { message, name } from './messageTemplates';
 import socket from '../../../utils/socket';
@@ -128,4 +128,4 @@ let mapPropsToState = state => ({
     servers: state.servers,
     auth: state.auth
 })
-export default connect(mapPropsToState, { sendPost, getPosts, addPost, deletePost })(Messages)
+export default connect(mapPropsToState, { sendPost, getPosts, addPost, deletePost, updatePost })(Messages)
