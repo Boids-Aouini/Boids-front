@@ -12,19 +12,7 @@ class ChannelsNav extends Component {
         this.props.currentChannel(channel_id)
         this.props.getPosts(this.props.servers.currentServer, channel_id)
     }
-    componentWillMount() {
-        let channelName = extractReference(window.location.pathname.split('/')[3])
-        console.log(channelName)
-        for (let channel of this.props.channels.channels) {
-            console.log(channel)
-            if (channel.name === channelName) {
-                this.props.currentChannel(channel.id)
-                this.props.getPosts(this.props.servers.currentServer, channel.id)
-                break;
-            }
-        }
 
-    }
     render() {
         return (
             <div id="channelsNav">

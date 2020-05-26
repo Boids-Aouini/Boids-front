@@ -59,10 +59,17 @@ class Servers extends Component {
                         if (server.name === window.location.pathname.split('/')[2]) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
-                            // .then(landingChannel => {
-                            //     this.props.currentChannel(landingChannel.channel_id)
-                            //     this.props.getPosts(landingChannel.server_id, landingChannel.channel_id)
-                            // })
+                                .then(getChannelsData => {
+                                    let channelName = extractReference(window.location.pathname.split('/')[3])
+                                    console.log(channelName)
+                                    for (let channel of getChannelsData.channels) {
+                                        if (channel.name === channelName) {
+                                            this.props.currentChannel(channel.id)
+                                            this.props.getPosts(this.props.servers.currentServer, channel.id)
+                                            break;
+                                        }
+                                    }
+                                })
                         }
 
                     }
@@ -72,9 +79,9 @@ class Servers extends Component {
     onClickServer(server_id) {
         this.props.current_server(server_id)
         this.props.getChannels(server_id)
-            .then(landingChannel => {
-                this.props.currentChannel(landingChannel.channel_id)
-                this.props.getPosts(landingChannel.server_id, landingChannel.channel_id)
+            .then(channels => {
+                this.props.currentChannel(channels.channels[0].id)
+                this.props.getPosts(channels.server_id, channels.channels[0].id)
             })
     }
     render() {
