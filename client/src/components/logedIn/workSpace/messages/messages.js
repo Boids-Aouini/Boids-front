@@ -78,7 +78,7 @@ class Messages extends Component {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item >Update</Dropdown.Item>
+                        <Dropdown.Item onClick={() => this.updatePost(post.id, post.post)}>Update</Dropdown.Item>
                         <Dropdown.Item onClick={() => this.deleteMessage(post.id)}>Delete</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>) : <></>}
@@ -86,12 +86,12 @@ class Messages extends Component {
 
         ))
     }
-    updatePost(id, post){
+    updatePost(id, post) {
         let updatedPost = prompt('Update post', post);
-        while(updatedPost === ''){
+        while (updatedPost === '') {
             updatedPost = prompt('Post is empty')
         }
-        if(updatedPost!== null){
+        if (updatedPost !== null) {
             let post = {
                 server_id: this.props.servers.currentServer,
                 channel_id: this.props.channel.currentChannel,
