@@ -86,7 +86,7 @@ class Messages extends Component {
 
         ))
     }
-    updatePost(id, post) {
+    updatePost(post_id, post) {
         let updatedPost = prompt('Update post', post);
         while (updatedPost === '') {
             updatedPost = prompt('Post is empty')
@@ -96,7 +96,7 @@ class Messages extends Component {
                 server_id: this.props.servers.currentServer,
                 channel_id: this.props.channel.currentChannel,
                 updatedPost,
-                post_id: id
+                post_id
             }
             socket.emit('updatePost', post)
         }
