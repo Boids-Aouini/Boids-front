@@ -15,12 +15,12 @@ export const getChannels = (server_id) => dispatch => {
                 server_id,
                 type: GET_CHANNELS_SERVER
             })
-            return channels[0].id
+            return channels
         })
-        .then((channel_id) => {
+        .then((channels) => {
             return {
                 type: GET_CHANNELS_SERVER,
-                channel_id,
+                channels,
                 server_id
             }
         })
