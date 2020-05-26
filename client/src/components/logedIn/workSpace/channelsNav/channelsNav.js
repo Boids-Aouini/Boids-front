@@ -17,31 +17,16 @@ class ChannelsNav extends Component {
         this.props.currentChannel(channel_id)
         this.props.getPosts(this.props.servers.currentServer, channel_id)
     }
-    componentDidMount() {
-        let check = 0;
-        let serverName = extractReference(window.location.pathname.split('/')[3])
-        for (let server of this.props.servers.serversAsLeader) {
-            if (server.name === serverName) {
-
-                this.props.getChannels(server.id)
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                check++;
+    componentWillMount() {
+        let channelName = extractReference(window.location.pathname.split('/')[3])
+        for (let channel of this.props.channels.channels) {
+            if (channel.name === channelName) {
+                this.props.currentChannel(channel.id)
+                this.props.getPosts(this.props.servers.currentServer, channel.id)
                 break;
-                // console.log(server)
             }
         }
-        if (check === 0) {
-            for (let server of this.props.servers.serversAsMember) {
-                if (server.name === serverName) {
 
-                    this.props.getChannels(server.id)
-                    setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                    check++;
-                    // console.log(server)
-                }
-
-            }
-        }
     }
     render() {
         return (
