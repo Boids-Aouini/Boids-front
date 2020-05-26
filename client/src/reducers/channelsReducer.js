@@ -49,6 +49,20 @@ export default function (state = initState, action) {
             }
 
         }
+        case UPDATE_POST: {
+            let posts = state.posts;
+            for (let i = 0; i < posts.length; i++) {
+                if (posts[i].id === action.post_id) {
+                    posts[i].post = action.post;
+                    break;
+                }
+            }
+            return {
+                ...state,
+                posts
+            }
+
+        }
         default: return state;
     }
 }
