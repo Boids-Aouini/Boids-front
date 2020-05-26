@@ -5,7 +5,7 @@ import { createServer } from '../../../actions/serverActions';
 import { retreiveServerAsLeader, retreiveServerAsMember, current_server } from '../../../actions/serverActions';
 import { getChannels, getPosts, currentChannel } from '../../../actions/channelActions'
 import { Link } from 'react-router-dom';
-import { referenceUrl } from '../../utils/urlReference';
+import { referenceUrl, extractReference } from '../../utils/urlReference';
 import { logoutAction } from '../../../actions/authActions';
 
 class Servers extends Component {
@@ -41,6 +41,17 @@ class Servers extends Component {
                         if (server.name === window.location.pathname.split('/')[2]) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
+                                .then(getChannelsData => {
+                                    let channelName = extractReference(window.location.pathname.split('/')[3])
+                                    console.log(channelName)
+                                    for (let channel of getChannelsData.channels) {
+                                        if (channel.name === channelName) {
+                                            this.props.currentChannel(channel.id)
+                                            this.props.getPosts(this.props.servers.currentServer, channel.id)
+                                            break;
+                                        }
+                                    }
+                                })
                             check++;
                             // .then(landingChannel => {
                             //     this.props.currentChannel(landingChannel.channel_id)
