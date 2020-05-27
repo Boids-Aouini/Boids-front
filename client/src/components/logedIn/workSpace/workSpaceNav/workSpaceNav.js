@@ -40,7 +40,7 @@ class WorkSpaceNav extends Component {
     }
     render() {
         return this.check(window.location.pathname.split('/')[2], this.props.servers.serversAsLeader) ? (
-            <nav>
+            <nav id="workspace-nav">
                 <Link class="link" to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
                 <Link class="link" onClick={this.makeChannel.bind(this)}>Add Channel</Link>
             </nav>

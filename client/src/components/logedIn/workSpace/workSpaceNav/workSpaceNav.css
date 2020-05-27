@@ -1,5 +1,7 @@
-nav{
+#workspace-nav{
     display: flex;
+    position: absolute;
+    margin-top: -25px;
 }
 
 .link{
