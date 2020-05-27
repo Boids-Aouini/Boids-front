@@ -6,11 +6,16 @@
 #allMessages{
     position: flex;
     overflow-y: auto;
+
 }
 
 #message{
     display: grid;
     grid-template-columns: 95% 30px;
+}
+
+#message-content{
+    margin-left: 15px;
 }
 
 #options{
@@ -22,8 +27,11 @@
         position: absolute;
         margin-top: 33%;
         width: 100%;
-        grid-template-rows: 72% 5%;
-        height: 100%;
+        grid-template-rows: 380px 5%;
+        height: 77%;
+    }
+    #message{
+        grid-template-columns: 90% 10%;
     }
     
 }

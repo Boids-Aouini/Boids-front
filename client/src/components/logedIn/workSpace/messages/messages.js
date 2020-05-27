@@ -75,7 +75,7 @@ class Messages extends Component {
         return this.props.channel.posts.map((post, i) => (
 
             <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
-                <div key={i}>
+                <div id="message-content" key={i}>
                     <b>{name(post)}</b >
                     <p>{message(post)}</p>
                 </div>
