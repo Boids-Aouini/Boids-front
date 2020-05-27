@@ -1,9 +1,15 @@
 #workspace-nav{
     display: flex;
-    position: absolute;
-    margin-top: 14%;
 }
 
 .link{
     margin-left: 15px;
+}
+
+
+@media only screen and (max-width: 780px){
+    #workspace-nav{
+        position: absolute;
+        margin-top: 14%;
+    }
 }
