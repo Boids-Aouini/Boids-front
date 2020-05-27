@@ -60,3 +60,19 @@
 #logout{
     margin-left: 15px;
 }
+
+@media only screen and (max-width: 780px){
+    #serversComp{
+        display: grid;
+        grid-template-rows: 100%;
+        overflow-x: auto;
+        width: 100%;
+        height: 11%;
+    }
+    
+    .iconify{
+        width: 35px;
+        height: 35px;
+    }
+    
+}

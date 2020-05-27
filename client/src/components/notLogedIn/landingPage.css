@@ -1,0 +1,8 @@
+@media only screen and (max-width: 780px){
+    #landingContent{
+        margin-top: 42px;
+    }
+    #mainContent{
+        font-size: 27px;
+    }
+}
