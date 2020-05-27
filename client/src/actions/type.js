@@ -11,6 +11,7 @@ export const CHANGE_CURRENT_SERVER = "CHANGE_CURRENT_SERVER"
 
 // memberships types
 export const ADD_MEMBER = 'ADD_MEMBER';
+export const ADDED_MEMBER = 'ADDED_MEMBER';
 
 // channels types
 export const GET_CHANNELS_SERVER = 'GET_CHANNELS_SERVER';
