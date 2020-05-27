@@ -63,11 +63,13 @@
 
 @media only screen and (max-width: 780px){
     #serversComp{
+        z-index: 8999;
         display: flex;
         overflow-y: hidden;
         overflow-x: scroll;
+        position: fixed;
         width: 100%;
-        height: 20%;
+        height: 16%;
         flex-direction: row;
     }
     #makeNewServer{
@@ -75,12 +77,12 @@
     }
 
     #servers{
-        margin-top: -23px;
+        
         display: flex;
     }
 
     .serverAsLeader{
-        margin-top: auto;
+        margin-top: -23px;
         margin-right: 15px;
 
         
@@ -99,7 +101,7 @@
 
     }
     .serverAsMember{
-        margin-top: auto;
+        margin-top: -23px;
         margin-right: 15px;
         
     }
