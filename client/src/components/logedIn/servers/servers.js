@@ -34,18 +34,21 @@ class Servers extends Component {
 
     componentWillMount() {
         let check = 0;
+        let place = window.location.pathname.split('/')[1];
+        let serverName = place === 'boidsServer' ? window.location.pathname.split('/')[2] : place === 'options' ?
+            window.location.pathname.split('/')[3] : null
+        let channelName = place === 'boidsServer' ?
+            extractReference(window.location.pathname.split('/')[3]) : null
         this.props.retreiveServerAsLeader() // retreive servers the user is leader in them and add it to serversAsLeader in redux's state
             .then(() => {
-                if (window.location.pathname.split('/')[1] === 'boidsServer' || window.location.pathname.split('/')[1] === 'options') {
+                if (place === 'boidsServer' || place === 'options') {
                     for (let server of this.props.servers.serversAsLeader) {
-                        if (server.name === window.location.pathname.split('/')[1] === 'boidsServer' ?
-                            extractReference(window.location.pathname.split('/')[2]) : window.location.pathname.split('/')[1] === 'options' ?
-                                extractReference(window.location.pathname.split('/')[3]) : null) {
+                        if (server.name === serverName) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
                                 .then(getChannelsData => {
-                                    let channelName = window.location.pathname.split('/')[1] === 'boidsServer' ?
-                                        extractReference(window.location.pathname.split('/')[3]) : window.location.pathname.split('/')[1] === 'options' ?
+                                    let channelName = place === 'boidsServer' ?
+                                        extractReference(window.location.pathname.split('/')[3]) : place === 'options' ?
                                             extractReference(window.location.pathname.split('/')[4]) : null
 
                                     for (let channel of getChannelsData.channels) {
@@ -68,19 +71,15 @@ class Servers extends Component {
         this.props.retreiveServerAsMember()
             .then(() => {
 
-                if ((extractReference(window.location.pathname.split('/')[1]) === 'boidsServer' || window.location.pathname.split('/')[1] === 'options') && check === 0) {
+                if ((extractReference(place) === 'boidsServer' || place === 'options') && check === 0) {
 
 
                     for (let server of this.props.servers.serversAsMember) {
-                        if (server.name === window.location.pathname.split('/')[1] === 'boidsServer' ?
-                            extractReference(window.location.pathname.split('/')[2]) : window.location.pathname.split('/')[1] === 'options' ?
-                                extractReference(window.location.pathname.split('/')[3]) : null) {
+                        if (server.name === serverName) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
                                 .then(getChannelsData => {
-                                    let channelName = window.location.pathname.split('/')[1] === 'boidsServer' ?
-                                        extractReference(window.location.pathname.split('/')[3]) : window.location.pathname.split('/')[1] === 'options' ?
-                                            extractReference(window.location.pathname.split('/')[4]) : null
+
 
                                     for (let channel of getChannelsData.channels) {
                                         if (channel.name === channelName) {
