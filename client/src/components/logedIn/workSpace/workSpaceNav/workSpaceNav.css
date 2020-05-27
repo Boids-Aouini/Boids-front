@@ -9,7 +9,7 @@
 
 @media only screen and (max-width: 780px){
     #workspace-nav{
-        position: absolute;
+        position: fixed;
         margin-top: 14%;
     }
 }
