@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { extractReference } from '../../utils/urlReference';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addMember } from '../../../actions/membershipsActions';
+import { addMember, addedMember } from '../../../actions/membershipsActions';
 import ChannelsNav from '../workSpace/channelsNav/channelsNav'
 import WorkSpaceNav from '../workSpace/workSpaceNav/workSpaceNav';
 import TextField from '@material-ui/core/TextField';
@@ -73,14 +73,14 @@ class AddNewMember extends Component {
             newMember.server_id = this.props.servers.currentServer;
             this.props.addMember(newMember) //make request to add new member to server
                 .then(() => {
-                    this.setState({ addedMember: true })
+                    this.props.addedMember()
                 })
 
         }
     }
     render() {
         // const classes = useStyles()
-        return !this.addedMember ? (
+        return !this.props.memberShip.addedMember ? (
             <div>
                 {this.props.servers.currentServer ? (<WorkSpaceNav />) : <></>}
                 {this.props.servers.currentServer ? (<ChannelsNav />) : <></>}
@@ -95,7 +95,8 @@ class AddNewMember extends Component {
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
     servers: state.servers,
-    channels: state.channels
+    channels: state.channels,
+    memberShip: state.memberShip
 
 })
-export default connect(mapPropsToState, { addMember })(AddNewMember); // added action
+export default connect(mapPropsToState, { addMember, addedMember })(AddNewMember); // added action
