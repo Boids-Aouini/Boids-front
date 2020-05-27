@@ -13,7 +13,8 @@ class Messages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ""
+            message: "",
+            popup: null
         }
 
     }
@@ -25,6 +26,7 @@ class Messages extends Component {
         e.preventDefault();
         if (this.state.message.length > 0) {
             let newMessage = this.state;
+            delete newMessage.popup
             newMessage.server_id = this.props.servers.currentServer;
             newMessage.channel_id = this.props.channel.currentChannel;
             newMessage.token = this.props.auth.openedAcc;
