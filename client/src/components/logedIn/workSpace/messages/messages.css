@@ -1,0 +1,18 @@
+#messagesComp{
+    display: grid;
+    grid-template-rows: 460px 30px;
+}
+
+#allMessages{
+    position: flex;
+    overflow-y: auto;
+}
+
+#message{
+    display: grid;
+    grid-template-columns: 95% 30px;
+}
+
+#options{
+    margin-top: 13px;
+}

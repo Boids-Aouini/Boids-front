@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { ADD_MEMBER } from './type';
 
-export const addMember = newMember => dispatch => {
-    axios.post('http://localhost:4404/api/memberships/createMembership', newMember,
+export const addMember = (newMember) => dispatch => {
+    return axios.post('http://localhost:4404/api/memberships/createMembership', newMember,
         // make post request to create membership to the boids server
         {
             headers: {

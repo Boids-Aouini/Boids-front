@@ -4,7 +4,8 @@ import Register from './components/auth/register';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
 import Login from './components/auth/login';
 import NavBar from './components/navbar/navBar';
@@ -15,11 +16,17 @@ import Servers from './components/logedIn/servers/servers';
 import { retreiveServerAsLeader } from './actions/serverActions';
 import AddNewMember from './components/logedIn/addNewMember/addNewMember';
 import WorkSpace from './components/logedIn/workSpace/workSpace';
+import socket from './components/utils/socket';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+  }
 
   render() {
-
     return (
 
       <Router>
@@ -43,10 +50,10 @@ class App extends Component {
                 <Login></Login>
               </Route>
               <Route exact path="/boidsServer/:serverName/:channel">
-                <WorkSpace />
+                {this.props.auth.openedAcc ? (<WorkSpace />) : <Redirect to="/" />}
               </Route>
               <Route exact path='/options/boidsServer/:serverName/addMember'>
-                <AddNewMember />
+                {this.props.auth.openedAcc ? (<AddNewMember />) : <Redirect to="/" />}
               </Route>
 
             </Switch>
