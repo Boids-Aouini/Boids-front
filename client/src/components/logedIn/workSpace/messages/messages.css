@@ -16,3 +16,14 @@
 #options{
     margin-top: 13px;
 }
+
+@media only screen and (max-width: 780px){
+    #messagesComp{
+        position: absolute;
+        margin-top: 33%;
+        width: 100%;
+        grid-template-rows: 72% 5%;
+        height: 100%;
+    }
+    
+}
