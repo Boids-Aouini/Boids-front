@@ -63,11 +63,43 @@
 
 @media only screen and (max-width: 780px){
     #serversComp{
-        display: grid;
-        grid-template-rows: 100%;
-        overflow-x: auto;
+        display: flex;
+        overflow-x: scroll;
         width: 100%;
-        height: 11%;
+        height: 18%;
+    }
+    #makeNewServer{
+        margin-left: 9px;
+    }
+
+    #servers{
+        margin-top: -23px;
+        display: flex;
+    }
+
+    .serverAsLeader{
+        margin-top: auto;
+        margin-right: 15px;
+
+        
+    }
+    
+    
+    .serversLeader .iconify{
+        width: 35px;
+        height: 35px;
+    }
+
+    .serversMember .iconify{
+        width: 35px;
+        height: 35px;
+        margin-left: auto;
+
+    }
+    .serverAsMember{
+        margin-top: auto;
+        margin-right: 15px;
+        
     }
     
     .iconify{
