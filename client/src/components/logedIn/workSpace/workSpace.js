@@ -12,10 +12,10 @@ class WorkSpace extends Component {
 
     componentWillMount() {
         if (this.props.memberShip.addedMember) {
-            this.addedMember()
+            this.props.addedMember()
             for (let channel of this.props.channels.channels) {
                 if (channel.name === extractReference(window.location.pathname.split('/')[3])) {
-                    this.getPosts(channel.id);
+                    this.props.getPosts(this.props.servers.currentServer, channel.id);
 
                 }
             }
