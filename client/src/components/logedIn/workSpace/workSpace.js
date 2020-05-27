@@ -15,6 +15,7 @@ class WorkSpace extends Component {
             this.props.addedMember()
             for (let channel of this.props.channels.channels) {
                 if (channel.name === extractReference(window.location.pathname.split('/')[3])) {
+                    this.props.currentChannel(channel.id)
                     this.props.getPosts(this.props.servers.currentServer, channel.id);
 
                 }
