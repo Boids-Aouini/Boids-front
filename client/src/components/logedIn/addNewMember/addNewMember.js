@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addMember } from '../../../actions/membershipsActions';
 import ChannelsNav from '../workSpace/channelsNav/channelsNav'
+import WorkSpaceNav from '../workSpace/workSpaceNav/workSpaceNav';
 class AddNewMember extends Component {
     constructor(props) {
         super(props);
@@ -66,7 +67,8 @@ class AddNewMember extends Component {
     render() {
         return !this.addedMember ? (
             <div>
-                <ChannelsNav />
+                {this.props.servers.currentServer ? (<WorkSpaceNav />) : <></>}
+                {this.props.servers.currentServer ? (<ChannelsNav />) : <></>}
                 <form>
                     <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
                     <input onChange={this.onChange.bind(this)} placeholder="Email" type="email" name="email"></input><br></br>
@@ -77,7 +79,8 @@ class AddNewMember extends Component {
     }
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
-    servers: state.servers
+    servers: state.servers,
+    channels: state.channels
 
 })
 export default connect(mapPropsToState, { addMember })(AddNewMember); // added action
