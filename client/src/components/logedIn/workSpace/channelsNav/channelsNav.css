@@ -15,3 +15,13 @@
     display: grid;
     grid-column: auto auto;
 }
+
+@media only screen and (max-width: 780px){
+    #channelsNav{
+        margin-top: 100px;
+    }
+    #channelsNav .iconify {
+        width: 50px;
+        height: 50px;
+    }
+}
