@@ -21,17 +21,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     return (
 
       <Router>
         <div id="app" style={{
-          gridTemplateColumns: this.props.auth.openedAcc ? '9% 91%' : "100%"
+          gridTemplateColumns: !this.props.auth.openedAcc ? "100%" : '9% 91%'
         }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 

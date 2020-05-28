@@ -2,6 +2,7 @@ nav {
     display: flex;
     background-color: #8dc29b;
     width: 100%;
+    margin-right: 100px;
 }
 
 .links{
@@ -11,7 +12,7 @@ nav {
 
 .links:hover {
     text-decoration: none;
-  }
+}
 
 #login{
     margin-left: 74%;
