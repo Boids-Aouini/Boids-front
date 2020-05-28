@@ -1,8 +1,14 @@
+#wrapper{
+    width: 50%;
+    font-size: 27px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#wrapper p {
+    font-size: 20px;
+    font-weight: 20px;
+}
 @media only screen and (max-width: 780px){
     #landingContent{
         margin-top: 50px;
-    }
-    #mainContent{
-        font-size: 27px;
     }
 }

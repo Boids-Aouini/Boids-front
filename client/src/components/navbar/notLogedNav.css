@@ -1,10 +1,17 @@
 nav {
     display: flex;
+    background-color: #8dc29b;
+    width: 100%;
 }
 
 .links{
     margin-left: 20px;
+
 }
+
+.links:hover {
+    text-decoration: none;
+  }
 
 #login{
     margin-left: 74%;

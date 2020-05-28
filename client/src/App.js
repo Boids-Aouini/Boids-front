@@ -30,7 +30,9 @@ class App extends Component {
     return (
 
       <Router>
-        <div id="app">
+        <div id="app" style={{
+          gridTemplateColumns: this.props.auth.openedAcc ? '9% 91%' : "100%"
+        }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
           <div id="content">
