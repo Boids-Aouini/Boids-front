@@ -22,6 +22,14 @@
     margin-top: 13px;
 }
 
+#sendMsgForm{
+    margin-right: 500px;
+}
+
+#text-field{
+    width: 70%;
+}
+
 @media only screen and (max-width: 780px){
     #messagesComp{
         position: absolute;

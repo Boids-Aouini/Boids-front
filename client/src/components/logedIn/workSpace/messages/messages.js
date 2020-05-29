@@ -8,7 +8,7 @@ import './messages.css';
 import { Dropdown } from 'react-bootstrap';
 import jwt from 'jsonwebtoken'
 import { tokenSecret } from '../../../utils/token';
-
+import TextField from '@material-ui/core/TextField';
 class Messages extends Component {
     constructor(props) {
         super(props);
@@ -117,7 +117,7 @@ class Messages extends Component {
 
                 </div>
                 <form className="sendMsgForm">
-                    <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
+                    <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
                     <button type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </form>
             </div>
