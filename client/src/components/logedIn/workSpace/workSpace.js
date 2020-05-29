@@ -27,7 +27,7 @@ class WorkSpace extends Component {
         return (
 
             <div>
-                {this.props.servers.currentServer ? (<WorkSpaceNav />) : <></>}
+                <WorkSpaceNav />
                 {this.props.servers.currentServer ? (<ChannelsNav />) : <></>}
                 {this.props.servers.currentServer && this.props.channels.currentChannel ? <Messages /> : <></>}
             </div>
