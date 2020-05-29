@@ -3,12 +3,13 @@
     padding: 10px;
 }
 
-.link{
+.workspace-nav-link{
     margin-left: 15px;
     color: blueviolet;
+    padding: 3px;
 }
 
-.link:hover{
+.workspace-nav-link:hover{
     text-decoration: none;
     background-color: blueviolet;
     color: white;
