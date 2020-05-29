@@ -9,19 +9,10 @@ class WorkSpaceNav extends Component {
         super(props);
         this.state = {
             name: '',
-            createdAt: '',
-            server_id: null
+            createdAt: ''
         }
     }
-    check(serverName, serversAsLeader) { // check if server in the serversAsLeader state
-        for (let server of serversAsLeader) {
-            if (server.name === serverName) {
-                setTimeout(() => { this.setState({ server_id: server.id }) }, 0)
-                return true;
-            }
-        }
-        return false;
-    }
+    
     makeChannel() { // make new channel
         let name = prompt('insert your new channel\'s name'); // retrive new channel name
         while (name === "") {
@@ -31,7 +22,7 @@ class WorkSpaceNav extends Component {
         if (name !== null) {
             let newChannel = {
                 name,
-                server_id: this.state.server_id
+                server_id: this.props.servers.currentServer
             };
             let currentDate = new Date();
             newChannel.createdAt = currentDate.getFullYear() + "-" + currentDate.getDay() + "-" + currentDate.getMonth();
@@ -39,7 +30,7 @@ class WorkSpaceNav extends Component {
         }
     }
     render() {
-        return this.check(window.location.pathname.split('/')[2], this.props.servers.serversAsLeader) ? (
+        return this.props.servers.currentServer ? (
             <nav id="workspace-nav">
                 <Link class="workspace-nav-link" to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
                 <Link class="workspace-nav-link" onClick={this.makeChannel.bind(this)}>Add Channel</Link>
