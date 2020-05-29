@@ -6,12 +6,14 @@
     background-color: white;
 }
 
-
-
 .serverAsLeader{
     margin-top: 2px;
     margin-right: 10px;
     
+}
+
+.server-link:hover{
+    text-decoration: none;
 }
 
 #makeNewServer{
@@ -45,6 +47,10 @@
     margin-top: 2px;
     margin-right: 10px;
     
+}
+
+.serverAsMember:hover{
+    text-decoration: none;
 }
 
 .serverName{
@@ -86,11 +92,8 @@
 
     .serverAsLeader{
         margin-top: -23px;
-        margin-right: 15px;
-
-        
+        margin-right: 15px;        
     }
-    
     
     .serversLeader .iconify{
         width: 50px;
