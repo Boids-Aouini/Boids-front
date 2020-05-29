@@ -1,6 +1,6 @@
 #messagesComp{
     display: grid;
-    grid-template-rows: 460px 30px;
+    grid-template-rows: 428px 30px;
 }
 
 #allMessages{
