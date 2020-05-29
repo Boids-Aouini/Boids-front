@@ -1,9 +1,18 @@
 #workspace-nav{
     display: flex;
+    padding: 10px;
 }
 
 .link{
     margin-left: 15px;
+    color: blueviolet;
+}
+
+.link:hover{
+    text-decoration: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 3px;
 }
 
 

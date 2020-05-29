@@ -3,6 +3,7 @@
     position: flex;
     display: flex;
     flex-direction: row;
+    background-color: white;
 }
 
 #channelsNav .iconify {
@@ -18,7 +19,7 @@
 
 @media only screen and (max-width: 780px){
     #channelsNav{
-        margin-top: 19%;
+        margin-top: 21%;
         position: fixed;
     }
     #channelsNav .iconify {
