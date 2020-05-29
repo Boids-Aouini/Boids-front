@@ -25,9 +25,9 @@
 @media only screen and (max-width: 780px){
     #messagesComp{
         position: absolute;
-        margin-top: 33%;
+        margin-top: 35%;
         width: 100%;
-        grid-template-rows: 380px 5%;
+        grid-template-rows: 365px 5%;
         height: 77%;
     }
     #message{
