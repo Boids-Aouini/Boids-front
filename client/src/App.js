@@ -23,24 +23,33 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 class App extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      '780max': null
+    }
 
   }
 
-  render() {
+  checkMedia(){
     let mediaMatch = window.matchMedia('(max-width: 780px)');
+    setTimeout(()=>this.setState({'780max': mediaMatch.matches}), 0)
+   
+    return true
+  }
 
-    return (
+  render() {
+
+    return this.checkMedia() ? (
 
       <Router>
         <div id="app" style={{
-          gridTemplateColumns: !this.props.auth.openedAcc ? 'auto': (mediaMatch.matches ? 'auto' : '9% 91%' )
+          gridTemplateColumns: this.props.auth.openedAcc ? 'auto': (this.state['780max'] ? 'auto' : '9% 91%' )
 
         }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
           <div id="content" style={{
-            marginLeft: this.props.auth.openedAcc ? (mediaMatch.matches ? 'auto':  '9%') : 'auto',
-            width: this.props.auth.openedAcc ? (mediaMatch.matches ? '100%' : '91%') : '100%'
+            marginLeft: this.props.auth.openedAcc ? (this.state['780max'] ? 'auto':  '9%') : 'auto',
+            width: this.props.auth.openedAcc ? (this.state['780max'] ? '100%' : '91%') : '100%'
           
           }}>
             <NavBar></NavBar>
@@ -69,7 +78,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
-    )
+    ): <></>
   }
 }
 const mapPropsToState = state => ({
