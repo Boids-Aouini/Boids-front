@@ -115,7 +115,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
-                                <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={() => this.onClickServer(server.id)} class="server-link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
                                         <p className="serverName">{server.name}</p>
@@ -127,7 +127,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsMember.map((server, i) => {
                         return (
                             <div class="serverAsMember" key={i}>
-                                <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={() => this.onClickServer(server.id)} class="server-link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversMember">
                                         <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
                                         <p className="serverName">{server.name}</p>

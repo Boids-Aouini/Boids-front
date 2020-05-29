@@ -6,6 +6,8 @@
     background-color: white;
 }
 
+
+
 .serverAsLeader{
     margin-top: 2px;
     margin-right: 10px;
@@ -78,7 +80,7 @@
     }
 
     #servers{
-        
+        margin-top: 22px;
         display: flex;
     }
 
