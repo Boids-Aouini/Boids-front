@@ -14,8 +14,12 @@ class ChannelsNav extends Component {
     }
 
     render() {
+        const mediaMatch = window.matchMedia('(max-width: 780px)');
+
         return (
-            <div id="channelsNav">
+            <div id="channelsNav" style={mediaMatch.matches ? {
+                marginTop: window.location.pathname.split('/')[1]==='options' ?'15%': '23%' 
+            }:{}}>
                 {this.props.channels.channels.map((channel, i) => (
                     <div key={i}>
                         <Link onClick={() => this.onChangeChannel(channel.id)} class="channelLink" to={'/boidsServer/' + window.location.pathname.split('/')[2] + '/' + referenceUrl(channel.name)}>
