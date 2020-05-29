@@ -30,10 +30,17 @@ class App extends Component {
     return (
 
       <Router>
-        <div id="app">
+        <div id="app" style={{
+          gridTemplateColumns: this.props.auth.openedAcc ? '9% 91%' : 'auto'
+
+        }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
-          <div id="content">
+          <div id="content" style={{
+            marginLeft: this.props.auth.openedAcc ? '9%' : 'auto',
+            width: this.props.auth.openedAcc ? '91%': '100%'
+          
+          }}>
             <NavBar></NavBar>
             <Switch>
               <Route exact path="/">

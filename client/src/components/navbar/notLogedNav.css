@@ -1,8 +1,10 @@
 nav {
+    padding: 10px;
     display: flex;
+    background-color: slategray;
 }
 
-.links{
+.notLogedNav-links{
     margin-left: 20px;
 }
 
