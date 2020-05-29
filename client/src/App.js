@@ -27,18 +27,20 @@ class App extends Component {
   }
 
   render() {
+    let mediaMatch = window.matchMedia('(max-width: 780px)');
+
     return (
 
       <Router>
         <div id="app" style={{
-          gridTemplateColumns: this.props.auth.openedAcc ? '9% 91%' : 'auto'
+          gridTemplateColumns: !this.props.auth.openedAcc ? 'auto': (mediaMatch.matches ? 'auto' : '9% 91%' )
 
         }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
           <div id="content" style={{
-            marginLeft: this.props.auth.openedAcc ? '9%' : 'auto',
-            width: this.props.auth.openedAcc ? '91%': '100%'
+            marginLeft: this.props.auth.openedAcc ? (mediaMatch.matches ? 'auto':  '9%') : 'auto',
+            width: this.props.auth.openedAcc ? (mediaMatch.matches ? '100%' : '91%') : '100%'
           
           }}>
             <NavBar></NavBar>
