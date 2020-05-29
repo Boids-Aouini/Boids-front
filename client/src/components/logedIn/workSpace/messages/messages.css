@@ -25,10 +25,10 @@
 @media only screen and (max-width: 780px){
     #messagesComp{
         position: absolute;
-        margin-top: 35%;
+        margin-top: 37%;
         width: 100%;
-        grid-template-rows: 365px 5%;
-        height: 77%;
+        grid-template-rows: 350px 5%;
+        height: 63%;
     }
     #message{
         grid-template-columns: 90% 10%;
