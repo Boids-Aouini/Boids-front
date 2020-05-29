@@ -4,7 +4,7 @@ import './notLogedNav.css';
 export default class NotLogedNav extends Component {
     render() {
         return (
-            <nav>
+            <nav id="not-loged-nav">
                 <Link class="notLogedNav-links" to="/">Home</Link>
                 <Link class="notLogedNav-links" to="/whyBoids">Why Boids ?</Link>
                 <Link class="notLogedNav-links" id="login" to="/login">Login</Link>
