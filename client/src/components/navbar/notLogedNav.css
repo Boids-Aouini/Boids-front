@@ -8,14 +8,14 @@
 
 .notLogedNav-links{
     margin-left: 20px;
-    color: #998bb0;
+    color: blueviolet;
     padding: 10px;
     border-radius: 3px;
 }
 
 .notLogedNav-links:hover{
     text-decoration: none;
-    background-color: #998bb0;
+    background-color: blueviolet;
     color: white;
 }
 
