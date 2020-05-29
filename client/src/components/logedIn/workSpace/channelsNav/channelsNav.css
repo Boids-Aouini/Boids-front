@@ -7,6 +7,7 @@
 }
 
 #channelsNav .iconify {
+    color: #60bcbf;
     width: 70px;
     height: 70px;
 }
@@ -15,6 +16,10 @@
     margin-left: 20px;
     display: grid;
     grid-column: auto auto;
+}
+
+.channelLink:hover{
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 780px){
