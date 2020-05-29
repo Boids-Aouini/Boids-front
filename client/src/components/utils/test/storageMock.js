@@ -15,4 +15,4 @@ export class LocalStorageMock {
         this.storage = {};
     }
 }
-export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTg5MjczNjM1fQ.CjLls-VQdsfjlPWdLueg9JHR0VWtz0swUdgYiQ-cESI";
+export const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkwNzU2NTM5fQ.1Z8H0fnnZnASHaJoa5hXIBL01LEpQF5Ve8SiL80liFQ";
