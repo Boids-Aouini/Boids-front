@@ -32,6 +32,8 @@
 #text-field{
     margin-left: 8%;
     width: 80%;
+    border-radius: 3px;
+    border-color: #8fcbff;
 }
 
 #send-post-btn{
