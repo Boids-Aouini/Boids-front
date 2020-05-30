@@ -25,8 +25,8 @@ class Login extends Component {
         return !this.props.auth.openedAcc ? ( // if openedAcc is found redirect to landing page if it's not found display login component
             <div id="login-comp">
                 <form>
-                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"/><br></br><br></br>
-                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="password"/><br></br><br></br>
+                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="email" label="Email" name="email"/><br></br><br></br>
+                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="password" label="Password" name="password"/><br></br><br></br>
                     <button id="login-btn" onClick={e => this.onSubmit(e)}>Log In</button>
                 </form>
                 <Link id="register-link" style={{ marginLeft: "45%" }} to="/register">Register</Link>

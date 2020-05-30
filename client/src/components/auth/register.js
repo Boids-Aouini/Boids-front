@@ -49,10 +49,10 @@ class Register extends Component {
         return !this.props.auth.openedAcc ? (
             <div id="register-comp">
                 <form onSubmit={this.onSubmit.bind(this)}>
-                    <TextField type="text" name="firstname" placeholder="First Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
-                    <TextField type="text" name="lastname" placeholder="Last Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
-                    <TextField type="email" name="email" placeholder="Email" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
-                    <TextField type="password" name="password" placeholder="Password" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="text" name="firstname" label="First Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="text" name="lastname" label="Last Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="email" name="email" label="Email" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="password" name="password" label="Password" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
                     
                     <TextField
                         format="MM/dd/yyyy"
