@@ -27,9 +27,9 @@ class Login extends Component {
                 <form>
                     <TextField maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"/><br></br><br></br>
                     <TextField maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="password"/><br></br><br></br>
-                    <button onClick={e => this.onSubmit(e)}>Log In</button>
+                    <button id="login-btn" onClick={e => this.onSubmit(e)}>Log In</button>
                 </form>
-                <Link style={{ marginLeft: "45%" }} to="/register">Register</Link>
+                <Link id="register-link" style={{ marginLeft: "45%" }} to="/register">Register</Link>
             </div>
         ) : (<Redirect to="/"></Redirect>)
     }
