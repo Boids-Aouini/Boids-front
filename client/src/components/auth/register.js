@@ -5,6 +5,7 @@ import { registerAction } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
 import './register.css';
 import TextField from '@material-ui/core/TextField';
+
 class Register extends Component {
     constructor(props) {
         super(props)
@@ -13,9 +14,10 @@ class Register extends Component {
             lastname: "",
             email: "",
             password: "",
-            birthDate: ""
+            birthDate: ''
         }
     }
+    
     onchange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -51,7 +53,14 @@ class Register extends Component {
                     <TextField type="text" name="lastname" placeholder="Last Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
                     <TextField type="email" name="email" placeholder="Email" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
                     <TextField type="password" name="password" placeholder="Password" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
-                    <TextField type="date" name="birthDate" onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    
+                    <TextField
+                        format="MM/dd/yyyy"
+                        name="birthDate"
+                        type="date"
+                        onChange={this.onchange.bind(this)}
+                        />
+                    <br></br><br></br>
                     <button type="submit" onClick={this.onSubmit.bind(this)}>Register</button>
 
                 </form>

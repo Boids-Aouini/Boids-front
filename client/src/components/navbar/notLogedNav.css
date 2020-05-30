@@ -1,5 +1,6 @@
 #not-loged-nav {
     padding: 10px;
+    width: 100%;
     display: flex;
     background-color: #d9d9d9;
     border-radius: 3px;
@@ -20,5 +21,5 @@
 }
 
 #login{
-    margin-left: 75%;
+    margin-left: 77%;
 }
