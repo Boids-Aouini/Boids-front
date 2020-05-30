@@ -116,10 +116,10 @@ class Messages extends Component {
                     {this.renderPosts()}
 
                 </div>
-                <form className="sendMsgForm">
+                <div id="sendMsgForm">
                     <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
-                    <button type="submit" onClick={this.onSend.bind(this)}>send</button>
-                </form>
+                    <button id="send-post-btn" type="submit" onClick={this.onSend.bind(this)}>send</button>
+                </div>
             </div>
         )
     }

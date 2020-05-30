@@ -23,11 +23,23 @@
 }
 
 #sendMsgForm{
-    margin-right: 500px;
+    margin-top: 428px;
+    height: 30px;
+    width: 100%;
+    position: absolute;
 }
 
 #text-field{
-    width: 70%;
+    margin-left: 8%;
+    width: 80%;
+}
+
+#send-post-btn{
+    border-style: none;
+    background-color: #7987a3;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-left: 7px;
 }
 
 @media only screen and (max-width: 780px){
