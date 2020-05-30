@@ -36,7 +36,7 @@ class Messages extends Component {
             // this.props.sendPost(newMessage)
         }
     }
-    
+
     componentDidMount() {
         socket.on('sendPost', newPost => {
             if (newPost.server_id === this.props.servers.currentServer &&
@@ -110,19 +110,39 @@ class Messages extends Component {
         }
     }
 
+    checkServerinLeader(){
+        let place = window.location.pathname.split('/')[1];
+        let serverName = place === 'boidsServer' ? window.location.pathname.split('/')[2] : place === 'options' ?
+            window.location.pathname.split('/')[3] : null;
+        
+        for(let server of this.props.servers.serversAsLeader){
+            if(server.name === serverName) return true;
+        }
+    }
+
+    checkMedia(){
+        let checkMedia = window.matchMedia('(max-width: 780px)')
+        setTimeout(()=>this.setState({max780: checkMedia.matches}), 0)
+        return true
+    }
+
     render() {
-        return (
+        return this.checkMedia() ?(
             <div id="messagesComp">
-                <div id="allMessages" ref={node => { this.cont = node }}>
+                <div id="allMessages" style={
+                    this.state.max780 ? (!this.checkServerinLeader() ?{
+                        
+                        marginTop: '10px'
+                    } : {} ): {}} ref={node => { this.cont = node }}>
                     {this.renderPosts()}
 
                 </div>
-                <div id="sendMsgForm">
+                <div id="sendMsgForm" >
                     <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
                     <button id="send-post-btn" type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </div>
             </div>
-        ) 
+        ) : <></>
     }
 }
 
