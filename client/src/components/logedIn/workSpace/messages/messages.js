@@ -36,14 +36,7 @@ class Messages extends Component {
             // this.props.sendPost(newMessage)
         }
     }
-    componentWillMount(){
-        setTimeout(()=>{
-            
-            let mediaMatch = window.matchMedia('(max-width: 780px)');
-
-            this.setState({max780: mediaMatch.matches})
-        }, 0)
-    }
+    
     componentDidMount() {
         socket.on('sendPost', newPost => {
             if (newPost.server_id === this.props.servers.currentServer &&
@@ -125,13 +118,11 @@ class Messages extends Component {
 
                 </div>
                 <div id="sendMsgForm">
-                    <input style={{
-                        marginLeft: this.state.max780 ? '28px' : '8%'
-                    }} type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
+                    <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
                     <button id="send-post-btn" type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </div>
             </div>
-        )
+        ) 
     }
 }
 
