@@ -29,8 +29,17 @@ class WorkSpaceNav extends Component {
             this.props.makeChannel(newChannel); // make request to add channel to the boids server
         }
     }
+    checkServerinLeader(){
+        let place = window.location.pathname.split('/')[1];
+        let serverName = place === 'boidsServer' ? window.location.pathname.split('/')[2] : place === 'options' ?
+            window.location.pathname.split('/')[3] : null;
+        
+        for(let server of this.props.servers.serversAsLeader){
+            if(server.name === serverName) return true;
+        }
+    }
     render() {
-        return this.props.servers.currentServer ? (
+        return this.checkServerinLeader() ? (
             <nav id="workspace-nav">
                 <Link class="workspace-nav-link" to={`/options/boidsServer/${window.location.pathname.split('/')[2]}/addMember`}>Add Member</Link>
                 <Link class="workspace-nav-link" onClick={this.makeChannel.bind(this)}>Add Channel</Link>
