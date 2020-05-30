@@ -1,7 +1,30 @@
-nav{
+#workspace-nav{
     display: flex;
+    padding: 10px;
+    width: 100%;
+    background-color: #f5f5f5;
+    border-radius: 1px;
+    border-bottom: silver solid 1px;
+
 }
 
-.link{
+.workspace-nav-link{
     margin-left: 15px;
+    color: blueviolet;
+    padding: 3px;
+}
+
+.workspace-nav-link:hover{
+    text-decoration: none;
+    background-color: blueviolet;
+    color: white;
+    border-radius: 3px;
+}
+
+
+@media only screen and (max-width: 780px){
+    #workspace-nav{
+        position: fixed;
+        margin-top: 14%;
+    }
 }

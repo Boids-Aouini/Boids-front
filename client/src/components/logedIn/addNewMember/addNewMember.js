@@ -2,7 +2,21 @@ import React, { Component } from 'react'
 import { extractReference } from '../../utils/urlReference';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addMember } from '../../../actions/membershipsActions';
+import { addMember, addedMember } from '../../../actions/membershipsActions';
+import ChannelsNav from '../workSpace/channelsNav/channelsNav'
+import WorkSpaceNav from '../workSpace/workSpaceNav/workSpaceNav';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import './addNewMember.css'
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiTextField-root': {
+            margin: theme.spacing(1),
+            width: '25ch',
+        },
+    },
+}));
 
 class AddNewMember extends Component {
     constructor(props) {
@@ -13,6 +27,7 @@ class AddNewMember extends Component {
             message: '',
             addedMember: false
         }
+
         this.setServerState = this.setServerState.bind(this);
         this.validPage = this.validPage.bind(this);
     }
@@ -58,25 +73,30 @@ class AddNewMember extends Component {
             newMember.server_id = this.props.servers.currentServer;
             this.props.addMember(newMember) //make request to add new member to server
                 .then(() => {
-                    this.setState({ addedMember: true })
+                    this.props.addedMember()
                 })
 
         }
     }
     render() {
-        return !this.addedMember ? (
+        // const classes = useStyles()
+        return !this.props.memberShip.addedMember ? (
             <div>
-                <form>
-                    <input onChange={this.onChange.bind(this)} placeholder="Role" type="text" name="role"></input><br></br>
-                    <input onChange={this.onChange.bind(this)} placeholder="Email" type="email" name="email"></input><br></br>
-                    <textarea onChange={this.onChange.bind(this)} placeholder="Message" name="message"></textarea><br></br>
-                    <button onClick={this.onAdd.bind(this)}>Add Member</button>
+                {this.props.servers.currentServer ? (<WorkSpaceNav />) : <></>}
+                {this.props.servers.currentServer ? (<ChannelsNav />) : <></>}
+                <form id="addNewMember-form">
+                    <TextField onChange={this.onChange.bind(this)} label="Role" type="text" name="role" /><br></br>
+                    <TextField onChange={this.onChange.bind(this)} label="Email" type="email" name="email" /><br></br>
+                    <TextField onChange={this.onChange.bind(this)} label="Message" name="message" /><br></br>
+                    <button id="addMember-btn" onClick={this.onAdd.bind(this)}>Add Member</button>
                 </form>
             </div>) : (<Redirect to={'/boidsServer/' + window.location.pathname.split('/')[3] + '/Announcement'} />)
     }
 }
 let mapPropsToState = state => ({ // set props to servers redux's state
-    servers: state.servers
+    servers: state.servers,
+    channels: state.channels,
+    memberShip: state.memberShip
 
 })
-export default connect(mapPropsToState, { addMember })(AddNewMember); // added action
+export default connect(mapPropsToState, { addMember, addedMember })(AddNewMember); // added action

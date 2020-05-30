@@ -1,0 +1,23 @@
+#login-comp{
+    margin-top: 12%;
+}
+
+#login-btn{
+    background-color: thistle;
+    border-style: none;
+    border-radius: 3px;
+    margin-bottom: 15px;
+    padding: 5px;
+}
+
+#register-link{
+    padding: 5px;
+    color: #a06bc9;
+}
+
+#register-link:hover{
+    text-decoration: none;
+    color: white;
+    background-color: #a06bc9;
+    border-radius: 3px;
+}

@@ -2,6 +2,9 @@
 
 exports[`<WorkSpace /> render() render component 1`] = `
 <WorkSpace
+  addedMember={[Function]}
+  currentChannel={[Function]}
+  current_server={[Function]}
   getChannels={[Function]}
   getPosts={[Function]}
   store={

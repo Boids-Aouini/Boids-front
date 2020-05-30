@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ADD_MEMBER } from './type';
+import { ADD_MEMBER, ADDED_MEMBER } from './type';
 
 export const addMember = (newMember) => dispatch => {
     return axios.post('http://localhost:4404/api/memberships/createMembership', newMember,
@@ -15,4 +15,9 @@ export const addMember = (newMember) => dispatch => {
             })
         })
         .catch(err => console.log(err)); // console error in case there is one
-} 
+}
+export const addedMember = () => dispatch => {
+    return dispatch({
+        type: ADDED_MEMBER
+    })
+}

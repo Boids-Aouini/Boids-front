@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { registerAction } from '../../actions/authActions';
 import { Redirect } from 'react-router-dom';
+import './register.css';
+import TextField from '@material-ui/core/TextField';
 
 class Register extends Component {
     constructor(props) {
@@ -12,9 +14,10 @@ class Register extends Component {
             lastname: "",
             email: "",
             password: "",
-            birthDate: ""
+            birthDate: ''
         }
     }
+    
     onchange(e) {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -44,13 +47,20 @@ class Register extends Component {
     }
     render() {
         return !this.props.auth.openedAcc ? (
-            <div>
+            <div id="register-comp">
                 <form onSubmit={this.onSubmit.bind(this)}>
-                    <input type="text" name="firstname" placeholder="First Name" maxLength={30} onChange={this.onchange.bind(this)} required ></input><br></br>
-                    <input type="text" name="lastname" placeholder="Last Name" maxLength={30} onChange={this.onchange.bind(this)} required ></input><br></br>
-                    <input type="email" name="email" placeholder="Email" maxLength={250} onChange={this.onchange.bind(this)} required ></input><br></br>
-                    <input type="password" name="password" placeholder="Password" maxLength={250} onChange={this.onchange.bind(this)} required ></input><br></br>
-                    <input type="date" name="birthDate" onChange={this.onchange.bind(this)} required ></input><br></br>
+                    <TextField type="text" name="firstname" label="First Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="text" name="lastname" label="Last Name" maxLength={30} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="email" name="email" label="Email" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    <TextField type="password" name="password" label="Password" maxLength={250} onChange={this.onchange.bind(this)} required /><br></br><br></br>
+                    
+                    <TextField
+                        format="MM/dd/yyyy"
+                        name="birthDate"
+                        type="date"
+                        onChange={this.onchange.bind(this)}
+                        />
+                    <br></br><br></br>
                     <button type="submit" onClick={this.onSubmit.bind(this)}>Register</button>
 
                 </form>

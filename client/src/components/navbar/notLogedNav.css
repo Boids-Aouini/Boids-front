@@ -1,11 +1,25 @@
-nav {
+#not-loged-nav {
+    padding: 10px;
+    width: 100%;
     display: flex;
+    background-color: #d9d9d9;
+    border-radius: 3px;
+    border-bottom: #b5b3b3 solid 1px;
 }
 
-.links{
+.notLogedNav-links{
     margin-left: 20px;
+    color: blueviolet;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.notLogedNav-links:hover{
+    text-decoration: none;
+    background-color: blueviolet;
+    color: white;
 }
 
 #login{
-    margin-left: 74%;
+    margin-left: 77%;
 }

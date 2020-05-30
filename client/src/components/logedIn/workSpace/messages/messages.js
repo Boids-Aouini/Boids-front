@@ -8,12 +8,13 @@ import './messages.css';
 import { Dropdown } from 'react-bootstrap';
 import jwt from 'jsonwebtoken'
 import { tokenSecret } from '../../../utils/token';
-
+import TextField from '@material-ui/core/TextField';
 class Messages extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ""
+            message: "",
+            max780: null
         }
 
     }
@@ -25,6 +26,7 @@ class Messages extends Component {
         e.preventDefault();
         if (this.state.message.length > 0) {
             let newMessage = this.state;
+            delete newMessage.max780
             newMessage.server_id = this.props.servers.currentServer;
             newMessage.channel_id = this.props.channel.currentChannel;
             newMessage.token = this.props.auth.openedAcc;
@@ -34,6 +36,7 @@ class Messages extends Component {
             // this.props.sendPost(newMessage)
         }
     }
+
     componentDidMount() {
         socket.on('sendPost', newPost => {
             if (newPost.server_id === this.props.servers.currentServer &&
@@ -73,7 +76,7 @@ class Messages extends Component {
         return this.props.channel.posts.map((post, i) => (
 
             <div id="message" style={{ background: i % 2 === 0 ? '#e0e0e0' : '#f2f0f0' }}>
-                <div key={i}>
+                <div id="message-content" key={i}>
                     <b>{name(post)}</b >
                     <p>{message(post)}</p>
                 </div>
@@ -107,19 +110,39 @@ class Messages extends Component {
         }
     }
 
+    checkServerinLeader(){
+        let place = window.location.pathname.split('/')[1];
+        let serverName = place === 'boidsServer' ? window.location.pathname.split('/')[2] : place === 'options' ?
+            window.location.pathname.split('/')[3] : null;
+        
+        for(let server of this.props.servers.serversAsLeader){
+            if(server.name === serverName) return true;
+        }
+    }
+
+    checkMedia(){
+        let checkMedia = window.matchMedia('(max-width: 780px)')
+        setTimeout(()=>this.setState({max780: checkMedia.matches}), 0)
+        return true
+    }
+
     render() {
-        return (
+        return this.checkMedia() ?(
             <div id="messagesComp">
-                <div id="allMessages" ref={node => { this.cont = node }}>
+                <div id="allMessages" style={
+                    this.state.max780 ? (!this.checkServerinLeader() ?{
+                        
+                        marginTop: '10px'
+                    } : {} ): {}} ref={node => { this.cont = node }}>
                     {this.renderPosts()}
 
                 </div>
-                <form className="sendMsgForm">
-                    <input type="text" name="message" onChange={this.onChange.bind(this)}></input>
-                    <button type="submit" onClick={this.onSend.bind(this)}>send</button>
-                </form>
+                <div id="sendMsgForm" >
+                    <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
+                    <button id="send-post-btn" type="submit" onClick={this.onSend.bind(this)}>send</button>
+                </div>
             </div>
-        )
+        ) : <></>
     }
 }
 

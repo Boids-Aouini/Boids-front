@@ -34,16 +34,23 @@ class Servers extends Component {
 
     componentWillMount() {
         let check = 0;
+        let place = window.location.pathname.split('/')[1];
+        let serverName = place === 'boidsServer' ? window.location.pathname.split('/')[2] : place === 'options' ?
+            window.location.pathname.split('/')[3] : null
+        let channelName = place === 'boidsServer' ?
+            extractReference(window.location.pathname.split('/')[3]) : null
         this.props.retreiveServerAsLeader() // retreive servers the user is leader in them and add it to serversAsLeader in redux's state
             .then(() => {
-                if (window.location.pathname.split('/')[1] === 'boidsServer') {
+                if (place === 'boidsServer' || place === 'options') {
                     for (let server of this.props.servers.serversAsLeader) {
-                        if (server.name === window.location.pathname.split('/')[2]) {
+                        if (server.name === serverName) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
                                 .then(getChannelsData => {
-                                    let channelName = extractReference(window.location.pathname.split('/')[3])
-                                    console.log(channelName)
+                                    let channelName = place === 'boidsServer' ?
+                                        extractReference(window.location.pathname.split('/')[3]) : place === 'options' ?
+                                            extractReference(window.location.pathname.split('/')[4]) : null
+
                                     for (let channel of getChannelsData.channels) {
                                         if (channel.name === channelName) {
                                             this.props.currentChannel(channel.id)
@@ -63,16 +70,17 @@ class Servers extends Component {
             });
         this.props.retreiveServerAsMember()
             .then(() => {
-                if (window.location.pathname.split('/')[1] === 'boidsServer' && check === 0) {
+
+                if ((extractReference(place) === 'boidsServer' || place === 'options') && check === 0) {
 
 
                     for (let server of this.props.servers.serversAsMember) {
-                        if (server.name === window.location.pathname.split('/')[2]) {
+                        if (server.name === serverName) {
                             this.props.current_server(server.id)
                             this.props.getChannels(server.id)
                                 .then(getChannelsData => {
-                                    let channelName = extractReference(window.location.pathname.split('/')[3])
-                                    console.log(channelName)
+
+
                                     for (let channel of getChannelsData.channels) {
                                         if (channel.name === channelName) {
                                             this.props.currentChannel(channel.id)
@@ -96,7 +104,7 @@ class Servers extends Component {
             })
     }
     render() {
-        return (
+        return this.props.auth.openedAcc ? (
             <div data-testid="serversComp" id="serversComp">
 
                 <span data-testid="makeNewServer" id="makeNewServer" onClick={this.onNewServer.bind(this)}>
@@ -107,7 +115,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsLeader.map((server, i) => {
                         return (
                             <div class="serverAsLeader" key={i}>
-                                <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={() => this.onClickServer(server.id)} class="server-link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversLeader">
                                         <span class="iconify" data-icon="wpf:administrator" data-inline="false"></span>
                                         <p className="serverName">{server.name}</p>
@@ -119,7 +127,7 @@ class Servers extends Component {
                     {this.props.servers.serversAsMember.map((server, i) => {
                         return (
                             <div class="serverAsMember" key={i}>
-                                <Link onClick={() => this.onClickServer(server.id)} class="link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
+                                <Link onClick={() => this.onClickServer(server.id)} class="server-link" to={'/boidsServer/' + referenceUrl(server.name) + '/Announcement'}>
                                     <div class="serversMember">
                                         <span class="iconify" data-icon="whh:birdhouse" data-inline="false"></span>
                                         <p className="serverName">{server.name}</p>
@@ -134,12 +142,13 @@ class Servers extends Component {
                 </Link>
             </div>
 
-        )
+        ) : <></>
     }
 }
 
 const mapPropsToState = state => ({ // add to props redux's servers state
-    servers: state.servers
+    servers: state.servers,
+    auth: state.auth
 })
 
 export default connect(mapPropsToState, { createServer, retreiveServerAsLeader, getChannels, current_server, logoutAction, retreiveServerAsMember, getPosts, currentChannel })(Servers); // add actions to servers comp props

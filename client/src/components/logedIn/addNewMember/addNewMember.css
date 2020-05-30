@@ -1,0 +1,18 @@
+#addNewMember-form{
+    margin-top: 100px;
+}
+
+#addMember-btn{
+    border: none;
+    margin-top: 10px;
+    background-color: #c0a3d1;
+    border-radius: 3px;
+    color: white;
+}
+
+@media only screen and (max-width: 780px){
+    #addNewMember-form{
+        position: absolute;
+        margin-top: 250px;
+    }
+}
