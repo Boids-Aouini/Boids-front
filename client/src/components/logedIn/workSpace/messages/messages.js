@@ -14,7 +14,7 @@ class Messages extends Component {
         super(props);
         this.state = {
             message: "",
-            popup: null
+            max780: null
         }
 
     }
@@ -26,7 +26,7 @@ class Messages extends Component {
         e.preventDefault();
         if (this.state.message.length > 0) {
             let newMessage = this.state;
-            delete newMessage.popup
+            delete newMessage.max780
             newMessage.server_id = this.props.servers.currentServer;
             newMessage.channel_id = this.props.channel.currentChannel;
             newMessage.token = this.props.auth.openedAcc;
@@ -35,6 +35,14 @@ class Messages extends Component {
             socket.emit('sendPost', newMessage)
             // this.props.sendPost(newMessage)
         }
+    }
+    componentWillMount(){
+        setTimeout(()=>{
+            
+            let mediaMatch = window.matchMedia('(max-width: 780px)');
+
+            this.setState({max780: mediaMatch.matches})
+        }, 0)
     }
     componentDidMount() {
         socket.on('sendPost', newPost => {
@@ -117,7 +125,9 @@ class Messages extends Component {
 
                 </div>
                 <div id="sendMsgForm">
-                    <input type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
+                    <input style={{
+                        marginLeft: this.state.max780 ? '28px' : '8%'
+                    }} type="text" id="text-field" placeholder="Write Post" name="message" onChange={this.onChange.bind(this)}></input>
                     <button id="send-post-btn" type="submit" onClick={this.onSend.bind(this)}>send</button>
                 </div>
             </div>

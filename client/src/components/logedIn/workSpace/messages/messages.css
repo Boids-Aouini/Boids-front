@@ -23,10 +23,8 @@
 }
 
 #sendMsgForm{
-    margin-top: 428px;
     height: 30px;
     width: 100%;
-    position: absolute;
 }
 
 #text-field{
