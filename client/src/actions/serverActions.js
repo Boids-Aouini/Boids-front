@@ -59,7 +59,7 @@ export const retreiveServerAsMember = () => dispatch => {
 }
 
 export const current_server = currentServer => dispatch => {
-    dispatch({
+    dispatch({ // dispatch new current server id to redux's state
         type: CHANGE_CURRENT_SERVER,
         currentServer
     })
