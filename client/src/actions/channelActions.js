@@ -60,19 +60,20 @@ export const sendPost = (newPost) => dispatch => {
 
 export const getPosts = (server_id, channel_id) => dispatch => {
     axios.get('http://localhost:4404/api/channels/getPosts/' + server_id + '/' + channel_id, {
+        // make get request to retreive posts to channel
         headers: {
-            'auth_token': localStorage.getItem('_____auth_______________token')
+            'auth_token': localStorage.getItem('_____auth_______________token') // set token to request header
         }
     })
         .then(res => {
             let { posts } = res.data.results;
-            dispatch({
+            dispatch({ // dispatch posts to redux's state
                 channel_id,
                 posts,
                 type: GET_POSTS
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) // console error in case there is one
 }
 
 export const currentChannel = channel_id => dispatch => {
