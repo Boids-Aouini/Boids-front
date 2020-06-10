@@ -8,7 +8,7 @@ export default function (state = initState, action) {
     switch (action.type) {
         case ADD_MEMBER: return state; // return state
         case ADDED_MEMBER:
-            return {
+            return { // toggle addedMember value
                 addedMember: !state.addedMember
             }
         default: return state;
