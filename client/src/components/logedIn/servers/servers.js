@@ -142,7 +142,7 @@ class Servers extends Component {
                 </Link>
             </div>
 
-        ) : <></>
+        ) : <div id="notLogedServersComp"></div>
     }
 }
 

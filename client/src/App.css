@@ -1,12 +1,9 @@
 #app{
   display: grid;
-  grid-template-columns: 9% 91%;
-
 }
 
 #content{
   position: absolute;
-  margin-left: 9%;
   width: 91%;
 }
 

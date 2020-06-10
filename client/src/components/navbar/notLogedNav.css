@@ -1,8 +1,9 @@
 nav {
     display: flex;
-    background-color: #8dc29b;
+    background-color: #d6d6d6;
+    border-radius: 4px;
     width: 100%;
-    margin-right: 100px;
+    padding: 12px;
 }
 
 .links{
