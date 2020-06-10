@@ -97,10 +97,10 @@ export const deletePost = post_id => dispatch => { // remove post from posts red
     })
 }
 
-export const updatePost = (post_id, post) => dispatch => {
-    dispatch({
-        post_id,
-        post,
+export const updatePost = (post_id, post) => dispatch => { // update post by it's id
+    dispatch({ // dispatch post 
+        post_id, // post that have to be updated
+        post, // post data
         type: UPDATE_POST
     })
 }
