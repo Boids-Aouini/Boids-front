@@ -39,6 +39,7 @@ export const retreiveServerAsLeader = () => dispatch => {
 }
 
 export const retreiveServerAsMember = () => dispatch => {
+    // make get request to retreive servers as member to loged user
     return axios.get('http://localhost:4404/api/boidsServers/serversAsMember',
         {
             headers: {
@@ -47,13 +48,13 @@ export const retreiveServerAsMember = () => dispatch => {
         })
         .then(res => {
             let { serversAsMember } = res.data.results;
-            return dispatch({
+            return dispatch({ // dispatch servers as member to redux's state
                 serversAsMember,
                 type: RETREIVE_SERVER_AS_MEMBER
             })
         })
         .catch(err => {
-            console.log(err)
+            console.log(err) // console error in case there is one
         })
 }
 
