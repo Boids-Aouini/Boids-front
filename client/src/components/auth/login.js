@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { loginAction } from '../../actions/authActions';
 import { Link, Redirect } from 'react-router-dom';
+import TextField from '@material-ui/core/TextField';
+import './login.css';
 
 class Login extends Component {
     constructor(props) {
@@ -21,13 +23,13 @@ class Login extends Component {
     }
     render() {
         return !this.props.auth.openedAcc ? ( // if openedAcc is found redirect to landing page if it's not found display login component
-            <div>
+            <div id="login-comp">
                 <form>
-                    <input maxLength={250} onChange={this.onchange.bind(this)} type="email" placeholder="Email" name="email"></input><br></br>
-                    <input maxLength={250} onChange={this.onchange.bind(this)} type="password" placeholder="Password" name="password"></input><br></br>
-                    <button onClick={e => this.onSubmit(e)}>Log In</button>
+                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="email" label="Email" name="email"/><br></br><br></br>
+                    <TextField maxLength={250} onChange={this.onchange.bind(this)} type="password" label="Password" name="password"/><br></br><br></br>
+                    <button id="login-btn" onClick={e => this.onSubmit(e)}>Log In</button>
                 </form>
-                <Link style={{ marginLeft: "45%" }} to="/register">Register</Link>
+                <Link id="register-link" style={{ marginLeft: "45%" }} to="/register">Register</Link>
             </div>
         ) : (<Redirect to="/"></Redirect>)
     }

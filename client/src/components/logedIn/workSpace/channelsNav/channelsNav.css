@@ -4,9 +4,11 @@
     display: flex;
     flex-direction: row;
     background-color: white;
+    margin-top: 7px;
 }
 
 #channelsNav .iconify {
+    color: #60bcbf;
     width: 70px;
     height: 70px;
 }
@@ -17,9 +19,13 @@
     grid-column: auto auto;
 }
 
+.channelLink:hover{
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 780px){
     #channelsNav{
-        margin-top: 19%;
+        margin-top: 23%;
         position: fixed;
     }
     #channelsNav .iconify {

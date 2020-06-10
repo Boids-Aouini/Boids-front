@@ -1,6 +1,6 @@
 #messagesComp{
     display: grid;
-    grid-template-rows: 460px 30px;
+    grid-template-rows: 428px 30px;
 }
 
 #allMessages{
@@ -22,13 +22,33 @@
     margin-top: 13px;
 }
 
+#sendMsgForm{
+    height: 30px;
+    width: 100%;
+}
+
+#text-field{
+    margin-left: 6%;
+    width: 80%;
+    border-radius: 3px;
+    border-color: #8fcbff;
+}
+
+#send-post-btn{
+    border-style: none;
+    background-color: #7987a3;
+    padding: 3px 10px;
+    border-radius: 3px;
+    margin-left: 7px;
+}
+
 @media only screen and (max-width: 780px){
     #messagesComp{
         position: absolute;
-        margin-top: 33%;
+        margin-top: 37%;
         width: 100%;
-        grid-template-rows: 380px 5%;
-        height: 77%;
+        grid-template-rows: 350px 5%;
+        height: 63%;
     }
     #message{
         grid-template-columns: 90% 10%;

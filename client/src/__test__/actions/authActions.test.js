@@ -12,7 +12,7 @@ describe('authActions', () => {
     })
     test('OPEN_ACC Action', () => {
         let account = {
-            email: 'aminaouini565@gmail.com',
+            email: 'amine@gmail.com',
             password: '123456789'
         }
         return store.dispatch(authActions.loginAction(account))
@@ -23,7 +23,7 @@ describe('authActions', () => {
     })
     test('REGISTER Action', () => {
         let newAcc = {
-            firstname: 'register', lastname: 'test', email: 'reis2tzsd1erT3e1st@email.com',
+            firstname: 'register', lastname: 'test', email: 'registerr1Teesstee@email.com',
             password: '123456789', createdAt: '2020-05-05', birthDate: '2020-05-05'
         };
 

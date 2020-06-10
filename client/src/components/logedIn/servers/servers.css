@@ -6,10 +6,18 @@
     background-color: white;
 }
 
+#servers{
+    margin-top: 15px;
+}
+
 .serverAsLeader{
     margin-top: 2px;
     margin-right: 10px;
     
+}
+
+.server-link:hover{
+    text-decoration: none;
 }
 
 #makeNewServer{
@@ -45,6 +53,10 @@
     
 }
 
+.serverAsMember:hover{
+    text-decoration: none;
+}
+
 .serverName{
     text-align: center;
 }
@@ -74,7 +86,7 @@
         overflow-x: scroll;
         position: fixed;
         width: 100%;
-        height: 14%;
+        height: 15%;
         flex-direction: row;
     }
     #makeNewServer{
@@ -82,17 +94,14 @@
     }
 
     #servers{
-        
+        margin-top: 22px;
         display: flex;
     }
 
     .serverAsLeader{
         margin-top: -23px;
-        margin-right: 15px;
-
-        
+        margin-right: 15px;        
     }
-    
     
     .serversLeader .iconify{
         width: 50px;
