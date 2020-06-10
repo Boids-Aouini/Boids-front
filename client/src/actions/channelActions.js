@@ -45,17 +45,17 @@ export const makeChannel = (newChannel) => dispatch => {
 }
 
 export const sendPost = (newPost) => dispatch => {
-    axios.post('http://localhost:4404/api/channels/send', newPost, {
+    axios.post('http://localhost:4404/api/channels/send', newPost, { // make post http request to add new post
         headers: {
-            'auth_token': localStorage.getItem('_____auth_______________token')
+            'auth_token': localStorage.getItem('_____auth_______________token') // set token to request header
         }
     })
         .then(res => {
             dispatch({
-                type: SEND_POST
+                type: SEND_POST // set SEND_POST type to dispatch
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) // console error in case there is one
 }
 
 export const getPosts = (server_id, channel_id) => dispatch => {
