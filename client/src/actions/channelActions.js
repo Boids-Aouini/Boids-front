@@ -76,21 +76,21 @@ export const getPosts = (server_id, channel_id) => dispatch => {
         .catch(err => console.log(err)) // console error in case there is one
 }
 
-export const currentChannel = channel_id => dispatch => {
-    dispatch({
+export const currentChannel = channel_id => dispatch => { // change current channel id in redux's state
+    dispatch({ // dispatch new current channel id to redux's state
         type: CHANGE_CURRENT_CHANNEL,
         channel_id
     })
 }
 
-export const addPost = post => dispatch => {
-    dispatch({
+export const addPost = post => dispatch => { // add post to posts redux's state
+    dispatch({ // dispatch posts to redux's state
         type: ADD_POST,
         post
     })
 }
 
-export const deletePost = post_id => dispatch => {
+export const deletePost = post_id => dispatch => { // remove post from posts redux's state by it's id
     dispatch({
         post_id,
         type: DELETE_POST
