@@ -29,10 +29,10 @@ class App extends Component {
 
   }
 
-  checkMedia(){
+  checkMedia() {
     let mediaMatch = window.matchMedia('(max-width: 780px)');
-    setTimeout(()=>this.setState({'780max': mediaMatch.matches}), 0)
-   
+    setTimeout(() => this.setState({ '780max': mediaMatch.matches }), 0)
+
     return true
   }
 
@@ -42,15 +42,15 @@ class App extends Component {
 
       <Router>
         <div id="app" style={{
-          gridTemplateColumns: this.props.auth.openedAcc ? 'auto': (this.state['780max'] ? 'auto' : '9% 91%' )
+          gridTemplateColumns: this.props.auth.openedAcc ? 'auto' : (this.state['780max'] ? 'auto' : '9% 91%')
 
         }}>
           {!this.props.auth.openedAcc ? (<div></div>) : (<Servers />)}
 
           <div id="content" style={{
-            marginLeft: this.props.auth.openedAcc ? (this.state['780max'] ? 'auto':  '9%') : 'auto',
+            marginLeft: this.props.auth.openedAcc ? (this.state['780max'] ? 'auto' : '9%') : 'auto',
             width: this.props.auth.openedAcc ? (this.state['780max'] ? '100%' : '91%') : '100%'
-          
+
           }}>
             <NavBar></NavBar>
             <Switch>
@@ -78,7 +78,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
-    ): <></>
+    ) : <></>
   }
 }
 const mapPropsToState = state => ({

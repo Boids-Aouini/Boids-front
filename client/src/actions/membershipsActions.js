@@ -17,7 +17,7 @@ export const addMember = (newMember) => dispatch => {
         .catch(err => console.log(err)); // console error in case there is one
 }
 export const addedMember = () => dispatch => {
-    return dispatch({
+    return dispatch({ // dispatch redux's state without new data
         type: ADDED_MEMBER
     })
 }

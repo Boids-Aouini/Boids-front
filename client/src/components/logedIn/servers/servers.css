@@ -74,6 +74,10 @@
     margin-left: 15px;
 }
 
+#notLogedServersComp{
+    position: absolute;
+}
+
 @media only screen and (max-width: 780px){
     #serversComp{
         z-index: 8999;

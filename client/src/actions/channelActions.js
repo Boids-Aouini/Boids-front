@@ -45,61 +45,62 @@ export const makeChannel = (newChannel) => dispatch => {
 }
 
 export const sendPost = (newPost) => dispatch => {
-    axios.post('http://localhost:4404/api/channels/send', newPost, {
+    axios.post('http://localhost:4404/api/channels/send', newPost, { // make post http request to add new post
         headers: {
-            'auth_token': localStorage.getItem('_____auth_______________token')
+            'auth_token': localStorage.getItem('_____auth_______________token') // set token to request header
         }
     })
         .then(res => {
             dispatch({
-                type: SEND_POST
+                type: SEND_POST // set SEND_POST type to dispatch
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) // console error in case there is one
 }
 
 export const getPosts = (server_id, channel_id) => dispatch => {
     axios.get('http://localhost:4404/api/channels/getPosts/' + server_id + '/' + channel_id, {
+        // make get request to retreive posts to channel
         headers: {
-            'auth_token': localStorage.getItem('_____auth_______________token')
+            'auth_token': localStorage.getItem('_____auth_______________token') // set token to request header
         }
     })
         .then(res => {
             let { posts } = res.data.results;
-            dispatch({
+            dispatch({ // dispatch posts to redux's state
                 channel_id,
                 posts,
                 type: GET_POSTS
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err)) // console error in case there is one
 }
 
-export const currentChannel = channel_id => dispatch => {
-    dispatch({
+export const currentChannel = channel_id => dispatch => { // change current channel id in redux's state
+    dispatch({ // dispatch new current channel id to redux's state
         type: CHANGE_CURRENT_CHANNEL,
         channel_id
     })
 }
 
-export const addPost = post => dispatch => {
-    dispatch({
+export const addPost = post => dispatch => { // add post to posts redux's state
+    dispatch({ // dispatch posts to redux's state
         type: ADD_POST,
         post
     })
 }
 
-export const deletePost = post_id => dispatch => {
+export const deletePost = post_id => dispatch => { // remove post from posts redux's state by it's id
     dispatch({
         post_id,
         type: DELETE_POST
     })
 }
 
-export const updatePost = (post_id, post) => dispatch => {
-    dispatch({
-        post_id,
-        post,
+export const updatePost = (post_id, post) => dispatch => { // update post by it's id
+    dispatch({ // dispatch post 
+        post_id, // post that have to be updated
+        post, // post data
         type: UPDATE_POST
     })
 }
